@@ -1,0 +1,11 @@
+Metadata-Version: 1.2
+Name: codon-jit
+Version: 0.1.4
+Summary: Codon JIT decorator
+Home-page: https://exaloop.io
+Author: Exaloop Inc.
+Author-email: info@exaloop.io
+License: Commercial
+Description: Please see https://exaloop.io for more details.
+Platform: UNKNOWN
+Requires-Python: >=3.6

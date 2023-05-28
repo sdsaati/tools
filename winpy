@@ -1,0 +1,2 @@
+#!/bin/bash
+wine64 /home/mini/.wine/drive_c/Python310/python.exe

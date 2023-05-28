@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# usage: pdffix YourPDF.pdf
+here=$(dirname "$0")
+file="$1"
+python3 "${here}"/correct_pdf_zoom_level.py "${file}" && echo "File ${file} is fixed successfully"
+
+

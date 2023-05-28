@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Extract the domain of the given URL via python:
+A="$(python3 <<EEE
+import re
+reg = re.compile("(http|https)://(www\.)?([a-z\.1-9]*\.[a-z]{,3}).*")
+print(reg.match('$@').group(3))
+EEE
+)"
+
+# Mirroing the URL via wget:
+# I use -n instead of -k
+/usr/bin/wget -c -nH -N -r -p -l 0 --no-parent --no-remove-listing --cut-dirs=1 -D "$A" "$@"

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the server
+
+[Service]
+User=root
+WorkingDirectory=/home/user/Projects/main_projects/GoDot4/server
+ExecStart=/home/user/Projects/main_projects/GoDot4/server/run_docker_compose.sh
+
+[Install]
+WantedBy=multi-user.target

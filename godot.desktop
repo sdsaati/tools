@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment[en_US]=Joplin
+Comment=Joplin
+Exec=/home/user/Downloads/Joplin-2.7.15.AppImage %f
+GenericName[en_US]=Libre game engine
+GenericName=Libre game engine
+Icon=joplin
+MimeType=application/x-godot-project;
+Name[en_US]=Joplin
+Name=Joplin
+PrefersNonDefaultGPU=true
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# You can change messages
+messages=("فیلتر شکن وصل شد" "فیلتر شکن قطع شد")
+tmpFile=~/warp_status    # Temporary file to set the warp status inside it
+touch "${tmpFile}"  # Create it, if it's not existed yet
+warpStatus=$(cat ${tmpFile})  # Read the file and store its value inside a variable
+
+if [[ ${warpStatus} -eq 0 ]]
+then
+warp-cli connect
+echo 1 > "${tmpFile}"
+notify-send "${messages[0]}"
+say "${messages[0]}"
+else
+warp-cli disconnect
+notify-send "${messages[1]}"
+echo 0 > "${tmpFile}"
+say "${messages[1]}"
+fi

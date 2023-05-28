@@ -1,0 +1,13 @@
+#!/bin/bash
+# To update run this:
+# python3 -m pip install --force-reinstall yt-dlp
+
+yt-dlp \
+--proxy "https://127.0.0.1:8118/" \
+--embed-subs --add-metadata \
+--external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
+-ciwf \
+"bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/\
+bestvideo+bestaudio/best" \
+--youtube-include-dash-manifest \
+--merge-output-format mp4 --continue --min-filesize 50k --ignore-errors --yes-playlist "$@"

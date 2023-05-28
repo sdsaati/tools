@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# To update run this:
+# python3 -m pip install --force-reinstall yt-dlp
+
+yt-dlp \
+--external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" \
+--continue --extract-audio --audio-format mp3 "$@"

@@ -1,0 +1,13 @@
+MANIFEST.in
+README.md
+setup.py
+codon/__init__.py
+codon/decorator.py
+codon/jit.pxd
+codon/jit.pyx
+codon/version.py
+codon_jit.egg-info/PKG-INFO
+codon_jit.egg-info/SOURCES.txt
+codon_jit.egg-info/dependency_links.txt
+codon_jit.egg-info/requires.txt
+codon_jit.egg-info/top_level.txt

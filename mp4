@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# To update run this:
+# install ffmpeg
+
+ffmpeg -threads auto -y -i "${1}" -preset ultrafast "0_${1}_new.mp4"

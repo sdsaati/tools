@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+content=""
+for i in "${@}"; do
+content+=" ${i}"
+done
+espeak-ng -k20 -p0 -s150 -b1 -g10 -a200 -vfa "${content}"
