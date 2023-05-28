@@ -116,17 +116,25 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  # ===========
  # Git aliases
  # ===========
- 'alias git/unstage="git restore --staged"'
- 'alias git/amend="git commit --amend"'
- 'alias git/discard="git restore"'
- 'alias git/clone="git clone"'
- 'alias git/pull/origin/main="git pull origin main"'
- 'alias git/pull/origin/master="git pull origin master"'
- 'alias git/push/origin/main="git push origin main"'
- 'alias git/push/origin/master="git push origin master"'
- 'alias git/tag/list="git tag -l"'
- 'alias git/tag/create="git tag -a"'
- 'alias git/tag/show="git show"'
+ 'alias g/l="git log --oneline --decorate"'
+ 'alias g/s="git status"'
+ 'alias g/a/all="git add -A"'
+ 'alias g/a="git add"'
+ 'alias g/c="git commit -m"'
+ 'alias g/r="git rm"'
+ 'alias g/r/only_from_git="git rm --cached"'
+ 'alias g/m="git mv"'
+ 'alias g/unstage="git restore --staged"'
+ 'alias g/amend="git commit --amend"'
+ 'alias g/discard="git restore"'
+ 'alias g/clone="git clone"'
+ 'alias g/pull/origin/main="git pull origin main"'
+ 'alias g/pull/origin/master="git pull origin master"'
+ 'alias g/push/origin/main="git push origin main"'
+ 'alias g/push/origin/master="git push origin master"'
+ 'alias g/tag/list="git tag -l"'
+ 'alias g/tag/create="git tag -a"'
+ 'alias g/tag/show="git show"'
   $mkv
   $mp4
   $theme
