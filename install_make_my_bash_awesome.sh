@@ -4,8 +4,8 @@ clear
 # ==============
 # Install stuffs
 # ==============
-sudo apt install zsh\* ruby ruby-dev bat fzf fdfind fd batcat neovim tmux\*
-sudo gem install colorls
+sudo apt install -y zsh\* ruby ruby-dev bat fzf fdfind fd batcat neovim tmux\* libncursesw5-dev sshfs curlftpfs fuse fuse-zip fusefat fuseiso
+sudo gem install colorls vifm
 # Install z4h (zsh for humans)
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"
@@ -85,6 +85,19 @@ function mp4(){
 }
 EOF
 )
+tmux=$(cat <<'EOF'
+export TERM=xterm
+function start_tmux() {
+    if type tmux &> /dev/null; then
+        #if not inside a tmux session, and if no session is started, start a new session
+        if [[ -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
+            (tmux attach || tmux new -s main -d)
+        fi
+    fi
+}
+start_tmux
+EOF
+)
 oldIFS=$IFS
 IFS=$'\n'
 arr_things_should_be_added_to_bashrc_and_zshrc=(
@@ -96,8 +109,8 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  'source $(dirname $(gem which colorls))/tab_complete.sh'
  'export FZF_DEFAULT_COMMAND="'${fd}' --type f"'
  'alias ls="colorls $colorls_theme"'
- 'alias ll="colorls $colorls_theme -l"'
- 'alias la="colorls $colorls_theme -la"'
+ 'alias ll="colorls $colorls_theme -lh"'
+ 'alias la="colorls $colorls_theme -lah"'
  'export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1'
  'export JAVA_HOME=""'
  'export EDITOR="nvim"'
@@ -138,6 +151,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
   $mkv
   $mp4
   $theme
+  $tmux
 )
 
 # ===================

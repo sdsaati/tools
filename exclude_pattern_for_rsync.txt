@@ -1,0 +1,18 @@
+# exclude .Calomel.org files inside Dropbox folder
+Dropbox/.Calomel.org**
+.Calomel.org :: Open Source Research and Reference.html.vaY6aj
+
+# exclude .Linux files inside Dropbox folder
+Dropbox/.Linux**
+.Linux : Running sudo script on startup.html.IURYzk
+
+# everything that contains .sf_calc.html
+.sf_calc.html?&DbPAR=SHARED&System=UNIX.vOQnQ1
+**.sf_calc.html**
+
+# everything that contains Diagram1.dia
+**.Diagram1.dia**
+.Diagram1.dia.meexeN
+
+# .vscode directory and everything enside it
+.vscode/***
