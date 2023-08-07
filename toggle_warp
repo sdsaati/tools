@@ -1,19 +1,28 @@
 #!/usr/bin/env bash
 # You can change messages
-messages=("فیلتر شکن وصل شد" "فیلتر شکن قطع شد")
-tmpFile=~/warp_status    # Temporary file to set the warp status inside it
-touch "${tmpFile}"  # Create it, if it's not existed yet
-warpStatus=$(cat ${tmpFile})  # Read the file and store its value inside a variable
+connect='فیلتر شکن وصل شد'
+disconnect="فیلتر شکن قطع شد"
 
-if [[ ${warpStatus} -eq 0 ]]
-then
-warp-cli connect
-echo 1 > "${tmpFile}"
-notify-send "${messages[0]}"
-say "${messages[0]}"
+messages=("${connect}" "${disconnect}")
+tmpFile=~/.warp_status       # Temporary file to set the warp status inside it
+touch "${tmpFile}"           # Create it, if it's not existed yet
+warpStatus=$(cat ${tmpFile}) # Read the file and store its value inside a variable
+
+function notify {
+	if [ -x "$(command -v notify-send)" ]; then
+		notify-send "$1"
+	else
+		kdialog --passivepopup "$1" 5
+	fi
+	~/bin/say "${1}"
+}
+
+if [[ ${warpStatus} -eq 0 ]]; then
+	warp-cli connect
+	notify "${messages[0]}"
+	echo 1 >"${tmpFile}"
 else
-warp-cli disconnect
-notify-send "${messages[1]}"
-echo 0 > "${tmpFile}"
-say "${messages[1]}"
+	warp-cli disconnect
+	notify "${messages[1]}"
+	echo 0 >"${tmpFile}"
 fi

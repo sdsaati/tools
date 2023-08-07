@@ -4,7 +4,27 @@ clear
 # ==============
 # Install stuffs
 # ==============
-sudo apt install -y zsh\* ruby ruby-dev bat fzf fdfind fd batcat neovim tmux\* libncursesw5-dev sshfs curlftpfs fuse fuse-zip fusefat fuseiso
+sudo apt install -y zsh\*
+sudo apt install -y ruby
+sudo apt install -y ruby-dev
+sudo apt install -y bat
+sudo apt install -y fzf
+sudo apt install -y fdfind
+sudo apt install -y fd
+sudo apt install -y batcat
+sudo apt install -y  tmux\*
+sudo apt install -y libncursesw5-dev
+sudo apt install -y sshfs
+sudo apt install -y curlftpfs
+sudo apt install -y fuse
+sudo apt install -y fuse-zip
+sudo apt install -y fusefat
+sudo apt install -y fuseiso
+sudo apt install -y python3
+sudo apt install -y tldr
+sudo apt install -y python3-dev
+sudo apt install -y python3-pip
+sudo apt install -y python3-jedi
 sudo gem install colorls vifm
 # Install z4h (zsh for humans)
 if command -v curl >/dev/null 2>&1; then
@@ -106,7 +126,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  'export fzf_theme="--color=16"'
  'export BAT_THEME="GitHub"'
  'export FZF_DEFAULT_OPTS="--preview '\'''${batcat}' --color=always {}'\''"'
- 'source $(dirname $(gem which colorls))/tab_complete.sh'
+# 'source $(dirname $(gem which colorls))/tab_complete.sh'
  'export FZF_DEFAULT_COMMAND="'${fd}' --type f"'
  'alias ls="colorls $colorls_theme"'
  'alias ll="colorls $colorls_theme -lh"'
@@ -133,7 +153,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  'alias g/s="git status"'
  'alias g/a/all="git add -A"'
  'alias g/a="git add"'
- 'alias g/c="git commit -m"'
+ 'alias g/c="git commit"'
  'alias g/r="git rm"'
  'alias g/r/only_from_git="git rm --cached"'
  'alias g/m="git mv"'
@@ -151,7 +171,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
   $mkv
   $mp4
   $theme
-  $tmux
+  #$tmux
 )
 
 # ===================
@@ -164,11 +184,11 @@ chsh -s /usr/bin/zsh
 # =============================================
 for i in ${arr_things_should_be_added_to_bashrc_and_zshrc[@]}; do
     echo "$i" >> ~/.zshrc
-    echo "$i" >> ~/.bashrc
 done
 IFS=oldIFS
 #source $(type p10k | sed -E '$s$.*from (.*)$\1$')
 
+tldr --update
 # ===========
 # Install fzf
 # ===========

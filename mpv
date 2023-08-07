@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# ============================
+# let's use some colors :)
+# ============================
+path_of_here=$(dirname "$0")
+source "${path_of_here}/colors.sh"
+#===========================
+## --no-osd-bar makes the mpv
+## to prevent show the seek-bar
+## when pressing the arrow-keys
+echo -e "${txtgrn}Mpv is gonna play $@ ${resetcolor}"
+/usr/bin/mpv --osc=no --no-osd-bar --sub-delay=2.000 --sub-font="Comic Helvetic" --loop=yes --config-dir="${path_of_here}/mpv_config" "$@"
+echo -e "${txtblu}The End of file $@ ${resetcolor}"

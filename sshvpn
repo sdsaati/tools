@@ -1,0 +1,27 @@
+#!/bin/sh
+HOST=5.44.42.42
+USERNAME=vpneman-vpnjantit.com
+PASS=vpneman
+HOST_PORT=22
+TUN_LOCAL=0   # tun device number here.
+TUN_REMOTE=0  # tun device number there
+IP_LOCAL=192.168.111.2 # IP Address for tun here
+IP_REMOTE=192.168.111.1 # IP Address for tun there.
+IP_MASK=30 # Mask of the ips above.
+NET_REMOTE=192.168.0.0/16 # Network on the other side of the tunnel
+NET_LOCAL=192.168.8.0/24  # Network on this side of the tunnel
+
+echo "Starting VPN tunnel ..."
+modprobe tun
+ssh -w ${TUN_LOCAL}:${TUN_REMOTE} -f ${USERNAME}@${HOST} -p ${HOST_PORT} "\
+	ip addr add ${IP_REMOTE}/${IP_MASK} dev tun${TUN_REMOTE} \
+	ip link set tun${TUN_REMOTE} up \
+	ip route add ${NET_LOCAL} via ${IP_LOCAL} \
+	true"
+sleep 3
+echo "it's ok until now"
+ip tuntap add tun${TUN_LOCAL} mode tun # ip link set dev tun[local interface number] up
+ip address add ${IP_LOCAL} peer ${IP_REMOTE} dev tun${TUN_REMOTE}
+ip route add ${NET_REMOTE} via ${IP_REMOTE}
+echo "... done."
+
