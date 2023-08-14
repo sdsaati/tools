@@ -5,7 +5,7 @@
 
 yt-dlp \
  --add-metadata --embed-subs \
---external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
+--external-downloader aria2c --external-downloader-args "-c -j 16 -x 16 -s 16 -k 1M" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
 -ciwf \
 "bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/\
 bestvideo+bestaudio/best" \
