@@ -1,0 +1,8 @@
+{
+  "name": "Toggler",
+  "description": "toggles the v2ray",
+  "uuid": "v2raytoggler@gmail.com",
+  "shell-version": [
+    "42"
+  ]
+}

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # You can change messages
-connect='warp وصل شد'
-disconnect="warp قطع شد"
+connect='V2Ray وصل شد'
+disconnect="V2Ray قطع شد"
 
 messages=("${connect}" "${disconnect}")
-tmpFile=~/.warp_status       # Temporary file to set the warp status inside it
+tmpFile=~/.v2raystatus       # Temporary file to set the warp status inside it
 touch "${tmpFile}"           # Create it, if it's not existed yet
 warpStatus=$(cat ${tmpFile}) # Read the file and store its value inside a variable
 
@@ -18,11 +18,11 @@ function notify {
 }
 
 if [[ ${warpStatus} -eq 0 ]]; then
-	warp-cli connect
+	systemctl start v2raya
 	notify "${messages[0]}"
 	echo 1 >"${tmpFile}"
 else
-	warp-cli disconnect
+	systemctl stop v2raya
 	notify "${messages[1]}"
 	echo 0 >"${tmpFile}"
 fi

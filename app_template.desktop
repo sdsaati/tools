@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=<app_name>
+Exec=<path_to_binary>
+Icon=<path_to_icon.png>
+

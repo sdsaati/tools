@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<application-state>
+  <context id="">
+    <application id="gnome-control-center.desktop" score="379" last-seen="1702649191"/>
+    <application id="com.github.xournalpp.xournalpp.desktop" score="127" last-seen="1702584187"/>
+    <application id="gnome-session-properties.desktop" score="2" last-seen="1702321674"/>
+    <application id="repoman.desktop" score="1" last-seen="1702314650"/>
+    <application id="microsoft-edge.desktop" score="812" last-seen="1702653285"/>
+    <application id="gcr-prompter.desktop" score="0" last-seen="1702483308"/>
+    <application id="libreoffice-impress.desktop" score="6" last-seen="1702352226"/>
+    <application id="firefox.desktop" score="5855" last-seen="1702653374"/>
+    <application id="org.gnome.tweaks.desktop" score="61" last-seen="1702536882"/>
+    <application id="dropbox.desktop" score="16" last-seen="1702353490"/>
+    <application id="libreoffice-startcenter.desktop" score="6" last-seen="1702587276"/>
+    <application id="org.gnome.seahorse.Application.desktop" score="1" last-seen="1702303847"/>
+    <application id="org.gnome.eog.desktop" score="127" last-seen="1702532777"/>
+    <application id="discord.desktop" score="5798" last-seen="1702653289"/>
+    <application id="steam.desktop" score="1573" last-seen="1702653284"/>
+    <application id="thunderbird.desktop" score="244" last-seen="1702553941"/>
+    <application id="code.desktop" score="596" last-seen="1702653394"/>
+    <application id="org.gnome.Geary.desktop" score="0" last-seen="1702299020"/>
+    <application id="org.gnome.Contacts.desktop" score="4" last-seen="1702407556"/>
+    <application id="nm-connection-editor.desktop" score="0" last-seen="1702407483"/>
+    <application id="net.lutris.Lutris.desktop" score="438" last-seen="1702487142"/>
+    <application id="org.gnome.font-viewer.desktop" score="7" last-seen="1702532886"/>
+    <application id="gnome-initial-setup.desktop" score="12" last-seen="1702293610"/>
+    <application id="nvidia-settings.desktop" score="11" last-seen="1702384833"/>
+    <application id="org.gnome.Extensions.desktop" score="12" last-seen="1702653317"/>
+    <application id="org.gnome.Calculator.desktop" score="48" last-seen="1702505942"/>
+    <application id="libreoffice-writer.desktop" score="0" last-seen="1702316610"/>
+    <application id="org.gnome.Calendar.desktop" score="0" last-seen="1702308811"/>
+    <application id="org.gnome.Terminal.desktop" score="4280" last-seen="1702653451"/>
+    <application id="org.gnome.DiskUtility.desktop" score="19" last-seen="1702631004"/>
+    <application id="zim.desktop" score="53" last-seen="1702408009"/>
+    <application id="gkbd-keyboard-display.desktop" score="0" last-seen="1702384120"/>
+    <application id="org.gnome.Nautilus.desktop" score="968" last-seen="1702653451"/>
+    <application id="org.gnome.Shell.PortalHelper.desktop" score="287" last-seen="1702644932"/>
+    <application id="yelp.desktop" score="4" last-seen="1702545168"/>
+    <application id="org.gnome.Evince.desktop" score="621" last-seen="1702408013"/>
+    <application id="org.gnome.Totem.desktop" score="0" last-seen="1702419725"/>
+    <application id="gnome-system-monitor.desktop" score="125" last-seen="1702598979"/>
+    <application id="libreoffice-calc.desktop" score="27" last-seen="1702587299"/>
+    <application id="io.elementary.appcenter.desktop" score="633" last-seen="1702649255"/>
+    <application id="org.gnome.Builder.desktop" score="60" last-seen="1702651594"/>
+    <application id="org.gnome.gedit.desktop" score="114" last-seen="1702649410"/>
+    <application id="telegramdesktop.desktop" score="161" last-seen="1702644985"/>
+    <application id="mpv.desktop" score="1906" last-seen="1702633609"/>
+  </context>
+</application-state>
