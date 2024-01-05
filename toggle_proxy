@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# You can change messages
+connect='Proxy Connected'
+disconnect='Proxy Disconnected'
+
+messages=("${connect}" "${disconnect}")
+tmpFile=~/.proxy_status       # Temporary file to set the warp status inside it
+touch "${tmpFile}"           # Create it, if it's not existed yet
+status=$(cat ${tmpFile}) # Read the file and store its value inside a variable
+
+function notify {
+	if [ -x "$(command -v notify-send)" ]; then
+		notify-send "$1"
+	else
+		zenity --notification --text "$1" 
+	fi
+	~/bin/say "${1}"
+}
+
+if [[ ${status} -eq 0 ]]; then
+	export http_proxy="socks5://127.0.0.1:20170"
+	export https_proxy="socks5://127.0.0.1:20170"
+	export all_proxy="socks5://127.0.0.1:20170"
+	export ALL_PROXY="socks5://127.0.0.1:20170"
+	notify "${messages[0]}"
+	echo 1 >"${tmpFile}"
+else
+	unset -f http_proxy
+	unset -f https_proxy
+	unset -f all_proxy
+	unset -f ALL_PROXY
+	notify "${messages[1]}"
+	echo 0 >"${tmpFile}"
+fi

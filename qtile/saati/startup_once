@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+xfsettingsd --daemon -D &
+xfce4-panel -d &
+nitrogen --restore &
+dropbox start &
