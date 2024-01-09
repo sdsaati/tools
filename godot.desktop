@@ -1,3 +1,4 @@
+#!/usr/bin/gtk-launch
 [Desktop Entry]
 Type=Application
 Name=Godot

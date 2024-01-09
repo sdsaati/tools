@@ -24,6 +24,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from decimal import Rounded
 import os
 import subprocess
 from libqtile import bar, layout, qtile, widget, hook
@@ -43,6 +44,53 @@ terminal = 'xfce4-terminal' #guess_terminal()
 fileManager = "thunar"
 rofi = h + '/saati/rofi.sh'
 
+
+opacity = "AA"
+colors = {"transparent": "#00000000",
+          "Rosewater": "#f5e0dc"+opacity,
+          "Flamingo": "#f2cdcd"+opacity,
+          "Pink": "#f5c2e7"+opacity,
+          "Mauve": "#cba6f7"+opacity,
+          "Red": "#f38ba8"+opacity,
+          "Maroon": "#eba0ac"+opacity,
+          "Peach": "#fab387"+opacity,
+          "Yellow": "#f9e2af"+opacity,
+          "Green": "#a6e3a1"+opacity,
+          "Teal": "#94e2d5"+opacity,
+          "Sky": "#89dceb",
+          "Sapphire": "#74c7ec",
+          "Blue": "#89b4fa",
+          "Lavender": "#b4befe",
+          "Text": "#cdd6f4",
+          "Subtext1": "#bac2de",
+          "Subtext0": "#a6adc8",
+          "Overlay2": "#9399b2",
+          "Overlay1": "#7f849c",
+          "Overlay0": "#6c7086",
+          "Surface2": "#585b70",
+          "Surface1": "#45475a",
+          "Surface0": "#313244",
+          "Base": "#1e1e2e",
+          "Mantle": "#181825",
+          "Crust": "#11111b",          
+}
+qcolor = {
+    "windowBorderActive": colors["Green"],
+    "windowBorderInactive": colors["transparent"],
+    "barBg" : [ colors["Overlay1"], colors["Base"],colors["Base"]],
+    "delimiterFg": colors["Blue"],
+    "groupFg": colors["Text"],
+    "groupBg": [colors["Green"], colors["Surface1"], colors["Base"]],
+    "groupInactive": colors["Surface2"],
+    "groupActive": colors["Green"],
+    "groupHighLight": colors["Base"],
+    "groupHightlightBg": colors["Green"],
+}
+
+
+# #######################
+# ALL the key shortcuts:
+#########################
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -91,6 +139,17 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # C U S T O M
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%"), desc='volume down'),
+    Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc='Volume Mute'),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc='playerctl'),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc='playerctl'),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 10%+"), desc='brightness UP'),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-"), desc='brightness Down'),
+	#Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
+    #Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -107,9 +166,20 @@ keys = [
 #    )
 
 
-groups = [Group(i) for i in "123456789"]
+groups = [
+    Group("1", matches=[Match(wm_class="Firefox")], layout="max"),
+    Group("2"),
+    Group("3"),
+    Group("4"),
+    Group("5"),
+    Group("6"),
+    Group("7"),
+    Group("8", matches=[Match(wm_class="steam")]),
+    Group("9", matches=[Match(wm_class="discord")], layout="max"),
+]
 
 for i in groups:
+    
     keys.extend(
         [
             # mod1 + group number = switch to group
@@ -123,7 +193,7 @@ for i in groups:
             Key(
                 [mod, "shift"],
                 i.name,
-                lazy.window.togroup(i.name, switch_group=True),
+                lazy.window.togroup(i.name, switch_group=False),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
@@ -133,14 +203,22 @@ for i in groups:
         ]
     )
 
+layout_theme = {
+    "margin": [15,15,15,15],
+    "border_width": 4,
+    "border_focus": qcolor["windowBorderActive"],
+    "border_normal": qcolor["windowBorderInactive"],
+}
+
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(**layout_theme),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    #layout.MonadTall(**layout_theme),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -149,9 +227,25 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+def separator():
+    return widget.Sep(linewidth = 0,
+                    padding = 0,
+                    foreground = qcolor["barBg"],
+                    background = qcolor["barBg"],
+                    )
+def delimiter():
+    return widget.TextBox(text = ':',
+                    font="ComicShannsMono Nerd Font Regular",
+                    foreground = qcolor["delimiterFg"],
+                    background = qcolor["barBg"],
+                    padding = 0,
+                    fontsize = 24 
+                    )
+    
+
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="ComicShannsMono Nerd Font Bold",
+    fontsize=14,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
@@ -160,8 +254,20 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                separator(),
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                separator(),
+                delimiter(),
+                widget.GroupBox(Rounded=True,font="ComicShannsMono Nerd Font Regular",
+                                 disable_drag=True,
+                                 highlight_method='block',
+                                 block_highlight_text_color=qcolor["groupHighLight"],
+                                 this_current_screen_border=qcolor["groupHightlightBg"],
+                                 active=qcolor["groupActive"],
+                                 inactive=qcolor["groupInactive"],
+                                 foreground=qcolor["groupFg"],
+                                 background=qcolor["groupBg"]),
+                delimiter(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -170,15 +276,30 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Net(format='{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}'),
+                #widget.TextBox("default config", name="default"),
+                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                #widget.StatusNotifier(),
+                widget.NetGraph(),
+                delimiter(),
+                widget.NvidiaSensors(fmt='GPU:{}',threshold=80, foreground_alert='ff6000'),
+                delimiter(),
+                widget.CPU(),
+                delimiter(),
+                widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
+                delimiter(),
+                widget.Systray(background=colors["Base"], icon_size=24),
+                delimiter(),
+                widget.Volume(),
+                delimiter(),
+                #widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
             24,
+            background= qcolor["barBg"],
+            margin = [0,0,0,0],
+            #opacity = 0.4,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -199,7 +320,7 @@ mouse = [
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
-bring_front_click = False
+bring_front_click = True
 floats_kept_above = True
 cursor_warp = False
 floating_layout = layout.Floating(

@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=JDownloader 2
+Exec="/home/sdsaati/Downloads/apps/jd2/JDownloader2" %U
+Icon=/home/sdsaati/Downloads/apps/jd2/.install4j/JDownloader2.png
+Categories=Network;Application;
+StartupWMClass=install4j-org-jdownloader-update-launcher-JDLauncher

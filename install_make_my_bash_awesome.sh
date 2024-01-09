@@ -26,6 +26,26 @@ sudo apt install -y python3-dev
 sudo apt install -y python3-pip
 sudo apt install -y python3-jedi
 sudo gem install colorls vifm
+sudo apt install -y espeak
+sudo apt install -y espeak-ng
+sudo apt install -y rygel
+sudo apt install -y tasksel
+sudo apt install -y python3-tabulate
+sudo apt install -y xfce4
+sudo apt install -y xsettingsd
+sudo apt install -y xfce4-session
+sudo apt install -y xfce4-goodies
+sudo apt install -y rofi
+sudo apt install -y bind9-dnsutils
+sudo apt install -y nitrogen
+sudo apt install -y libpulse
+sudo apt install -y python3-pulsectl_asyncio
+sudo apt install -y python3-pyxdg
+sudo apt install -y python3-psutil
+sudo apt install -y python3-dbus
+sudo apt install -y kbdd
+sudo apt install -y conky
+sudo apt install -y conky-all
 # Install z4h (zsh for humans)
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"
@@ -124,6 +144,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  'export PATH="/home/$(whoami)/bin:$PATH"'
  'export colorls_theme="--light"'
  'export fzf_theme="--color=16"'
+ 'export RANGER_LOAD_DEFAULT_RC=FALSE'
  'export BAT_THEME="GitHub"'
  'export FZF_DEFAULT_OPTS="--preview '\'''${batcat}' --color=always {}'\''"'
 # 'source $(dirname $(gem which colorls))/tab_complete.sh'
