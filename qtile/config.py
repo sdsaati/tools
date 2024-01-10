@@ -269,6 +269,7 @@ screens = [
                 widget.GroupBox(Rounded=True,font=fonts["group"],
                                  fontsize=fonts["groupSize"],
                                  disable_drag=True,
+                                 padding=2,
                                  highlight_method='block',
                                  block_highlight_text_color=qcolor["groupHighLight"],
                                  this_current_screen_border=qcolor["groupHightlightBg"],
