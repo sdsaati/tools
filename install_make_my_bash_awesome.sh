@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 folder_of_script=$(dirname $0)
+home_folder=$(readlink -f ~)
 clear
 # ==============
 # Install stuffs
@@ -216,3 +217,18 @@ tldr --update
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 exec zsh
+
+
+
+# ===========================================
+# Install Python modules for qtile and ranger
+# ===========================================
+pip install xcffib
+pip install qtile
+pip install pulsectl_asyncio
+pip install pyxdg
+pip install dbus-next
+pip install ranger-fm
+pip install jdatetime
+ln -s ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
+ln -s ${folder_of_script}/qtile ${home_folder}/.config/qtile
