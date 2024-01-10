@@ -221,7 +221,7 @@ exec zsh
 
 
 # ================================================
-# Create simlinks for config files of applications
+# Create symlinks for config files of applications
 # ================================================
 ln -s ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
 ln -s ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
