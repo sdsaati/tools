@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#xfce4-terminal -H -e xprop 
+xprop | rofi -i -dmenu

@@ -41,7 +41,7 @@ modifier_keys = {
 }
 h = '/home/sdsaati/.config/qtile'
 terminal = 'xfce4-terminal' #guess_terminal()
-fileManager = "thunar"
+fileManager = "xfce4-terminal -e ranger"
 rofi = h + '/saati/rofi.sh'
 
 
@@ -138,6 +138,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
+    Key([mod], "Pause", lazy.spawn('prop'), desc="Runs xprop"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # C U S T O M
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
@@ -336,7 +337,7 @@ floating_layout = layout.Floating(
         Match(wm_class="steam"),  # steam
         Match(wm_class="dota2"),  # Dota2 game
         Match(wm_class="cs2"),  # Counter Strike 2 game
-        Match(wm_class="mpv"),  # mpv media player
+        #Match(wm_class="mpv"),  # mpv media player
     ]
 )
 auto_fullscreen = True
