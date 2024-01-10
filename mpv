@@ -9,5 +9,5 @@ source "${path_of_here}/colors.sh"
 ## to prevent show the seek-bar
 ## when pressing the arrow-keys
 echo -e "${txtgrn}Mpv is gonna play $@ ${resetcolor}"
-/usr/bin/mpvx --sub-color="#F5E741" --osc=yes --no-osd-bar --sub-font="Comic Helvetic" --loop=yes "$@" #--config-dir="${path_of_here}/mpv_config" "$@"
+/usr/bin/mpvx --player-operation-mode=pseudo-gui --sub-color="#F5E741" --osc=yes --no-osd-bar --sub-font="Comic Helvetic" --loop=yes "$@" #--config-dir="${path_of_here}/mpv_config" "$@"
 echo -e "${txtblu}The End of file $@ ${resetcolor}"

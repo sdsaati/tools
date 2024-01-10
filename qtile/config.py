@@ -46,6 +46,13 @@ rofi = h + '/saati/rofi.sh'
 
 
 opacity = "AA"
+fonts = {"general": "Comic Helvetic Heavy",
+         "generalSize": 15,
+         "delimiter": "ComicShannsMono Nerd Font Bold",
+         "delimiterSize": 30,
+         "group":"ComicShannsMono Nerd Font Regular",
+         "groupSize":14,}
+
 colors = {"transparent": "#00000000",
           "Rosewater": "#f5e0dc"+opacity,
           "Flamingo": "#f2cdcd"+opacity,
@@ -75,7 +82,7 @@ colors = {"transparent": "#00000000",
           "Crust": "#11111b",          
 }
 qcolor = {
-    "windowBorderActive": colors["Green"],
+    "windowBorderActive": colors["Blue"],
     "windowBorderInactive": colors["transparent"],
     "barBg" : [ colors["Overlay1"], colors["Base"],colors["Base"]],
     "delimiterFg": colors["Blue"],
@@ -168,7 +175,7 @@ keys = [
 
 
 groups = [
-    Group("1", matches=[Match(wm_class="Firefox")], layout="max"),
+    Group("1", matches=[Match(wm_class="firefox")], layout="max"),
     Group("2"),
     Group("3"),
     Group("4"),
@@ -216,14 +223,14 @@ layouts = [
     layout.Columns(**layout_theme),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
+    #layout.Stack(num_stacks=2),
+    #layout.Bsp(**layout_theme),
+    #layout.Matrix(**layout_theme),
     #layout.MonadTall(**layout_theme),
-    # layout.MonadWide(),
+    #layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
-    # layout.Tile(),
-    # layout.TreeTab(),
+    #layout.Tile(**layout_theme),
+    #layout.TreeTab(**layout_theme),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
@@ -235,19 +242,19 @@ def separator():
                     background = qcolor["barBg"],
                     )
 def delimiter():
-    return widget.TextBox(text = ':',
-                    font="ComicShannsMono Nerd Font Regular",
+    return widget.TextBox(text = ' : ',
+                    font=fonts["delimiter"],
                     foreground = qcolor["delimiterFg"],
                     background = qcolor["barBg"],
-                    padding = 0,
-                    fontsize = 24 
+                    padding = 5,
+                    fontsize = fonts["delimiterSize"] 
                     )
     
 
 widget_defaults = dict(
-    font="ComicShannsMono Nerd Font Bold",
-    fontsize=14,
-    padding=3,
+    font=fonts["general"],
+    fontsize=fonts["generalSize"],
+    padding=10,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -259,7 +266,8 @@ screens = [
                 widget.CurrentLayout(),
                 separator(),
                 delimiter(),
-                widget.GroupBox(Rounded=True,font="ComicShannsMono Nerd Font Regular",
+                widget.GroupBox(Rounded=True,font=fonts["group"],
+                                 fontsize=fonts["groupSize"],
                                  disable_drag=True,
                                  highlight_method='block',
                                  block_highlight_text_color=qcolor["groupHighLight"],
@@ -297,7 +305,7 @@ screens = [
                 #widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.QuickExit(),
             ],
-            24,
+            fonts["generalSize"] + 8,
             background= qcolor["barBg"],
             margin = [0,0,0,0],
             #opacity = 0.4,
@@ -307,7 +315,7 @@ screens = [
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
+        x11_drag_polling_rate = 60,
     ),
 ]
 
