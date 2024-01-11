@@ -28,9 +28,10 @@ from decimal import Rounded
 import os
 import subprocess
 from libqtile import bar, layout, qtile, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, ScratchPad,DropDown, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+import jdatetime
 
 mod = "mod1"
 modifier_keys = {
@@ -54,44 +55,45 @@ fonts = {"general": "Comic Helvetic Heavy",
          "groupSize":14,}
 
 colors = {"transparent": "#00000000",
-          "Rosewater": "#f5e0dc"+opacity,
-          "Flamingo": "#f2cdcd"+opacity,
-          "Pink": "#f5c2e7"+opacity,
-          "Mauve": "#cba6f7"+opacity,
-          "Red": "#f38ba8"+opacity,
-          "Maroon": "#eba0ac"+opacity,
-          "Peach": "#fab387"+opacity,
-          "Yellow": "#f9e2af"+opacity,
-          "Green": "#a6e3a1"+opacity,
-          "Teal": "#94e2d5"+opacity,
-          "Sky": "#89dceb",
-          "Sapphire": "#74c7ec",
-          "Blue": "#89b4fa",
-          "Lavender": "#b4befe",
-          "Text": "#cdd6f4",
-          "Subtext1": "#bac2de",
-          "Subtext0": "#a6adc8",
-          "Overlay2": "#9399b2",
-          "Overlay1": "#7f849c",
-          "Overlay0": "#6c7086",
-          "Surface2": "#585b70",
-          "Surface1": "#45475a",
-          "Surface0": "#313244",
-          "Base": "#1e1e2e",
-          "Mantle": "#181825",
-          "Crust": "#11111b",          
+          "Rosewater": "#dc8a78"+opacity,
+          "Flamingo": "#dd7878"+opacity,
+          "Pink": "#ea76cb"+opacity,
+          "Mauve": "#8839ef"+opacity,
+          "Red": "#d20f39"+opacity,
+          "Maroon": "#e64553"+opacity,
+          "Peach": "#fe640b"+opacity,
+          "Yellow": "#df8e1d"+opacity,
+          "Green": "#40a02b"+opacity,
+          "Teal": "#179299"+opacity,
+          "Sky": "#04a5e5",
+          "Sapphire": "#209fb5",
+          "Blue": "#1e66f5",
+          "Lavender": "#7287fd",
+          "Text": "#4c4f69",
+          "Subtext1": "#5c5f77",
+          "Subtext0": "#6c6f85",
+          "Overlay2": "#7c7f93",
+          "Overlay1": "#8c8fa1",
+          "Overlay0": "#9ca0b0",
+          "Surface2": "#acb0be",
+          "Surface1": "#bcc0cc",
+          "Surface0": "#ccd0da",
+          "Base": "#eff1f5",
+          "Mantle": "#e6e9ef",
+          "Crust": "#dce0e8",          
 }
 qcolor = {
-    "windowBorderActive": colors["Blue"],
-    "windowBorderInactive": colors["transparent"],
-    "barBg" : [ colors["Overlay1"], colors["Base"],colors["Base"]],
+    "windowBorderActive": colors["Mauve"],
+    "windowBorderInactive": colors["Crust"],
+    "barBg" : [ colors["Base"], colors["Mantle"],colors["Subtext1"]],
     "delimiterFg": colors["Blue"],
+    "widgetFg": colors["Text"],
     "groupFg": colors["Text"],
-    "groupBg": [colors["Green"], colors["Surface1"], colors["Base"]],
-    "groupInactive": colors["Surface2"],
-    "groupActive": colors["Green"],
+    "groupBg": [colors["Mantle"], colors["Text"], colors["Lavender"]],
+    "groupInactive": colors["Subtext0"],
+    "groupActive": colors["Base"],
     "groupHighLight": colors["Base"],
-    "groupHightlightBg": colors["Green"],
+    "groupHightlightBg": colors["Blue"],
 }
 
 
@@ -141,11 +143,13 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
+    #Key([mod], "F12", lazy.group['scratchpad'].dropdown_toggle('terminal'), desc="Toggle Scratchpad of Terminal"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
     Key([mod], "Pause", lazy.spawn('prop'), desc="Runs xprop"),
+    Key([mod], "backslash", lazy.widget["keyboardlayout"].next_keyboard(), desc="Change Keyboard Layout"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # C U S T O M
     Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
@@ -174,6 +178,8 @@ keys = [
 #    )
 
 
+
+
 groups = [
     Group("1", matches=[Match(wm_class="firefox")], layout="max"),
     Group("2"),
@@ -184,6 +190,18 @@ groups = [
     Group("7"),
     Group("8", matches=[Match(wm_class="steam")]),
     Group("9", matches=[Match(wm_class="discord")], layout="max"),
+    ## ScratchPad (a floating windows that can be appear and disappear)
+    #ScratchPad("scratchpad", [
+        ## define a drop down terminal.
+        ## it is placed in the upper third of screen by default.
+        #DropDown("terminal", "thunar", opacity=0.8,on_focus_lost_hide=True),
+
+        ## define another terminal exclusively for ``qtile shell` at different position
+        #DropDown("qtile shell", "xfce4-terminal -H -e 'qtile shell'",
+                 #x=0.05, y=0.4, width=0.9, height=0.6, opacity=0.9,
+                 #on_focus_lost_hide=True) ]),
+    #Group("a"),
+
 ]
 
 for i in groups:
@@ -246,7 +264,7 @@ def delimiter():
                     font=fonts["delimiter"],
                     foreground = qcolor["delimiterFg"],
                     background = qcolor["barBg"],
-                    padding = 5,
+                    padding = 1,
                     fontsize = fonts["delimiterSize"] 
                     )
     
@@ -254,7 +272,8 @@ def delimiter():
 widget_defaults = dict(
     font=fonts["general"],
     fontsize=fonts["generalSize"],
-    padding=10,
+    padding=5,
+    foreground=qcolor["widgetFg"],
 )
 extension_defaults = widget_defaults.copy()
 
@@ -293,7 +312,7 @@ screens = [
                 #widget.StatusNotifier(),
                 widget.NetGraph(),
                 delimiter(),
-                widget.NvidiaSensors(fmt='GPU:{}',threshold=80, foreground_alert='ff6000'),
+                widget.NvidiaSensors(fmt='GPU:{}',threshold=80, foreground=qcolor["widgetFg"].replace('#',''), foreground_alert='ff6000'),
                 delimiter(),
                 widget.CPU(),
                 delimiter(),
@@ -303,7 +322,10 @@ screens = [
                 delimiter(),
                 widget.Volume(),
                 delimiter(),
-                #widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                delimiter(),
+                widget.TextBox(jdatetime.date.today().strftime('%Y/%m/%d')),
+                delimiter(),
                 widget.QuickExit(),
             ],
             fonts["generalSize"] + 8,
@@ -371,8 +393,8 @@ wl_input_rules = None
 wmname = "LG3D"
 
 
-# Hook Section:
 
+# Hook Section:
 @hook.subscribe.startup_once
 async def autostart():
     home = os.path.expanduser('~/.config/qtile/saati/startup_once')
