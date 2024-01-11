@@ -238,3 +238,4 @@ pip install pyxdg
 pip install dbus-next
 pip install ranger-fm
 pip install jdatetime
+pip install rich

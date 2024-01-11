@@ -30,7 +30,7 @@ import subprocess
 from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, ScratchPad,DropDown, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
+from libqtile.utils import guess_terminal, send_notification
 import jdatetime
 
 mod = "mod1"
@@ -48,9 +48,9 @@ rofi = h + '/saati/rofi.sh'
 
 opacity = "AA"
 fonts = {"general": "Comic Helvetic Heavy",
-         "generalSize": 15,
+         "generalSize": 14,
          "delimiter": "ComicShannsMono Nerd Font Bold",
-         "delimiterSize": 30,
+         "delimiterSize": 24,
          "group":"ComicShannsMono Nerd Font Regular",
          "groupSize":14,}
 
@@ -137,12 +137,7 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key(
-        [mod],
-        "f",
-        lazy.window.toggle_fullscreen(),
-        desc="Toggle fullscreen on the focused window",
-    ),
+    Key( [mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",),
     #Key([mod], "F12", lazy.group['scratchpad'].dropdown_toggle('terminal'), desc="Toggle Scratchpad of Terminal"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
@@ -244,7 +239,7 @@ layouts = [
     #layout.Stack(num_stacks=2),
     #layout.Bsp(**layout_theme),
     #layout.Matrix(**layout_theme),
-    #layout.MonadTall(**layout_theme),
+    layout.MonadTall(border_width=4, border_focus=qcolor["windowBorderActive"], border_normal=qcolor["windowBorderInactive"]),
     #layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     #layout.Tile(**layout_theme),
@@ -264,7 +259,7 @@ def delimiter():
                     font=fonts["delimiter"],
                     foreground = qcolor["delimiterFg"],
                     background = qcolor["barBg"],
-                    padding = 1,
+                    padding = 0,
                     fontsize = fonts["delimiterSize"] 
                     )
     
@@ -281,9 +276,8 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                separator(),
-                widget.CurrentLayout(),
-                separator(),
+                delimiter(),
+                widget.CurrentLayout(fmt='{:^13}'),
                 delimiter(),
                 widget.GroupBox(Rounded=True,font=fonts["group"],
                                  fontsize=fonts["groupSize"],
@@ -338,7 +332,7 @@ screens = [
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        x11_drag_polling_rate = 60,
+        x11_drag_polling_rate = 100,
     ),
 ]
 
@@ -396,6 +390,24 @@ wmname = "LG3D"
 
 # Hook Section:
 @hook.subscribe.startup_once
-async def autostart():
+async def autostart_once():
     home = os.path.expanduser('~/.config/qtile/saati/startup_once')
     subprocess.Popen([home])
+
+
+@hook.subscribe.startup
+async def autostart():
+    home = os.path.expanduser('~/.config/qtile/saati/startup')
+    subprocess.Popen([home])
+
+
+def float_to_front(qtile):
+    for group in qtile.groups:
+        for window in group.windows:
+            if window.floating:
+                window.cmd_bring_to_front()
+
+@hook.subscribe.client_focus
+def client_focus(client):
+    #send_notification("qtile", f"{client.name} has been focused")
+    float_to_front(qtile)
