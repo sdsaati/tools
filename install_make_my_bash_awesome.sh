@@ -47,6 +47,7 @@ sudo apt install -y python3-dbus
 sudo apt install -y kbdd
 sudo apt install -y conky
 sudo apt install -y conky-all
+sudo apt install -y p7zip-full
 # Install z4h (zsh for humans)
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"

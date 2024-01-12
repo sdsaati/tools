@@ -138,7 +138,6 @@ keys = [
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key( [mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",),
-    #Key([mod], "F12", lazy.group['scratchpad'].dropdown_toggle('terminal'), desc="Toggle Scratchpad of Terminal"),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
@@ -177,26 +176,15 @@ keys = [
 
 groups = [
     Group("1", matches=[Match(wm_class="firefox")], layout="max"),
-    Group("2"),
-    Group("3", matches[Match(wm_class="obsidian")], layout="monadtall"),
-    Group("4"),
+    Group("2", layout="monadtall"),
+    Group("3", matches=[Match(wm_class="obsidian")], layout="monadtall"),
+    Group("4", layout="monadtall"),
     Group("5"),
     Group("6"),
     Group("7"),
     Group("8", matches=[Match(wm_class="steam")]),
     Group("9", matches=[Match(wm_class="discord")], layout="max"),
-    ## ScratchPad (a floating windows that can be appear and disappear)
-    #ScratchPad("scratchpad", [
-        ## define a drop down terminal.
-        ## it is placed in the upper third of screen by default.
-        #DropDown("terminal", "thunar", opacity=0.8,on_focus_lost_hide=True),
-
-        ## define another terminal exclusively for ``qtile shell` at different position
-        #DropDown("qtile shell", "xfce4-terminal -H -e 'qtile shell'",
-                 #x=0.05, y=0.4, width=0.9, height=0.6, opacity=0.9,
-                 #on_focus_lost_hide=True) ]),
-    #Group("a"),
-
+    
 ]
 
 for i in groups:
@@ -316,7 +304,7 @@ screens = [
                 delimiter(),
                 widget.Volume(),
                 delimiter(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+                widget.Clock(format="%I:%M %p   %a   %Y-%m-%d"),
                 delimiter(),
                 widget.TextBox(jdatetime.date.today().strftime('%Y/%m/%d')),
                 delimiter(),
