@@ -178,7 +178,7 @@ keys = [
 groups = [
     Group("1", matches=[Match(wm_class="firefox")], layout="max"),
     Group("2"),
-    Group("3"),
+    Group("3", matches[Match(wm_class="obsidian")], layout="monadtall"),
     Group("4"),
     Group("5"),
     Group("6"),

@@ -6,3 +6,4 @@ nitrogen --restore &
 dropbox start &
 firefox &
 discord &
+gtk-launch Obsidian.desktop &
