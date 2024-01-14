@@ -7,4 +7,3 @@ dropbox start &
 firefox &
 discord &
 gtk-launch Obsidian.desktop &
-picom --config ~/bin/picom/picom.conf &
