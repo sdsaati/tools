@@ -44,7 +44,8 @@ h = '/home/sdsaati/.config/qtile'
 terminal = 'xfce4-terminal' #guess_terminal()
 fileManager = "xfce4-terminal -e ranger"
 rofi = h + '/saati/rofi.sh'
-
+rofi_web_search = h + '/../rofi/web-search.sh'
+rofi_monitor_layout = h + '/../rofi/monitor_layout.sh'
 
 opacity = "AA"
 fonts = {"general": "Comic Helvetic Heavy",
@@ -142,6 +143,8 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
+    Key([mod], "s", lazy.spawn(rofi_web_search), desc="Runs rofi web searcher"),
+    Key([mod], "p", lazy.spawn(rofi_monitor_layout), desc="Runs rofi monitor layout picker"),
     Key([mod], "Pause", lazy.spawn('prop'), desc="Runs xprop"),
     Key([mod], "backslash", lazy.widget["keyboardlayout"].next_keyboard(), desc="Change Keyboard Layout"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -214,7 +217,7 @@ for i in groups:
 
 layout_theme = {
     "margin": [15,15,15,15],
-    "border_width": 4,
+    "border_width": 2,
     "border_focus": qcolor["windowBorderActive"],
     "border_normal": qcolor["windowBorderInactive"],
 }
@@ -227,7 +230,7 @@ layouts = [
     #layout.Stack(num_stacks=2),
     #layout.Bsp(**layout_theme),
     #layout.Matrix(**layout_theme),
-    layout.MonadTall(border_width=4, border_focus=qcolor["windowBorderActive"], border_normal=qcolor["windowBorderInactive"]),
+    layout.MonadTall(border_width=2, border_focus=qcolor["windowBorderActive"], border_normal=qcolor["windowBorderInactive"]),
     #layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     #layout.Tile(**layout_theme),
@@ -313,7 +316,7 @@ screens = [
             fonts["generalSize"] + 8,
             background= qcolor["barBg"],
             margin = [0,0,0,0],
-            #opacity = 0.4,
+            opacity = 1.0,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
