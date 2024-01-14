@@ -49,11 +49,11 @@ rofi_monitor_layout = h + '/../rofi/monitor_layout.sh'
 
 opacity = "AA"
 fonts = {"general": "Comic Helvetic Heavy",
-         "generalSize": 14,
+         "generalSize": 16,
          "delimiter": "ComicShannsMono Nerd Font Bold",
          "delimiterSize": 24,
          "group":"ComicShannsMono Nerd Font Regular",
-         "groupSize":14,}
+         "groupSize":16,}
 
 colors = {"transparent": "#00000000",
           "Rosewater": "#dc8a78"+opacity,
@@ -83,20 +83,32 @@ colors = {"transparent": "#00000000",
           "Mantle": "#e6e9ef",
           "Crust": "#dce0e8",          
 }
+#qcolor = {
+#    "windowBorderActive": colors["Mauve"],
+#    "windowBorderInactive": colors["Crust"],
+#    "barBg" : [ colors["Base"], colors["Mantle"],colors["Subtext1"]],
+#    "delimiterFg": colors["Blue"],
+#    "widgetFg": colors["Text"],
+#    "groupFg": colors["Text"],
+#    "groupBg": [colors["Mantle"], colors["Text"], colors["Lavender"]],
+#    "groupInactive": colors["Subtext0"],
+#    "groupActive": colors["Base"],
+#    "groupHighLight": colors["Base"],
+#    "groupHightlightBg": colors["Blue"],
+#}
 qcolor = {
     "windowBorderActive": colors["Mauve"],
     "windowBorderInactive": colors["Crust"],
-    "barBg" : [ colors["Base"], colors["Mantle"],colors["Subtext1"]],
-    "delimiterFg": colors["Blue"],
-    "widgetFg": colors["Text"],
+    "barBg" : [ colors["Text"], colors["Text"],colors["Text"]],
+    "delimiterFg": colors["Lavender"],
+    "widgetFg": colors["Base"],
     "groupFg": colors["Text"],
-    "groupBg": [colors["Mantle"], colors["Text"], colors["Lavender"]],
+    "groupBg": [colors["Text"], colors["Text"], colors["Text"]],
     "groupInactive": colors["Subtext0"],
     "groupActive": colors["Base"],
     "groupHighLight": colors["Base"],
     "groupHightlightBg": colors["Blue"],
 }
-
 
 # #######################
 # ALL the key shortcuts:
@@ -303,7 +315,7 @@ screens = [
                 delimiter(),
                 widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
                 delimiter(),
-                widget.Systray(background=colors["Base"], icon_size=24),
+                widget.Systray(background=colors["Mauve"], icon_size=24),
                 delimiter(),
                 widget.Volume(),
                 delimiter(),
@@ -313,10 +325,10 @@ screens = [
                 delimiter(),
                 widget.QuickExit(),
             ],
-            fonts["generalSize"] + 8,
+            fonts["generalSize"] + 14,
             background= qcolor["barBg"],
             margin = [0,0,0,0],
-            opacity = 1.0,
+            opacity = 0.6,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
