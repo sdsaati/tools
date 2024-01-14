@@ -315,7 +315,11 @@ screens = [
                 delimiter(),
                 widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
                 delimiter(),
+<<<<<<< HEAD
                 widget.Systray(background=colors["Text"], icon_size=24),
+=======
+                widget.Systray(background=colors["Mauve"], icon_size=24),
+>>>>>>> 6bde2a030d30eecdb090b2a4491f43d5c19013f9
                 delimiter(),
                 widget.Volume(),
                 delimiter(),
