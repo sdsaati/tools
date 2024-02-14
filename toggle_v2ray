@@ -18,11 +18,11 @@ function notify {
 }
 
 if [[ ${warpStatus} -eq 0 ]]; then
-	systemctl start v2raya
+	sudo systemctl start v2raya
 	notify "${messages[0]}"
 	echo 1 >"${tmpFile}"
 else
-	systemctl stop v2raya
+	sudo systemctl stop v2raya
 	notify "${messages[1]}"
 	echo 0 >"${tmpFile}"
 fi

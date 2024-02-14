@@ -12,6 +12,8 @@ sudo apt install -y bat
 sudo apt install -y fzf
 sudo apt install -y fdfind
 sudo apt install -y fd
+sudo apt install -y ripgrep
+sudo apt install -y fdclone
 sudo apt install -y batcat
 sudo apt install -y  tmux\*
 sudo apt install -y libncursesw5-dev
@@ -143,7 +145,7 @@ EOF
 oldIFS=$IFS
 IFS=$'\n'
 arr_things_should_be_added_to_bashrc_and_zshrc=(
- 'export PATH="/home/$(whoami)/bin:$PATH"'
+ 'export PATH="/home/$(whoami)/bin:/home/$(whoami)/bin/neovim/nvim-linux64/bin:$PATH"'
  'export colorls_theme="--light"'
  'export fzf_theme="--color=16"'
  'export RANGER_LOAD_DEFAULT_RC=FALSE'
@@ -220,6 +222,15 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 exec zsh
 
 
+# required
+mv ~/.config/nvim{,.bak}
+
+# Installing the LazyVim
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 # ================================================
 # Create symlinks for config files of applications
@@ -228,7 +239,7 @@ ln -s ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
 ln -s ${folder_of_script}/mpv_ ${home_folder}/.config/mpv
 ln -s ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
 ln -s ${folder_of_script}/qtile ${home_folder}/.config/qtile
-
+ln -s ${folder_of_script}/neovim/nvim ${home_folder}/.config/
 
 # ===========================================
 # Install Python modules for qtile and ranger
