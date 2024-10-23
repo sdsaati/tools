@@ -1,8 +1,8 @@
 configuration {
-font: "Fira Sans Bold 14";
+font: "MonaspiceNe Nerd Font Bold 14";
 case-sensitive: false;
 show-icons: true;
-modi: "combi,run,ssh";
+modi: "combi,run,ssh,drun";
 }
 /*******************************************************************************
  * ROFI Color theme

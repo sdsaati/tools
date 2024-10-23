@@ -169,7 +169,7 @@ CTRL-W v						*CTRL-W_v*
 		it doesn't!
 
 CTRL-W n						*CTRL-W_n*
-CTRL-W CTRL_N						*CTRL-W_CTRL-N*
+CTRL-W CTRL-N						*CTRL-W_CTRL-N*
 :[N]new [++opt] [+cmd]					*:new*
 		Create a new window and start editing an empty file in it.
 		Make new window N high (default is to use half the existing
@@ -242,8 +242,10 @@ and 'winminwidth' are relevant.
 						*:hor* *:horizontal*
 :hor[izontal] {cmd}
 		Execute {cmd}.  Currently only makes a difference for
-		`horizontal wincmd =`, which will equalize windows only
-		horizontally.
+		the following commands:
+		- `:wincmd =`: equalize windows only horizontally.
+		- |:terminal|: open a |terminal| buffer in a split window.
+		- |:checkhealth|: open a healthcheck buffer in a split window.
 
 :lefta[bove] {cmd}				*:lefta* *:leftabove*
 :abo[veleft] {cmd}				*:abo* *:aboveleft*
@@ -391,6 +393,11 @@ CTRL-W CTRL-O					*CTRL-W_CTRL-O* *:on* *:only*
 		given, then they become hidden.  But modified buffers are
 		never abandoned, so changes cannot get lost.
 
+							*:fc* *:fclose*
+:[count]fc[lose][!]
+		Close [count] floating windows with the highest zindex values.
+		'!' to close all floating windows.
+
 ==============================================================================
 4. Moving cursor to other windows			*window-move-cursor*
 
@@ -495,35 +502,33 @@ horizontally split windows.  CTRL-W H does it the other way around.
 
 						*CTRL-W_K*
 CTRL-W K	Move the current window to be at the very top, using the full
-		width of the screen.  This works like closing the current
-		window and then creating another one with ":topleft split",
-		except that the current window contents is used for the new
-		window.
+		width of the screen.  This works like `:topleft split`, except
+		it is applied to the current window and no new window is
+		created.
 
 						*CTRL-W_J*
 CTRL-W J	Move the current window to be at the very bottom, using the
-		full width of the screen.  This works like closing the current
-		window and then creating another one with ":botright split",
-		except that the current window contents is used for the new
-		window.
+		full width of the screen.  This works like `:botright split`,
+		except it is applied to the current window and no new window
+		is created.
 
 						*CTRL-W_H*
 CTRL-W H	Move the current window to be at the far left, using the
-		full height of the screen.  This works like closing the
-		current window and then creating another one with
-		`:vert topleft split`, except that the current window contents
-		is used for the new window.
+		full height of the screen.  This works like
+		`:vert topleft split`, except it is applied to the current
+		window and no new window is created.
 
 						*CTRL-W_L*
 CTRL-W L	Move the current window to be at the far right, using the full
-		height of the screen.  This works like closing the
-		current window and then creating another one with
-		`:vert botright split`, except that the current window
-		contents is used for the new window.
+		height of the screen.  This works like `:vert botright split`,
+		except it is applied to the current window and no new window
+		is created.
 
 						*CTRL-W_T*
 CTRL-W T	Move the current window to a new tab page.  This fails if
 		there is only one window in the current tab page.
+		This works like `:tab split`, except the previous window is
+		closed.
 		When a count is specified the new tab page will be opened
 		before the tab page with this index.  Otherwise it comes after
 		the current tab page.
@@ -631,7 +636,7 @@ times than |WinResized|, it may slow down editing a bit.
 
 The information provided by |WinScrolled| is a dictionary for each window that
 has changes, using the window ID as the key, and a total count of the changes
-with the key "all".  Example value for |v:event|:
+with the key "all".  Example value for |v:event|: >
 	{
 	   all: {width: 0, height: 2, leftcol: 0, skipcol: 0, topline: 1, topfill: 0},
 	   1003: {width: 0, height: -1, leftcol: 0, skipcol: 0, topline: 0, topfill: 0},
@@ -1090,7 +1095,7 @@ list of buffers. |unlisted-buffer|
 		  a	an active buffer: it is loaded and visible
 		  h	a hidden buffer: It is loaded, but currently not
 			   displayed in a window |hidden-buffer|
-		   -	a buffer with 'modifiable' off
+		   `-`	a buffer with 'modifiable' off
 		   =	a readonly buffer
 		   R	a terminal buffer with a running job
 		   F	a terminal buffer with a finished job
@@ -1101,7 +1106,7 @@ list of buffers. |unlisted-buffer|
 		[flags] can be a combination of the following characters,
 		which restrict the buffers to be listed:
 			+	modified buffers
-			-	buffers with 'modifiable' off
+			`-`	buffers with 'modifiable' off
 			=	readonly buffers
 			a	active buffers
 			u	unlisted buffers (overrides the "!")
