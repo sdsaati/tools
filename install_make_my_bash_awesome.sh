@@ -10,6 +10,8 @@ sudo apt install -y ruby
 sudo apt install -y ruby-dev
 sudo apt install -y bat
 sudo apt install -y fzf
+sudo apt install -y fish
+sudo apt install -y chafa
 sudo apt install -y fdfind
 sudo apt install -y fd
 sudo apt install -y ripgrep
@@ -28,7 +30,6 @@ sudo apt install -y tldr
 sudo apt install -y python3-dev
 sudo apt install -y python3-pip
 sudo apt install -y python3-jedi
-sudo gem install colorls vifm
 sudo apt install -y espeak
 sudo apt install -y espeak-ng
 sudo apt install -y rygel
@@ -53,13 +54,7 @@ sudo apt install -y p7zip-full
 sudo apt install -y plocate
 sudo apt install -y locate
 sudo apt install -y mlocate
-# Install z4h (zsh for humans)
-if command -v curl >/dev/null 2>&1; then
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"
-else
-  sh -c "$(wget -O- https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"
-fi
-
+# sudo gem install colorls vifm
 # =======================
 # Check for fd and batcat
 # =======================
@@ -148,9 +143,9 @@ start_tmux
 EOF
 )
 fzf=$(cat <<'EOF'
-export FZF_COMPLETION_TRIGGER=''
-bindkey '^T' fzf-completion
-bindkey '^I' $fzf_default_completion
+# export FZF_COMPLETION_TRIGGER=""
+# bindkey "^T" fzf-completion
+# bindkey "^I" $fzf_default_completion
 _fzf_comprun() {
   local command=$1
   shift
@@ -166,7 +161,7 @@ EOF
 oldIFS=$IFS
 IFS=$'\n'
 arr_things_should_be_added_to_bashrc_and_zshrc=(
- 'export PATH="/home/$(whoami)/bin:$PATH"'
+ 'export PATH="/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"'
  'export colorls_theme="--light"'
  'export RANGER_LOAD_DEFAULT_RC=FALSE'
  'export BAT_THEME="GitHub"'
@@ -224,9 +219,9 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
 )
 
 # ===================
-# Change shell to zsh
+# Change shell to fish
 # ===================
-chsh -s /usr/bin/zsh
+chsh -s /usr/bin/fish
 
 # =============================================
 # Add the array content into .bashrc and .zshrc
@@ -238,12 +233,12 @@ IFS=oldIFS
 #source $(type p10k | sed -E '$s$.*from (.*)$\1$')
 
 tldr --update
-# ===========
-# Install fzf
-# ===========
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-exec zsh
+# # ===========
+# # Install fzf
+# # ===========
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+# exec zsh
 
 
 
