@@ -258,6 +258,7 @@ ln -sf ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
 ln -sf ${folder_of_script}/mpv_ ${home_folder}/.config/mpv
 ln -sf ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
 ln -sf ${folder_of_script}/qtile ${home_folder}/.config/qtile
+ln -sf ${folder_of_script}/fish ${home_folder}/.config/fish
 ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.SpaceVim
 ln -sf ${folder_of_script}/.SpaceVim.d ${home_folder}/.SpaceVim.d
 ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.config/nvim
