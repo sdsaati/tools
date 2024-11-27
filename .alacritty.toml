@@ -1,0 +1,48 @@
+[window]
+
+opacity = 0.9
+
+padding.x = 15
+padding.y = 15
+
+dimensions = { columns = 100, lines = 30 }
+
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Light"
+
+[font]
+normal.family =      "0xProto Nerd Font Mono"
+bold.family =        "0xProto Nerd Font Mono"
+italic.family =      "0xProto Nerd Font Mono"
+bold_italic.family = "0xProto Nerd Font Mono"
+
+# normal.family =      "Mononoki Nerd Font Mono"
+# bold.family =        "Mononoki Nerd Font Mono"
+# italic.family =      "Mononoki Nerd Font Mono"
+# bold_italic.family = "Mononoki Nerd Font Mono"
+
+# normal.family =      "MonaSpiceNe Nerd Font Mono"
+# bold.family =        "MonaSpiceNe Nerd Font Mono"
+# italic.family =      "MonaSpiceNe Nerd Font Mono"
+# bold_italic.family = "MonaSpiceNe Nerd Font Mono"
+
+# normal.family =      "IosevkaTermSlab Nerd Font Mono"
+# bold.family =        "IosevkaTermSlab Nerd Font Mono"
+# italic.family =      "IosevkaTermSlab Nerd Font Mono"
+# bold_italic.family = "IosevkaTermSlab Nerd Font Mono"
+ 
+# normal.family =      "GoMono Nerd Font Mono"
+# bold.family =        "GoMono Nerd Font Mono"
+# italic.family =      "GoMono Nerd Font Mono"
+# bold_italic.family = "GoMono Nerd Font Mono"
+
+# normal.family =      "SpaceMono Nerd Font Mono"
+# bold.family =        "SpaceMono Nerd Font Mono"
+# italic.family =      "SpaceMono Nerd Font Mono"
+# bold_italic.family = "SpaceMono Nerd Font Mono"
+
+size = 13.0
+
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "~/bin/zellij"]

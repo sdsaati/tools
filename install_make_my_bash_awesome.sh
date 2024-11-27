@@ -50,6 +50,9 @@ sudo apt install -y kbdd
 sudo apt install -y conky
 sudo apt install -y conky-all
 sudo apt install -y p7zip-full
+sudo apt install -y plocate
+sudo apt install -y locate
+sudo apt install -y mlocate
 # Install z4h (zsh for humans)
 if command -v curl >/dev/null 2>&1; then
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/romkatv/zsh4humans/v5/install && p10k configure)"
@@ -70,8 +73,10 @@ if type fd 2>/dev/null; then
 fi
 if type bat 2>/dev/null; then
         batcat="bat"
-    else
+elif type batcat 2>/dev/null; then
         batcat="batcat"
+else
+        batcat="cat"
 fi
 
 # =================================
@@ -142,29 +147,46 @@ function start_tmux() {
 start_tmux
 EOF
 )
+fzf=$(cat <<'EOF'
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
+_fzf_comprun() {
+  local command=$1
+  shift
+  case "$command" in
+    cd)           fzf --preview 'cat {}'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'batcat -n --color=always {}' "$@" ;;
+  esac
+}
+EOF
+)
 oldIFS=$IFS
 IFS=$'\n'
 arr_things_should_be_added_to_bashrc_and_zshrc=(
- 'export PATH="/home/$(whoami)/bin:/home/$(whoami)/bin/neovim/nvim-linux64/bin:$PATH"'
+ 'export PATH="/home/$(whoami)/bin:$PATH"'
  'export colorls_theme="--light"'
- 'export fzf_theme="--color=16"'
  'export RANGER_LOAD_DEFAULT_RC=FALSE'
  'export BAT_THEME="GitHub"'
- 'export FZF_DEFAULT_OPTS="--preview '\'''${batcat}' --color=always {}'\''"'
+# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+ 'setopt glob_dots'     # no special treatment for file names with a leading dot
 # 'source $(dirname $(gem which colorls))/tab_complete.sh'
- 'export FZF_DEFAULT_COMMAND="'${fd}' --type f"'
- 'alias ls="colorls $colorls_theme"'
- 'alias ll="colorls $colorls_theme -lh"'
- 'alias la="colorls $colorls_theme -lah"'
  'export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1'
  'export JAVA_HOME=""'
- 'export EDITOR="nvim"'
+ 'export EDITOR="vim"'
+ 'export fzf_theme="--color=16"'
+ 'export FZF_DEFAULT_OPTS="--preview '\'''${batcat}' --color=always {}'\''"'
+ 'export FZF_DEFAULT_COMMAND="rg --files --hidden --smart-case --follow --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""'
+ 'alias vim="nvim.appimage"'
  'alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"'
- 'alias vim="nvim"'
 # 'bindkey -v'
 # 'export KEYTIMEOUT=1'
 # 'bindkey -M viins "jk" vi-cmd-mode'
- 'alias locate="plocate"'
+ 'alias ls="colorls $colorls_theme"'
+ 'alias ll="colorls $colorls_theme -lh"'
+ 'alias la="colorls $colorls_theme -lah"'
  'alias m="systemctl restart minidlna"'
  'alias tree="tree -a -I .git"'
  'alias fzf="fzf $fzf_theme"'
@@ -174,29 +196,31 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  # ===========
  # Git aliases
  # ===========
- 'alias g/l="git log --oneline --decorate"'
- 'alias g/s="git status"'
- 'alias g/a/all="git add -A"'
- 'alias g/a="git add"'
- 'alias g/c="git commit"'
- 'alias g/r="git rm"'
- 'alias g/r/only_from_git="git rm --cached"'
- 'alias g/m="git mv"'
- 'alias g/unstage="git restore --staged"'
- 'alias g/amend="git commit --amend"'
- 'alias g/discard="git restore"'
- 'alias g/clone="git clone"'
- 'alias g/pull/origin/main="git pull origin main"'
- 'alias g/pull/origin/master="git pull origin master"'
- 'alias g/push/origin/main="git push origin main"'
- 'alias g/push/origin/master="git push origin master"'
- 'alias g/tag/list="git tag -l"'
- 'alias g/tag/create="git tag -a"'
- 'alias g/tag/show="git show"'
+ 'alias gl="git log --oneline --decorate"'
+ 'alias gs="git status"'
+ 'alias ga/all="git add -A"'
+ 'alias ga="git add"'
+ 'alias gc="git commit"'
+ 'alias gr="git rm"'
+ 'alias grOnlyFromGit="git rm --cached"'
+ 'alias gm="git mv"'
+ 'alias gunstage="git restore --staged"'
+ 'alias gamend="git commit --amend"'
+ 'alias gdiscard="git restore"'
+ 'alias gclone="git clone"'
+ 'alias gpullOriginMain="git pull origin main"'
+ 'alias gpullOriginMaster="git pull origin master"'
+ 'alias gpushOriginMain="git push origin main"'
+ 'alias gpushOriginMaster="git push origin master"'
+ 'alias gtagList="git tag -l"'
+ 'alias gtagCreate="git tag -a"'
+ 'alias gshow="git show"'
+ 'alias pip="pip --proxy 127.0.0.1:20171"'
   $mkv
   $mp4
   $theme
   #$tmux
+  $fzf
 )
 
 # ===================
@@ -222,24 +246,28 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 exec zsh
 
 
-# required
-mv ~/.config/nvim{,.bak}
 
-# Installing the LazyVim
-mv ~/.local/share/nvim{,.bak}
-mv ~/.local/state/nvim{,.bak}
-mv ~/.cache/nvim{,.bak}
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
+# # Installing the LazyVim
+# mv ~/.config/nvim{,.bak}
+# mv ~/.local/share/nvim{,.bak}
+# mv ~/.local/state/nvim{,.bak}
+# mv ~/.cache/nvim{,.bak}
+# git clone https://github.com/LazyVim/starter ~/.config/nvim
+# rm -rf ~/.config/nvim/.git
 
+mkdir ${home_folder}/.config/zellij
 # ================================================
 # Create symlinks for config files of applications
 # ================================================
-ln -s ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
-ln -s ${folder_of_script}/mpv_ ${home_folder}/.config/mpv
-ln -s ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
-ln -s ${folder_of_script}/qtile ${home_folder}/.config/qtile
-ln -s ${folder_of_script}/neovim/nvim ${home_folder}/.config/
+ln -sf ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
+ln -sf ${folder_of_script}/mpv_ ${home_folder}/.config/mpv
+ln -sf ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
+ln -sf ${folder_of_script}/qtile ${home_folder}/.config/qtile
+ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.SpaceVim
+ln -sf ${folder_of_script}/.SpaceVim.d ${home_folder}/.SpaceVim.d
+ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.config/nvim
+ln -sf ${folder_of_script}/.alacritty.toml ${home_folder}/.alacritty.toml
+ln -sf ${folder_of_script}/zellij_config/config.kdl ${home_folder}/.config/zellij/config.kdl
 
 # ===========================================
 # Install Python modules for qtile and ranger
@@ -252,3 +280,7 @@ pip install dbus-next
 pip install ranger-fm
 pip install jdatetime
 pip install rich
+
+# this will update the locate database for searching files
+# TIP: you can use locate file_name | fzf to fuzzy find on results of the locate
+sudo updatedb
