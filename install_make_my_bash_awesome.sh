@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-folder_of_script=$(dirname $0)
+folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 home_folder=$(readlink -f ~)
 clear
 # ==============
@@ -162,7 +162,7 @@ oldIFS=$IFS
 IFS=$'\n'
 arr_things_should_be_added_to_bashrc_and_zshrc=(
  'export PATH="/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"'
- 'export colorls_theme="--light"'
+ 'export colorls_theme="--dark"'
  'export RANGER_LOAD_DEFAULT_RC=FALSE'
  'export BAT_THEME="GitHub"'
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
@@ -193,7 +193,7 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
  # ===========
  'alias gl="git log --oneline --decorate"'
  'alias gs="git status"'
- 'alias ga/all="git add -A"'
+ 'alias gaAll="git add -A"'
  'alias ga="git add"'
  'alias gc="git commit"'
  'alias gr="git rm"'
@@ -217,7 +217,55 @@ arr_things_should_be_added_to_bashrc_and_zshrc=(
   #$tmux
   $fzf
 )
+arr_things_should_be_added_to_fish=(
+ 'fish_add_path -p ~/bin'
+ 'set fish_greeting' 
+ 'set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"'
+ 'set -x colorls_theme "--dark"'
+ 'set -x RANGER_LOAD_DEFAULT_RC FALSE'
+ 'set -x BAT_THEME "GitHub"'
+ 'set -x ANDROID_EMULATOR_USE_SYSTEM_LIBS 1'
+ 'set -x JAVA_HOME ""'
+ 'set -x EDITOR "vim"'
+ 'set -x fzf_theme "--color=16"'
+ 'set -x FZF_DEFAULT_OPTS "--preview '\'''${batcat}' --color=always {}'\''"'
+ 'set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""'
 
+ 'alias vim="nvim.appimage"'
+ 'alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"'
+ 'alias ls="colorls $colorls_theme"'
+ 'alias ll="colorls $colorls_theme -lh"'
+ 'alias la="colorls $colorls_theme -lah"'
+ 'alias m="systemctl restart minidlna"'
+ 'alias tree="tree -a -I .git"'
+ 'alias fzf="fzf $fzf_theme"'
+ 'alias ping="ping -nc4"'
+ 'alias cat="batcat"'
+ 'alias rm="rm -rf"'
+ # ===========
+ # Git aliases
+ # ===========
+ 'alias gl="git log --oneline --decorate"'
+ 'alias gs="git status"'
+ 'alias gaAll="git add -A"'
+ 'alias ga="git add"'
+ 'alias gc="git commit"'
+ 'alias gr="git rm"'
+ 'alias grOnlyFromGit="git rm --cached"'
+ 'alias gm="git mv"'
+ 'alias gunstage="git restore --staged"'
+ 'alias gamend="git commit --amend"'
+ 'alias gdiscard="git restore"'
+ 'alias gclone="git clone"'
+ 'alias gpullOriginMain="git pull origin main"'
+ 'alias gpullOriginMaster="git pull origin master"'
+ 'alias gpushOriginMain="git push origin main"'
+ 'alias gpushOriginMaster="git push origin master"'
+ 'alias gtagList="git tag -l"'
+ 'alias gtagCreate="git tag -a"'
+ 'alias gshow="git show"'
+ 'alias pip="pip --proxy 127.0.0.1:20171"'
+)
 # ===================
 # Change shell to fish
 # ===================
@@ -229,6 +277,9 @@ chsh -s /usr/bin/fish
 for i in ${arr_things_should_be_added_to_bashrc_and_zshrc[@]}; do
     echo "$i" >> ~/.zshrc
 done
+# for i in ${arr_things_should_be_added_to_fish[@]}; do
+#     echo "$i" >> "${folder_of_script}"/fish/config.fish
+# done
 IFS=oldIFS
 #source $(type p10k | sed -E '$s$.*from (.*)$\1$')
 
@@ -250,20 +301,20 @@ tldr --update
 # git clone https://github.com/LazyVim/starter ~/.config/nvim
 # rm -rf ~/.config/nvim/.git
 
-mkdir ${home_folder}/.config/zellij
+mkdir "${home_folder}"/.config/zellij
 # ================================================
 # Create symlinks for config files of applications
 # ================================================
-ln -sf ${folder_of_script}/ranger_configs ${home_folder}/.config/ranger
-ln -sf ${folder_of_script}/mpv_ ${home_folder}/.config/mpv
-ln -sf ${folder_of_script}/ranger ${home_folder}/.local/lib/python3.10/site-packages/ranger
-ln -sf ${folder_of_script}/qtile ${home_folder}/.config/qtile
-ln -sf ${folder_of_script}/fish ${home_folder}/.config/fish
-ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.SpaceVim
-ln -sf ${folder_of_script}/.SpaceVim.d ${home_folder}/.SpaceVim.d
-ln -sf ${folder_of_script}/.SpaceVim ${home_folder}/.config/nvim
-ln -sf ${folder_of_script}/.alacritty.toml ${home_folder}/.alacritty.toml
-ln -sf ${folder_of_script}/zellij_config/config.kdl ${home_folder}/.config/zellij/config.kdl
+ln -sf "${folder_of_script}"/ranger_configs "${home_folder}"/.config/ranger
+ln -sf "${folder_of_script}"/mpv_ "${home_folder}"/.config/mpv
+ln -sf "${folder_of_script}"/ranger "${home_folder}"/.local/lib/python3.10/site-packages/ranger
+ln -sf "${folder_of_script}"/qtile "${home_folder}"/.config/qtile
+ln -sf "${folder_of_script}"/fish "${home_folder}"/.config/fish
+ln -sf "${folder_of_script}"/.SpaceVim "${home_folder}"/.SpaceVim
+ln -sf "${folder_of_script}"/.SpaceVim.d "${home_folder}"/.SpaceVim.d
+ln -sf "${folder_of_script}"/.SpaceVim "${home_folder}"/.config/nvim
+ln -sf "${folder_of_script}"/.alacritty.toml "${home_folder}"/.alacritty.toml
+ln -sf "${folder_of_script}"/zellij_config/config.kdl "${home_folder}"/.config/zellij/config.kdl
 
 # ===========================================
 # Install Python modules for qtile and ranger

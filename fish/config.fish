@@ -1,5 +1,46 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
-    fish_add_path -p ~/bin
     set fish_greeting
 end
+fish_add_path -p ~/bin
+set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"
+set -x colorls_theme "--dark"
+set -x RANGER_LOAD_DEFAULT_RC FALSE
+set -x BAT_THEME "GitHub"
+set -x ANDROID_EMULATOR_USE_SYSTEM_LIBS 1
+set -x JAVA_HOME ""
+set -x EDITOR "vim"
+set -x fzf_theme "--color=16"
+set -x FZF_DEFAULT_OPTS "--preview 'batcat --color=always {}'"
+set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
+alias vim="nvim.appimage"
+alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"
+alias ls="colorls $colorls_theme"
+alias ll="colorls $colorls_theme -lh"
+alias la="colorls $colorls_theme -lah"
+alias m="systemctl restart minidlna"
+alias tree="tree -a -I .git"
+alias fzf="fzf $fzf_theme"
+alias ping="ping -nc4"
+alias cat="batcat"
+alias rm="rm -rf"
+alias gl="git log --oneline --decorate"
+alias gs="git status"
+alias gaAll="git add -A"
+alias ga="git add"
+alias gc="git commit"
+alias gr="git rm"
+alias grOnlyFromGit="git rm --cached"
+alias gm="git mv"
+alias gunstage="git restore --staged"
+alias gamend="git commit --amend"
+alias gdiscard="git restore"
+alias gclone="git clone"
+alias gpullOriginMain="git pull origin main"
+alias gpullOriginMaster="git pull origin master"
+alias gpushOriginMain="git push origin main"
+alias gpushOriginMaster="git push origin master"
+alias gtagList="git tag -l"
+alias gtagCreate="git tag -a"
+alias gshow="git show"
+alias pip="pip --proxy 127.0.0.1:20171"
