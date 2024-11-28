@@ -48,6 +48,7 @@ sudo apt install -y python3-pyxdg
 sudo apt install -y python3-psutil
 sudo apt install -y python3-dbus
 sudo apt install -y kbdd
+sudo apt install -y alacritty
 sudo apt install -y conky
 sudo apt install -y conky-all
 sudo apt install -y p7zip-full
