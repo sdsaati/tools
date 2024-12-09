@@ -15,10 +15,10 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
+    colorscheme = "srcery"
     # colorscheme = "nord"
-    # colorscheme = "srcery"
     # colorscheme = "gruvbox"
-    colorscheme = "SpaceVim"
+    # colorscheme = "SpaceVim"
     # colorscheme = "palenight"
     # colorscheme = "hybrid"
     # colorscheme = "jellybeans"
@@ -51,7 +51,7 @@ name = "colorscheme"
 
 [[layers]]
 name = "ui"
-enable_scrollbar = true
+enable_scrollbar = false
 
 
 [[layers]]
