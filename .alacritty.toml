@@ -8,13 +8,19 @@ padding.y = 15
 dimensions = { columns = 100, lines = 30 }
 
 decorations = "Full"
-decorations_theme_variant = "Dark" # "Light"
+decorations_theme_variant = "None"
 
 [font]
-normal.family =      "0xProto Nerd Font Mono"
-bold.family =        "0xProto Nerd Font Mono"
-italic.family =      "0xProto Nerd Font Mono"
-bold_italic.family = "0xProto Nerd Font Mono"
+# normal.family =      "0xProto Nerd Font Mono"
+# bold.family =        "0xProto Nerd Font Mono"
+# italic.family =      "0xProto Nerd Font Mono"
+# bold_italic.family = "0xProto Nerd Font Mono"
+
+normal.family =      "SeriousShanns Nerd Font Mono"
+bold.family =        "SeriousShanns Nerd Font Mono"
+italic.family =      "SeriousShanns Nerd Font Mono"
+bold_italic.family = "SeriousShanns Nerd Font Mono"
+
 
 # normal.family =      "Mononoki Nerd Font Mono"
 # bold.family =        "Mononoki Nerd Font Mono"
@@ -41,7 +47,7 @@ bold_italic.family = "0xProto Nerd Font Mono"
 # italic.family =      "SpaceMono Nerd Font Mono"
 # bold_italic.family = "SpaceMono Nerd Font Mono"
 
-size = 13.0
+size = 15.0
 
 [shell]
 program = "/usr/bin/fish"
