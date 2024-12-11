@@ -16,6 +16,7 @@
   enable_filetree_gitstatus = true
   enable_vimfiler_welcome = true
   filetree_direction = "left"
+  search_highlight_persist=true
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer
@@ -34,8 +35,8 @@
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
   enable_guicolors = true
-  # Disable statusline separator, if you want to use other value, please
-  # install nerd fonts
+# Disable statusline separator, if you want to use other value, please
+# install nerd fonts
   statusline_separator = "nil"
   statusline_iseparator = "nil"
   relativenumber = false
@@ -49,7 +50,17 @@
 
 [[layers]]
   name = "fzf"
-
+[[layers]]
+  name = "ssh"
+  ssh_user = 'root'
+  ssh_address = '195.62.33.46'
+  ssh_port = '22'
+[[layers]]
+  name = "test"
+[[layers]]
+  name = 'tools#mpv'
+  # mpv_interpreter = 'D:\Program Files\mpv\mpv.exe'
+  musics_directory = '~/Music'
 [[layers]]
   name = "colorscheme"
 
@@ -120,6 +131,8 @@
   name = "lang#plantuml"
 
 
+[[layers]]
+  name = "treesitter"
 [[layers]]
   name = 'framework#django'
 
