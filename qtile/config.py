@@ -33,7 +33,7 @@ from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal, send_notification
 import jdatetime
 
-mod = "mod1"
+mod = "mod4"
 modifier_keys = {
    'M': 'mod4',
    'A': 'mod1',
@@ -117,6 +117,7 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
+    Key([], "Print", lazy.spawn("flameshot gui"), desc="Launch Flameshot GUI"),
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
@@ -145,7 +146,7 @@ keys = [
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key(["mod1"], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key(["mod4"], "Return", lazy.spawn(fileManager), desc="Launch File Manager"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -192,8 +193,8 @@ keys = [
 groups = [
     Group("1", matches=[Match(wm_class="firefox")], layout="max"),
     Group("2", layout="monadtall"),
-    Group("3", matches=[Match(wm_class="obsidian")], layout="monadtall"),
-    Group("4", layout="monadtall"),
+    Group("3", matches=[Match(wm_class="logseq")], layout="monadtall"),
+    Group("4"),
     Group("5"),
     Group("6"),
     Group("7"),
@@ -351,7 +352,7 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
 bring_front_click = True
 floats_kept_above = True
-cursor_warp = False
+cursor_warp = True # I changed it at 19/12/2024 to see what will happen it was False
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.

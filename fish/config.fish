@@ -2,17 +2,18 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
 end
+set fish_key_bindings fish_user_key_bindings
 fish_add_path -p ~/bin
 set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"
 set -x colorls_theme "--dark"
 set -x RANGER_LOAD_DEFAULT_RC FALSE
-set -x BAT_THEME "GitHub"
+set -x BAT_THEME "Dracula"
 set -x ANDROID_EMULATOR_USE_SYSTEM_LIBS 1
 set -x JAVA_HOME ""
 set -x EDITOR "vim"
 set -x fzf_theme "--color=16"
 set -x FZF_DEFAULT_OPTS "--preview 'batcat --color=always {}'"
-set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
+set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!.*__pycache__/*\" --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
 alias vim="nvim.appimage"
 alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"
 alias ls="colorls $colorls_theme"

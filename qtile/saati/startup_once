@@ -2,8 +2,11 @@
 xfsettingsd --daemon -D &
 # xfce4-panel -d &
 nm-applet &
+nm-tray &
 nitrogen --restore &
 dropbox start &
 firefox &
 discord &
+/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage &
 gtk-launch Obsidian.desktop &
+blueman-applet &

@@ -20,10 +20,11 @@
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer
-  colorscheme = "SpaceVim"
+  colorscheme = "desert"
+  #colorscheme = "gruvbox"
+  # colorscheme = "SpaceVim"
   # colorscheme = "srcery"
   # colorscheme = "nord"
-  # colorscheme = "gruvbox"
   # colorscheme = "palenight"
   # colorscheme = "hybrid"
   # colorscheme = "jellybeans"
