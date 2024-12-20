@@ -7,6 +7,6 @@ nitrogen --restore &
 dropbox start &
 firefox &
 discord &
-/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage &
+/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox &
 gtk-launch Obsidian.desktop &
 blueman-applet &

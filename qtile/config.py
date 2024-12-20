@@ -46,8 +46,9 @@ fileManager = "xfce4-terminal -e ranger"
 rofi = h + '/saati/rofi.sh'
 rofi_web_search = h + '/../rofi/web-search.sh'
 rofi_monitor_layout = h + '/../rofi/monitor_layout.sh'
+nemo = "nemo"
 
-opacity = "AA"
+opacity = "FF"
 fonts = {"general": "Comic Helvetic Heavy",
          "generalSize": 16,
          "delimiter": "ComicShannsMono Nerd Font Bold",
@@ -82,6 +83,7 @@ colors = {"transparent": "#00000000",
           "Base": "#eff1f5",
           "Mantle": "#e6e9ef",
           "Crust": "#dce0e8",          
+          "Black": "#000000",          
 }
 #qcolor = {
 #    "windowBorderActive": colors["Mauve"],
@@ -99,13 +101,13 @@ colors = {"transparent": "#00000000",
 qcolor = {
     "windowBorderActive": colors["Mauve"],
     "windowBorderInactive": colors["Crust"],
-    "barBg" : [ colors["Text"], colors["Text"],colors["Text"]],
+    "barBg" : [ colors["Black"], colors["Black"],colors["Black"]],
     "delimiterFg": colors["Lavender"],
     "widgetFg": colors["Base"],
-    "groupFg": colors["Text"],
-    "groupBg": [colors["Text"], colors["Text"], colors["Text"]],
+    "groupFg": colors["Base"],
+    "groupBg": [colors["Black"], colors["Base"], colors["Black"]],
     "groupInactive": colors["Subtext0"],
-    "groupActive": colors["Base"],
+    "groupActive": colors["Red"],
     "groupHighLight": colors["Base"],
     "groupHightlightBg": colors["Blue"],
 }
@@ -158,6 +160,7 @@ keys = [
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
     Key([mod], "s", lazy.spawn(rofi_web_search), desc="Runs rofi web searcher"),
     Key([mod], "p", lazy.spawn(rofi_monitor_layout), desc="Runs rofi monitor layout picker"),
+    Key([mod], "e", lazy.spawn(nemo), desc="Runs nemo file manager"),
     Key([mod], "Pause", lazy.spawn('prop'), desc="Runs xprop"),
     Key([mod], "backslash", lazy.widget["keyboardlayout"].next_keyboard(), desc="Change Keyboard Layout"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -170,7 +173,7 @@ keys = [
     Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 10%+"), desc='brightness UP'),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-"), desc='brightness Down'),
-	#Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
+    #Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
     #Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
 ]
 
@@ -316,7 +319,7 @@ screens = [
                 delimiter(),
                 widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
                 delimiter(),
-                widget.Systray(background=colors["Text"], icon_size=24),
+                widget.Systray(background=colors["Black"], icon_size=24),
                 delimiter(),
                 widget.Volume(),
                 delimiter(),
@@ -330,6 +333,7 @@ screens = [
             background= qcolor["barBg"],
             margin = [0,0,0,0],
             opacity = 0.6,
+            name = "qitle"
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),

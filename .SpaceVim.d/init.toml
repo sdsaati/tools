@@ -20,14 +20,14 @@
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer
-  colorscheme = "desert"
-  #colorscheme = "gruvbox"
+  # colorscheme = "desert"
+  # colorscheme = "gruvbox"
   # colorscheme = "SpaceVim"
   # colorscheme = "srcery"
   # colorscheme = "nord"
   # colorscheme = "palenight"
   # colorscheme = "hybrid"
-  # colorscheme = "jellybeans"
+  colorscheme = "jellybeans"
   # colorscheme = "molokai"
   # colorscheme = "material"
   # colorscheme = "dracula"
@@ -143,6 +143,9 @@
 
 [[custom_plugins]]
   repo = "liuchengxu/vista.vim"
+
+[[custom_plugins]] 
+  repo = "lilydjwg/colorizer"
 
 #[[custom_plugins]]
 # this plugin bring tgpt ai into nvim
