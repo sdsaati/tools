@@ -28,64 +28,67 @@ from decimal import Rounded
 import os
 import subprocess
 from libqtile import bar, layout, qtile, widget, hook
-from libqtile.config import Click, Drag, Group, ScratchPad,DropDown, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, ScratchPad, DropDown, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal, send_notification
 import jdatetime
 
 mod = "mod4"
 modifier_keys = {
-   'M': 'mod4',
-   'A': 'mod1',
-   'S': 'shift',
-   'C': 'control',
+    "M": "mod4",
+    "A": "mod1",
+    "S": "shift",
+    "C": "control",
 }
-h = '/home/sdsaati/.config/qtile'
-terminal = 'xfce4-terminal' #guess_terminal()
+h = "/home/sdsaati/.config/qtile"
+terminal = "xfce4-terminal"  # guess_terminal()
 fileManager = "xfce4-terminal -e ranger"
-rofi = h + '/saati/rofi.sh'
-rofi_web_search = h + '/../rofi/web-search.sh'
-rofi_monitor_layout = h + '/../rofi/monitor_layout.sh'
+rofi = h + "/saati/rofi.sh combi"
+rofi_web_search = h + "/../rofi/web-search.sh"
+rofi_monitor_layout = h + "/../rofi/monitor_layout.sh"
 nemo = "nemo"
 
 opacity = "FF"
-fonts = {"general": "Comic Helvetic Heavy",
-         "generalSize": 16,
-         "delimiter": "ComicShannsMono Nerd Font Bold",
-         "delimiterSize": 24,
-         "group":"ComicShannsMono Nerd Font Regular",
-         "groupSize":16,}
-
-colors = {"transparent": "#00000000",
-          "Rosewater": "#dc8a78"+opacity,
-          "Flamingo": "#dd7878"+opacity,
-          "Pink": "#ea76cb"+opacity,
-          "Mauve": "#8839ef"+opacity,
-          "Red": "#d20f39"+opacity,
-          "Maroon": "#e64553"+opacity,
-          "Peach": "#fe640b"+opacity,
-          "Yellow": "#df8e1d"+opacity,
-          "Green": "#40a02b"+opacity,
-          "Teal": "#179299"+opacity,
-          "Sky": "#04a5e5",
-          "Sapphire": "#209fb5",
-          "Blue": "#1e66f5",
-          "Lavender": "#7287fd",
-          "Text": "#4c4f69",
-          "Subtext1": "#5c5f77",
-          "Subtext0": "#6c6f85",
-          "Overlay2": "#7c7f93",
-          "Overlay1": "#8c8fa1",
-          "Overlay0": "#9ca0b0",
-          "Surface2": "#acb0be",
-          "Surface1": "#bcc0cc",
-          "Surface0": "#ccd0da",
-          "Base": "#eff1f5",
-          "Mantle": "#e6e9ef",
-          "Crust": "#dce0e8",          
-          "Black": "#000000",          
+fonts = {
+    "general": "Comic Helvetic Heavy",
+    "generalSize": 16,
+    "delimiter": "ComicShannsMono Nerd Font Bold",
+    "delimiterSize": 24,
+    "group": "ComicShannsMono Nerd Font Regular",
+    "groupSize": 16,
 }
-#qcolor = {
+
+colors = {
+    "transparent": "#00000000",
+    "Rosewater": "#dc8a78" + opacity,
+    "Flamingo": "#dd7878" + opacity,
+    "Pink": "#ea76cb" + opacity,
+    "Mauve": "#8839ef" + opacity,
+    "Red": "#d20f39" + opacity,
+    "Maroon": "#e64553" + opacity,
+    "Peach": "#fe640b" + opacity,
+    "Yellow": "#df8e1d" + opacity,
+    "Green": "#40a02b" + opacity,
+    "Teal": "#179299" + opacity,
+    "Sky": "#04a5e5",
+    "Sapphire": "#209fb5",
+    "Blue": "#1e66f5",
+    "Lavender": "#7287fd",
+    "Text": "#4c4f69",
+    "Subtext1": "#5c5f77",
+    "Subtext0": "#6c6f85",
+    "Overlay2": "#7c7f93",
+    "Overlay1": "#8c8fa1",
+    "Overlay0": "#9ca0b0",
+    "Surface2": "#acb0be",
+    "Surface1": "#bcc0cc",
+    "Surface0": "#ccd0da",
+    "Base": "#eff1f5",
+    "Mantle": "#e6e9ef",
+    "Crust": "#dce0e8",
+    "Black": "#000000",
+}
+# qcolor = {
 #    "windowBorderActive": colors["Mauve"],
 #    "windowBorderInactive": colors["Crust"],
 #    "barBg" : [ colors["Base"], colors["Mantle"],colors["Subtext1"]],
@@ -97,11 +100,11 @@ colors = {"transparent": "#00000000",
 #    "groupActive": colors["Base"],
 #    "groupHighLight": colors["Base"],
 #    "groupHightlightBg": colors["Blue"],
-#}
+# }
 qcolor = {
     "windowBorderActive": colors["Mauve"],
     "windowBorderInactive": colors["Crust"],
-    "barBg" : [ colors["Black"], colors["Black"],colors["Black"]],
+    "barBg": [colors["Black"], colors["Black"], colors["Black"]],
     "delimiterFg": colors["Lavender"],
     "widgetFg": colors["Base"],
     "groupFg": colors["Base"],
@@ -127,14 +130,23 @@ keys = [
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -153,34 +165,76 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
-    Key( [mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key(
+        [mod],
+        "f",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen on the focused window",
+    ),
+    Key(
+        [mod],
+        "t",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating on the focused window",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
     Key([mod], "s", lazy.spawn(rofi_web_search), desc="Runs rofi web searcher"),
-    Key([mod], "p", lazy.spawn(rofi_monitor_layout), desc="Runs rofi monitor layout picker"),
+    Key(
+        [mod],
+        "p",
+        lazy.spawn(rofi_monitor_layout),
+        desc="Runs rofi monitor layout picker",
+    ),
     Key([mod], "e", lazy.spawn(nemo), desc="Runs nemo file manager"),
-    Key([mod], "Pause", lazy.spawn('prop'), desc="Runs xprop"),
-    Key([mod], "backslash", lazy.widget["keyboardlayout"].next_keyboard(), desc="Change Keyboard Layout"),
+    Key([mod], "Pause", lazy.spawn("prop"), desc="Runs xprop"),
+    Key(
+        [mod],
+        "backslash",
+        lazy.widget["keyboardlayout"].next_keyboard(),
+        desc="Change Keyboard Layout",
+    ),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     # C U S T O M
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume 0 +5%"), desc='Volume Up'),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume 0 -5%"), desc='volume down'),
-    Key([], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc='Volume Mute'),
-    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc='playerctl'),
-    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc='playerctl'),
-    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc='playerctl'),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 10%+"), desc='brightness UP'),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 10%-"), desc='brightness Down'),
-    #Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
-    #Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("pactl set-sink-volume 0 +5%"),
+        desc="Volume Up",
+    ),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("pactl set-sink-volume 0 -5%"),
+        desc="volume down",
+    ),
+    Key(
+        [], "XF86AudioMute", lazy.spawn("pulsemixer --toggle-mute"), desc="Volume Mute"
+    ),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="playerctl"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="playerctl"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="playerctl"),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn("brightnessctl s 10%+"),
+        desc="brightness UP",
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("brightnessctl s 10%-"),
+        desc="brightness Down",
+    ),
+    # Key([mod], "h", lazy.spawn("roficlip"), desc='clipboard'),
+    # Key([mod], "s", lazy.spawn("flameshot gui"), desc='Screenshot'),
 ]
 
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
 # We therefore defer the check until the key binding is run by using .when(func=...)
-#for vt in range(1, 8):
+# for vt in range(1, 8):
 #    keys.append(
 #        Key(
 #            ["control", "mod1"],
@@ -189,8 +243,6 @@ keys = [
 #            desc=f"Switch to VT{vt}",
 #        )
 #    )
-
-
 
 
 groups = [
@@ -203,11 +255,10 @@ groups = [
     Group("7"),
     Group("8", matches=[Match(wm_class="steam")]),
     Group("9", matches=[Match(wm_class="discord")], layout="max"),
-    
 ]
 
 for i in groups:
-    
+
     keys.extend(
         [
             # mod1 + group number = switch to group
@@ -232,44 +283,53 @@ for i in groups:
     )
 
 layout_theme = {
-    "margin": [15,15,15,15],
+    "margin": [15, 15, 15, 15],
     "border_width": 2,
     "border_focus": qcolor["windowBorderActive"],
     "border_normal": qcolor["windowBorderInactive"],
 }
 
 layouts = [
-    #layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Columns(**layout_theme),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
-    #layout.Stack(num_stacks=2),
-    #layout.Bsp(**layout_theme),
-    #layout.Matrix(**layout_theme),
-    layout.MonadTall(border_width=2, border_focus=qcolor["windowBorderActive"], border_normal=qcolor["windowBorderInactive"]),
-    #layout.MonadWide(**layout_theme),
+    # layout.Stack(num_stacks=2),
+    # layout.Bsp(**layout_theme),
+    # layout.Matrix(**layout_theme),
+    layout.MonadTall(
+        border_width=2,
+        border_focus=qcolor["windowBorderActive"],
+        border_normal=qcolor["windowBorderInactive"],
+    ),
+    # layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
-    #layout.Tile(**layout_theme),
-    #layout.TreeTab(**layout_theme),
+    # layout.Tile(**layout_theme),
+    # layout.TreeTab(**layout_theme),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
+
 def separator():
-    return widget.Sep(linewidth = 0,
-                    padding = 0,
-                    foreground = qcolor["barBg"],
-                    background = qcolor["barBg"],
-                    )
+    return widget.Sep(
+        linewidth=0,
+        padding=0,
+        foreground=qcolor["barBg"],
+        background=qcolor["barBg"],
+    )
+
+
 def delimiter():
-    return widget.TextBox(text = ' : ',
-                    font=fonts["delimiter"],
-                    foreground = qcolor["delimiterFg"],
-                    background = qcolor["barBg"],
-                    padding = 0,
-                    fontsize = fonts["delimiterSize"] 
-                    )
-    
+    return widget.TextBox(
+        text=" : ",
+        font=fonts["delimiter"],
+        foreground=qcolor["delimiterFg"],
+        background=qcolor["barBg"],
+        padding=0,
+        fontsize=fonts["delimiterSize"],
+    )
+
 
 widget_defaults = dict(
     font=fonts["general"],
@@ -284,19 +344,22 @@ screens = [
         top=bar.Bar(
             [
                 delimiter(),
-                widget.CurrentLayout(fmt='{:^13}'),
+                widget.CurrentLayout(fmt="{:^13}"),
                 delimiter(),
-                widget.GroupBox(Rounded=True,font=fonts["group"],
-                                 fontsize=fonts["groupSize"],
-                                 disable_drag=True,
-                                 padding=2,
-                                 highlight_method='block',
-                                 block_highlight_text_color=qcolor["groupHighLight"],
-                                 this_current_screen_border=qcolor["groupHightlightBg"],
-                                 active=qcolor["groupActive"],
-                                 inactive=qcolor["groupInactive"],
-                                 foreground=qcolor["groupFg"],
-                                 background=qcolor["groupBg"]),
+                widget.GroupBox(
+                    Rounded=True,
+                    font=fonts["group"],
+                    fontsize=fonts["groupSize"],
+                    disable_drag=True,
+                    padding=2,
+                    highlight_method="block",
+                    block_highlight_text_color=qcolor["groupHighLight"],
+                    this_current_screen_border=qcolor["groupHightlightBg"],
+                    active=qcolor["groupActive"],
+                    inactive=qcolor["groupInactive"],
+                    foreground=qcolor["groupFg"],
+                    background=qcolor["groupBg"],
+                ),
                 delimiter(),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -306,14 +369,19 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Net(format='{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}'),
-                #widget.TextBox("default config", name="default"),
-                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Net(format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}"),
+                # widget.TextBox("default config", name="default"),
+                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                #widget.StatusNotifier(),
+                # widget.StatusNotifier(),
                 widget.NetGraph(),
                 delimiter(),
-                widget.NvidiaSensors(fmt='GPU:{}',threshold=80, foreground=qcolor["widgetFg"].replace('#',''), foreground_alert='ff6000'),
+                widget.NvidiaSensors(
+                    fmt="GPU:{}",
+                    threshold=80,
+                    foreground=qcolor["widgetFg"].replace("#", ""),
+                    foreground_alert="ff6000",
+                ),
                 delimiter(),
                 widget.CPU(),
                 delimiter(),
@@ -325,29 +393,36 @@ screens = [
                 delimiter(),
                 widget.Clock(format="%I:%M %p   %a   %Y-%m-%d"),
                 delimiter(),
-                widget.TextBox(jdatetime.date.today().strftime('%Y/%m/%d')),
+                widget.TextBox(jdatetime.date.today().strftime("%Y/%m/%d")),
                 delimiter(),
                 widget.QuickExit(),
             ],
             fonts["generalSize"] + 14,
-            background= qcolor["barBg"],
-            margin = [0,0,0,0],
-            opacity = 0.6,
-            name = "qitle"
+            background=qcolor["barBg"],
+            margin=[0, 0, 0, 0],
+            opacity=0.6,
+            name="qitle",
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        x11_drag_polling_rate = 120,
+        x11_drag_polling_rate=120,
     ),
 ]
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -356,7 +431,9 @@ dgroups_app_rules = []  # type: list
 follow_mouse_focus = False
 bring_front_click = True
 floats_kept_above = True
-cursor_warp = True # I changed it at 19/12/2024 to see what will happen it was False
+cursor_warp = (
+    False  # this makes each time a dialog is opened, your cursor goes to center of it
+)
 floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -370,7 +447,7 @@ floating_layout = layout.Floating(
         Match(wm_class="steam"),  # steam
         Match(wm_class="dota2"),  # Dota2 game
         Match(wm_class="cs2"),  # Counter Strike 2 game
-        #Match(wm_class="mpv"),  # mpv media player
+        # Match(wm_class="mpv"),  # mpv media player
     ]
 )
 auto_fullscreen = True
@@ -379,7 +456,7 @@ reconfigure_screens = True
 
 # If things like steam games want to auto-minimize themselves when losing
 # focus, should we respect this or not?
-auto_minimize = False #True
+auto_minimize = False  # True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
@@ -395,19 +472,18 @@ wl_input_rules = None
 wmname = "LG3D"
 
 
-
 # Hook Section:
 @hook.subscribe.startup_once
 async def autostart_once():
-    home = os.path.expanduser('~/.config/qtile/saati/startup_once')
+    home = os.path.expanduser("~/.config/qtile/saati/startup_once")
     subprocess.Popen([home])
+
 
 @hook.subscribe.startup
 async def run_every_startup():
-    home = os.path.expanduser('~/.config/qtile/saati/startup')
+    home = os.path.expanduser("~/.config/qtile/saati/startup")
     subprocess.Popen([home])
     send_notification("qtile", "Startup")
-
 
 
 def float_to_front(qtile):
@@ -416,7 +492,8 @@ def float_to_front(qtile):
             if window.floating:
                 window.cmd_bring_to_front()
 
+
 @hook.subscribe.client_focus
 def client_focus(client):
-    #send_notification("qtile", f"{client.name} has been focused")
+    # send_notification("qtile", f"{client.name} has been focused")
     float_to_front(qtile)

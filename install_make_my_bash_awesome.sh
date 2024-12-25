@@ -11,10 +11,13 @@ sudo apt install -y ruby-dev
 sudo apt install -y bat
 sudo apt install -y fzf
 sudo apt install -y fish
+sudo apt install -y ffmpeg
+sudo apt install -y ffmpegthumbnailer
 sudo apt install -y flameshot
 sudo apt install -y chafa
 sudo apt install -y fdfind
 sudo apt install -y fd
+sudo apt install -y ueberzug
 sudo apt install -y ripgrep
 sudo apt install -y fdclone
 sudo apt install -y batcat

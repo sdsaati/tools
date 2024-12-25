@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment[en_US]=oblivion
+Comment=oblivion
+Exec="/home/sdsaati/Downloads/oblivion-desktop-linux-x64/oblivion-desktop --no-sandbox"
+GenericName[en_US]=Filter Shekan on 8086
+GenericName=Filter Shekan on 8086
+Icon=010editor
+Name[en_US]=Filter Shekan
+Name=Filter Shekan
+StartupNotify=true
+Terminal=false
+Type=Application
+X-KDE-SubstituteUID=false
