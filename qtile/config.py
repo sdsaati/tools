@@ -102,13 +102,13 @@ colors = {
 #    "groupHightlightBg": colors["Blue"],
 # }
 qcolor = {
-    "windowBorderActive": colors["Mauve"],
-    "windowBorderInactive": colors["Crust"],
+    "windowBorderActive": colors["Peach"],
+    "windowBorderInactive": colors["transparent"],
     "barBg": [colors["Black"], colors["Black"], colors["Black"]],
     "delimiterFg": colors["Lavender"],
     "widgetFg": colors["Base"],
     "groupFg": colors["Base"],
-    "groupBg": [colors["Black"], colors["Base"], colors["Black"]],
+    "groupBg": [colors["transparent"], colors["Base"], colors["transparent"]],
     "groupInactive": colors["Subtext0"],
     "groupActive": colors["Red"],
     "groupHighLight": colors["Base"],
@@ -250,10 +250,10 @@ groups = [
     Group("2", layout="monadtall"),
     Group("3", matches=[Match(wm_class="logseq")], layout="monadtall"),
     Group("4"),
-    Group("5"),
+    Group("5", matches=[Match(wm_class="edge")], layout="max"),
     Group("6"),
     Group("7"),
-    Group("8", matches=[Match(wm_class="steam")]),
+    Group("8", matches=[Match(wm_class="steam"), Match(wm_class="Telegram")]),
     Group("9", matches=[Match(wm_class="discord")], layout="max"),
 ]
 
@@ -283,25 +283,29 @@ for i in groups:
     )
 
 layout_theme = {
-    "margin": [15, 15, 15, 15],
-    "border_width": 2,
-    "border_focus": qcolor["windowBorderActive"],
-    "border_normal": qcolor["windowBorderInactive"],
+    "margin": [2, 2, 2, 2],
+    "border_width": 3,
+    "border_focus_stack": [
+        colors["Red"],
+        colors["transparent"],
+    ],
+    # "border_focus": colors["Red"],
+    # "border_normal": colors["transparent"],
 }
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Columns(**layout_theme),
+    layout.MonadTall(
+        border_width=3,
+        border_focus=colors["Red"],
+        border_normal=colors["transparent"],
+    ),
     layout.Max(),
+    layout.Columns(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(**layout_theme),
     # layout.Matrix(**layout_theme),
-    layout.MonadTall(
-        border_width=2,
-        border_focus=qcolor["windowBorderActive"],
-        border_normal=qcolor["windowBorderInactive"],
-    ),
     # layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
     # layout.Tile(**layout_theme),
@@ -447,6 +451,7 @@ floating_layout = layout.Floating(
         Match(wm_class="steam"),  # steam
         Match(wm_class="dota2"),  # Dota2 game
         Match(wm_class="cs2"),  # Counter Strike 2 game
+        Match(wm_class="mpv"),  # Counter Strike 2 game
         # Match(wm_class="mpv"),  # mpv media player
     ]
 )
