@@ -42,7 +42,9 @@ modifier_keys = {
 }
 h = "/home/sdsaati/.config/qtile"
 terminal = "xfce4-terminal"  # guess_terminal()
-fileManager = "xfce4-terminal -e ranger"
+home_folder = os.path.expanduser("~")
+ranger = os.path.join(home_folder, "bin", "ranger")
+fileManager = f"xfce4-terminal -e {ranger}"
 rofi = h + "/saati/rofi.sh combi"
 rofi_web_search = h + "/../rofi/web-search.sh"
 rofi_monitor_layout = h + "/../rofi/monitor_layout.sh"

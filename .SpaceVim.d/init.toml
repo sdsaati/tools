@@ -22,7 +22,7 @@
 # layer
   # colorscheme = "desert"
   # colorscheme = "gruvbox"
-  colorscheme = "SpaceVim"
+  # colorscheme = "SpaceVim"
   # colorscheme = "srcery"
   # colorscheme = "nord"
   # colorscheme = "palenight"
@@ -32,8 +32,8 @@
   # colorscheme = "molokai"
   # colorscheme = "material"
   # colorscheme = "dracula"
-  # colorscheme = "one"
-  # colorscheme_bg = "dark"
+  colorscheme = "one"
+  colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
   enable_guicolors = true
