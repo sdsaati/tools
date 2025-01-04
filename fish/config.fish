@@ -14,6 +14,7 @@ set -x EDITOR "vim"
 set -x fzf_theme "--color=16"
 set -x FZF_DEFAULT_OPTS "--preview 'batcat --color=always {}'"
 set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!.*__pycache__/*\" --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
+set -x SUDO_ASKPASS (which ssh-askpass)
 alias vim="nvim.appimage"
 alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"
 alias ls="colorls $colorls_theme"

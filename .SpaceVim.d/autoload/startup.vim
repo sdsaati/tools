@@ -14,6 +14,9 @@ nmap <C-k> <C-b>
 imap <C-j> <C-f>
 imap <C-k> <C-b>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! :w !sudo -A tee % 2>/dev/null<CR>
+
 call feedkeys("\<space>wl")
 
 " makes selected line be always at the center of screen
