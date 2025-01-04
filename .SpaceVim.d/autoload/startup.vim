@@ -9,11 +9,15 @@ function! startup#before() abort
   nnoremap # #N
 
 " makes scroll of documentation of lsp be ctrl+j and ctrl+k
+nmap <C-j> <C-f>
+nmap <C-k> <C-b>
 imap <C-j> <C-f>
 imap <C-k> <C-b>
 
+call feedkeys("\<space>wl")
+
 " makes selected line be always at the center of screen
-:set scrolloff=999 
+:set scrolloff=12 
 
 call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
 endfunction

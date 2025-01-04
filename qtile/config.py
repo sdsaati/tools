@@ -288,18 +288,18 @@ layout_theme = {
     "margin": [2, 2, 2, 2],
     "border_width": 3,
     "border_focus_stack": [
-        colors["Red"],
+        colors["Green"],
         colors["transparent"],
     ],
-    # "border_focus": colors["Red"],
-    # "border_normal": colors["transparent"],
+    "border_focus": colors["Green"],
+    "border_normal": colors["transparent"],
 }
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.MonadTall(
         border_width=3,
-        border_focus=colors["Red"],
+        border_focus=colors["Green"],
         border_normal=colors["transparent"],
     ),
     layout.Max(),
