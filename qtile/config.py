@@ -249,14 +249,14 @@ keys = [
 
 groups = [
     Group("1", matches=[Match(wm_class="firefox")], layout="max"),
-    Group("2", layout="monadtall"),
-    Group("3", matches=[Match(wm_class="logseq")], layout="monadtall"),
+    Group("2", layout="columns"),
+    Group("3", matches=[Match(wm_class="logseq")], layout="columns"),
     Group("4"),
-    Group("5", matches=[Match(wm_class="edge")], layout="max"),
+    Group("5", matches=[Match(wm_class="edge")], layout="columns"),
     Group("6"),
     Group("7"),
     Group("8", matches=[Match(wm_class="steam"), Match(wm_class="Telegram")]),
-    Group("9", matches=[Match(wm_class="discord")], layout="max"),
+    Group("9", matches=[Match(wm_class="discord")], layout="columns"),
 ]
 
 for i in groups:
@@ -285,7 +285,7 @@ for i in groups:
     )
 
 layout_theme = {
-    "margin": [2, 2, 2, 2],
+    "margin": [0, -3, 0, -3],
     "border_width": 3,
     "border_focus_stack": [
         colors["Green"],
@@ -297,13 +297,13 @@ layout_theme = {
 
 layouts = [
     # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.MonadTall(
-        border_width=3,
-        border_focus=colors["Green"],
-        border_normal=colors["transparent"],
-    ),
-    layout.Max(),
     layout.Columns(**layout_theme),
+    # layout.MonadTall(
+    #     border_width=3,
+    #     border_focus=colors["Green"],
+    #     border_normal=colors["transparent"],
+    # ),
+    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(**layout_theme),
