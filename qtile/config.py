@@ -285,7 +285,7 @@ for i in groups:
     )
 
 layout_theme = {
-    "margin": [0, -3, 0, -3],
+    "margin": [0, -3, 0, 0],
     "border_width": 3,
     "border_focus_stack": [
         colors["Green"],
