@@ -1,8 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
+folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+home_folder=$(readlink -f ~)
+. "$folder_of_script/proxy.sh"
 
 # To update run this:
-# python3 -m pip install --force-reinstall yt-dlp
+# python3 -m pip install --force-reinstall yt-dlp --break-system-package
+# sudo apt install axel
 
 yt-dlp \
---external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" \
---continue --extract-audio --audio-format mp3 "$@"
+ --no-check-certificates \
+ --paths temp:/tmp -N 8 --split-chapters \
+ --cookies-from-browser firefox \
+ --no-part \
+ --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
+ --external-downloader aria2c --external-downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
+ --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
+ -ciw \
+ --youtube-include-dash-manifest \
+ --min-filesize 50k --ignore-errors --yes-playlist \
+ --continue --extract-audio --audio-format mp3 "$@" || echo -en \
+ "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f ~/bin/proxychain.conf\n"
+#--proxy $proxy_socks5 \
+#--external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" \
+#--external-downloader axel --external-downloader-args "-n 8 -k" \

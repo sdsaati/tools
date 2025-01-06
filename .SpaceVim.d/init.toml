@@ -39,8 +39,9 @@
   enable_guicolors = true
 # Disable statusline separator, if you want to use other value, please
 # install nerd fonts
-  statusline_separator = "nil"
-  statusline_iseparator = "nil"
+# possible values for seperators: curve, nil, arrow, fire, slant
+  statusline_separator = "curve"
+  statusline_iseparator = "curve"
   relativenumber = false
   buffer_index_type = 4
   enable_tabline_filetype_icon = true
