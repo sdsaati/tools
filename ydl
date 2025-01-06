@@ -1,5 +1,7 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
+folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+home_folder=$(readlink -f ~)
+. "$folder_of_script/proxy.sh"
 # To update run this:
 # python3 -m pip install --force-reinstall yt-dlp
 
@@ -7,8 +9,10 @@
 
  # --downloader aria2c --downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
 yt-dlp \
+ --proxy $proxy_socks5 \
  --no-check-certificates \
  --paths temp:/tmp -N 8 --split-chapters \
+ --cookies-from-browser firefox \
  --no-part \
  --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
  --external-downloader axel --external-downloader-args "-n 8 -k" \

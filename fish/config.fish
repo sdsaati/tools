@@ -46,4 +46,4 @@ alias gpushOriginMaster="git push origin master"
 alias gtagList="git tag -l"
 alias gtagCreate="git tag -a"
 alias gshow="git show"
-alias pip="pip --proxy 127.0.0.1:20171"
+alias pip='pip --proxy "socks5://127.0.0.1:8086"'
