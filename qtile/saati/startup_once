@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 xfsettingsd --daemon -D &
+eval "$(which lxqt-policykit-agent)" &
 # xfce4-panel -d &
 nm-applet &
+eval "$folder_of_script/qtile/saati/keyring.sh" &
+oblivion &
 nm-tray &
 nitrogen --restore &
 dropbox start &
 firefox &
-discord &
+gtk-launch discord &
 /home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox &
-gtk-launch Obsidian.desktop &
+# gtk-launch Obsidian.desktop &
 blueman-applet &
-oblivion &

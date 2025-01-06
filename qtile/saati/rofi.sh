@@ -23,7 +23,7 @@ rofi -config ~/bin/rofi/config.rasi -show "$a" \
 -theme DarkBlue \
 -combi-display-format " ({mode}) {text}" \
 -font "SpaceMono Nerd Font 16" \
--matching fuzzy -show-icons -i -p " " \
+-matching regex -show-icons -i -p " " \
 -window-thumbnail \
 -kb-accept-entry "Return,KP_Enter" \
 -kb-row-up "Control+p" \

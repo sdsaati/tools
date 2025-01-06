@@ -12,6 +12,8 @@ sudo apt install -y bat
 sudo apt install -y fzf
 sudo apt install -y fish
 sudo apt install -y ffmpeg
+sudo apt install -y gnome-keyring
+sudo apt install -y lxqt-policykit
 sudo apt install -y ffmpegthumbnailer
 sudo apt install -y flameshot
 sudo apt install -y chafa
