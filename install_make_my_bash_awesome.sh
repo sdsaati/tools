@@ -325,7 +325,7 @@ ln -sf "${folder_of_script}"/.SpaceVim.d "${home_folder}"/.SpaceVim.d
 ln -sf "${folder_of_script}"/.SpaceVim "${home_folder}"/.config/nvim
 ln -sf "${folder_of_script}"/.alacritty.toml "${home_folder}"/.alacritty.toml
 ln -sf "${folder_of_script}"/zellij_config/config.kdl "${home_folder}"/.config/zellij/config.kdl
-
+sudo ln -sf "${folder_of_script}"/20-tearfree-xorg.conf "/etc/X11/xorg.conf.d/20-tearfree-xorg.conf"
 # ===========================================
 # Install Python modules for qtile and ranger
 # ===========================================

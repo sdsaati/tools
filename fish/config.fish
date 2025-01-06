@@ -47,4 +47,4 @@ alias gtagList="git tag -l"
 alias gtagCreate="git tag -a"
 alias gshow="git show"
 alias pip='pip --proxy "socks5://127.0.0.1:8086"'
-alias p="proxychains4 -q -f '$folder_of_script/proxychain.conf'"
+alias p="proxychains4 -q -f ~/bin/proxychain.conf"

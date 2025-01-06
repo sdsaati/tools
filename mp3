@@ -4,8 +4,10 @@ home_folder=$(readlink -f ~)
 . "$folder_of_script/proxy.sh"
 
 # To update run this:
-# python3 -m pip install --force-reinstall yt-dlp --break-system-package
+yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-package
 # sudo apt install axel
+# sudo apt install aria2c aria2
+# sudo apt install proxychains4
 
 yt-dlp \
  --no-check-certificates \

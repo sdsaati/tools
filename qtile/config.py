@@ -28,7 +28,17 @@ from decimal import Rounded
 import os
 import subprocess
 from libqtile import bar, layout, qtile, widget, hook
-from libqtile.config import Click, Drag, Group, ScratchPad, DropDown, Key, Match, Screen
+from libqtile.config import (
+    Click,
+    Drag,
+    Group,
+    ScratchPad,
+    DropDown,
+    Key,
+    Match,
+    Screen,
+    KeyChord,
+)
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal, send_notification
 import jdatetime
@@ -124,6 +134,7 @@ keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # Switch between windows
+    # Key([Keycode.CAPSLOCK], "Print", lazy.spawn("flameshot gui"), desc="Launch Flameshot GUI"),
     Key([], "Print", lazy.spawn("flameshot gui"), desc="Launch Flameshot GUI"),
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
