@@ -13,6 +13,7 @@ sudo apt install -y fzf
 sudo apt install -y fish
 sudo apt install -y ffmpeg
 sudo apt install -y gnome-keyring
+sudo apt install -y silversearcher-ag
 sudo apt install -y proxychains4
 sudo apt install -y aria2
 sudo apt install -y aria2c

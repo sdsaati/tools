@@ -7,13 +7,14 @@
 # A simple command for demonstration purposes follows.
 # -----------------------------------------------------------------------------
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
 
 # You can import any python module as needed.
 import os
 
 # You always need to import ranger.api.commands here to get the Command class:
 from ranger.api.commands import Command
+
 
 # Any class that is a subclass of "Command" will be integrated into ranger as a
 # command.  Try typing ":my_edit<ENTER>" in ranger!
@@ -60,6 +61,7 @@ class my_edit(Command):
         # content of the current directory.
         return self._tab_directory_content()
 
+
 ############################## SDSAATI #######################################
 class fzf_select(Command):
     """
@@ -75,30 +77,34 @@ class fzf_select(Command):
         import os
         from ranger.ext.get_executables import get_executables
 
-        if 'fzf' not in get_executables():
-            self.fm.notify('Could not find fzf in the PATH.', bad=True)
+        if "fzf" not in get_executables():
+            self.fm.notify("Could not find fzf in the PATH.", bad=True)
             return
 
         fd = None
-        if 'rg' in get_executables():
-            fd = 'rg'
+        if "rg" in get_executables():
+            fd = "rg"
         # elif 'fdfind' in get_executables():
         #     fd = 'fdfind'
         # elif 'fd' in get_executables():
         #     fd = 'fd'
 
         if fd is not None:
-            hidden = ('--hidden' if self.fm.settings.show_hidden else '')
-            exclude = "--glob \"!.*__pycache__/*\" --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
-            only_directories = ('--type directory' if self.quantifier else '')
-            fzf_default_command = '{} --files {} --smart-case --follow {} {} --color=always'.format(
-                fd, hidden, exclude, only_directories
+            hidden = "--hidden" if self.fm.settings.show_hidden else ""
+            exclude = '--glob "!.*__pycache__/*" --glob "!venv/*" --glob "!.venv/*" --glob "!.git/*"'
+            only_directories = "--type directory" if self.quantifier else ""
+            fzf_default_command = (
+                "{} --files {} --smart-case --follow {} {} --color=always".format(
+                    fd, hidden, exclude, only_directories
+                )
             )
         env = os.environ.copy()
-        env['FZF_DEFAULT_COMMAND'] = fzf_default_command
-        env['FZF_DEFAULT_OPTS'] = "--preview 'batcat --color=always {}'" 
+        env["FZF_DEFAULT_COMMAND"] = fzf_default_command
+        env["FZF_DEFAULT_OPTS"] = "--preview 'batcat --color=always {}'"
 
-        fzf = self.fm.execute_command('fzf', universal_newlines=True, stdout=subprocess.PIPE)
+        fzf = self.fm.execute_command(
+            "fzf", universal_newlines=True, stdout=subprocess.PIPE
+        )
         stdout, _ = fzf.communicate()
         if fzf.returncode == 0:
             selected = os.path.abspath(stdout.strip())
@@ -107,6 +113,43 @@ class fzf_select(Command):
             else:
                 self.fm.select_file(selected)
 
+
+class fzf_content(Command):
+    """
+    :fzf_content
+    Find a file using its contents with the poewr of ag and fzf.
+    """
+
+    def execute(self):
+        import subprocess
+        import os
+        from ranger.ext.get_executables import get_executables
+
+        if "fzf" not in get_executables():
+            self.fm.notify("Could not find fzf in the PATH.", bad=True)
+            return
+
+        if "ag" not in get_executables():
+            self.fm.notify("Could not find ag in the PATH.", bad=True)
+            return
+
+        search_key = self.rest(1)
+        # ag -l "bash" | fzf --preview="ag -o 'man' {}"
+        ag_options = "--search-binary -f --hidden --no-group --ignore='*.m4a' --ignore='*.webm' --ignore='*.flatpak' --ignore='*.deb' --ignore='*.appimage' --ignore='*.mp4' --ignore='*.mkv' --ignore='*.mp3' --ignore='*.iso'"
+        options = f"--preview=\"ag '{search_key}' {{}}\" 2>/dev/null"
+        # docx2txt {} - # can be used for docx and ods files
+        fzf = self.fm.execute_command(
+            f'ag {ag_options} -l "{search_key}" 2>/dev/null | fzf {options} 2>/dev/null',
+            universal_newlines=True,
+            stdout=subprocess.PIPE,
+        )
+        stdout, _ = fzf.communicate()
+        if fzf.returncode == 0:
+            selected = os.path.abspath(stdout.strip())
+            if os.path.isdir(selected):
+                self.fm.cd(selected)
+            else:
+                self.fm.select_file(selected)
 
 
 class MyStatusBar(Command):
@@ -126,6 +169,7 @@ class extract(Command):
 
     def execute(self):
         import subprocess
+
         env = os.environ.copy()
         # self.arg(1) is the first (space-separated) argument to the function.
         # This way you can write ":my_edit somefilename<ENTER>".
@@ -147,7 +191,11 @@ class extract(Command):
         # run "pydoc ranger.core.actions" for a list.
         folder = self.arg(1)[:-3]
         self.fm.mkdir(folder)
-        result = self.fm.execute_command('tar -xvf ' + inputFiles + ' --directory="'+folder+'"',env=env, stdout=subprocess.PIPE)
+        result = self.fm.execute_command(
+            "tar -xvf " + inputFiles + ' --directory="' + folder + '"',
+            env=env,
+            stdout=subprocess.PIPE,
+        )
 
     # The tab method is called when you press tab, and should return a list of
     # suggestions that the user will tab through.
@@ -167,6 +215,7 @@ class zip(Command):
 
     def execute(self):
         import subprocess
+
         env = os.environ.copy()
         if self.arg(1):
             outputFile = self.arg(1) + ".tar.xz"
@@ -174,9 +223,13 @@ class zip(Command):
             self.fm.notify(inputFiles)
         else:
             return
-        #self.fm.notify("The given file does not exist!", bad=True)
+        # self.fm.notify("The given file does not exist!", bad=True)
         # run "pydoc ranger.core.actions" for a list.
-        result = self.fm.execute_command('tar -caf "' + outputFile + '" ' + inputFiles, env=env, stdout=subprocess.PIPE)
+        result = self.fm.execute_command(
+            'tar -caf "' + outputFile + '" ' + inputFiles,
+            env=env,
+            stdout=subprocess.PIPE,
+        )
         return
 
     def tab(self, tabnum):
@@ -192,6 +245,7 @@ class tar(Command):
 
     def execute(self):
         import subprocess
+
         env = os.environ.copy()
         if self.arg(1):
             outputFile = self.arg(1) + ".tar"
@@ -199,9 +253,12 @@ class tar(Command):
             self.fm.notify(inputFiles)
         else:
             return
-        result = self.fm.execute_command('tar -caf "' + outputFile + '" ' + inputFiles, env=env, stdout=subprocess.PIPE)
+        result = self.fm.execute_command(
+            'tar -caf "' + outputFile + '" ' + inputFiles,
+            env=env,
+            stdout=subprocess.PIPE,
+        )
         return
+
     def tab(self, tabnum):
         return self._tab_directory_content()
-
-

@@ -62,8 +62,9 @@ nemo = "nemo"
 
 opacity = "FF"
 fonts = {
-    "general": "Comic Helvetic Heavy",
-    "generalSize": 16,
+    # "general": "Comic Helvetic Heavy",
+    "general": "MonaSpiceNe Nerd Font",
+    "generalSize": 15,  # was 16
     "delimiter": "ComicShannsMono Nerd Font Bold",
     "delimiterSize": 24,
     "group": "ComicShannsMono Nerd Font Regular",
@@ -386,12 +387,16 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Net(format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}"),
+                delimiter(),
+                widget.Net(
+                    format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}",
+                    foreground=colors["Yellow"],
+                ),
                 # widget.TextBox("default config", name="default"),
                 # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.NetGraph(),
+                # widget.NetGraph(),
                 delimiter(),
                 widget.NvidiaSensors(
                     fmt="GPU:{}",
@@ -400,17 +405,22 @@ screens = [
                     foreground_alert="ff6000",
                 ),
                 delimiter(),
-                widget.CPU(),
+                widget.CPU(foreground=colors["Mauve"]),
                 delimiter(),
                 widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
                 delimiter(),
                 widget.Systray(background=colors["Black"], icon_size=24),
                 delimiter(),
-                widget.Volume(),
+                widget.Volume(foreground=colors["Blue"]),
                 delimiter(),
-                widget.Clock(format="%I:%M %p   %a   %Y-%m-%d"),
+                widget.Clock(
+                    format="%I:%M %p   %a   %Y-%m-%d", foreground=colors["Pink"]
+                ),
                 delimiter(),
-                widget.TextBox(jdatetime.date.today().strftime("%Y/%m/%d")),
+                widget.TextBox(
+                    jdatetime.date.today().strftime("%Y/%m/%d"),
+                    foreground=colors["Green"],
+                ),
                 delimiter(),
                 widget.QuickExit(),
             ],
