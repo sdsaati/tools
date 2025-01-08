@@ -8,10 +8,24 @@ yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-pack
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
-# --split-chapters
+echo -en "\n===========\nTo split chapters you can use --split-chapters\n=========\n"
+split=""
+ARG_VALUE=""
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --split-chapters)
+            split="--split-chapters"
+            ;;
+        *)
+            ARG_VALUE+=("$arg")
+            ;;
+    esac
+done
+
  yt-dlp \
  --no-check-certificates \
- --paths temp:/tmp -N 8 --split-chapters \
+ --paths temp:/tmp -N 8 \
  --cookies-from-browser firefox \
  --no-part \
  --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
@@ -22,7 +36,7 @@ yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-pack
 "bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/\
 bestvideo+bestaudio/best" \
 --youtube-include-dash-manifest \
---merge-output-format mp4 --continue --min-filesize 50k --ignore-errors --yes-playlist -- "$@" || echo -en \
+--merge-output-format mp4 --continue --min-filesize 50k --ignore-errors --yes-playlist -- $split ${ARG_VALUE[@]} || echo -en \
  "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f $folder_of_script/proxychain.conf\n"
 
  # --proxy $proxy_socks5 \

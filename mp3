@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-home_folder=$(readlink -f ~)
-. "$folder_of_script/proxy.sh"
+#. "$folder_of_script/proxy.sh"
 
 # To update run this:
 yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-package
@@ -9,9 +8,24 @@ yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-pack
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
+echo -en "\n===========\nTo split chapters you can use --split-chapters\n=========\n"
+split=""
+ARG_VALUE=""
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --split-chapters)
+            split="--split-chapters"
+            ;;
+        *)
+            ARG_VALUE+=("$arg")
+            ;;
+    esac
+done
+
 yt-dlp \
  --no-check-certificates \
- --paths temp:/tmp -N 8 --split-chapters \
+ --paths temp:/tmp -N 8 \
  --cookies-from-browser firefox \
  --no-part \
  --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
@@ -20,8 +34,6 @@ yt-dlp \
  -ciw \
  --youtube-include-dash-manifest \
  --min-filesize 50k --ignore-errors --yes-playlist \
- --continue --extract-audio --audio-format mp3 "$@" || echo -en \
+ --continue --extract-audio --audio-format mp3 $split ${ARG_VALUE[@]} || echo -en \
  "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f ~/bin/proxychain.conf\n"
 #--proxy $proxy_socks5 \
-#--external-downloader aria2c --external-downloader-args "-c -j 28 -x 16 -s 28 -k 1M" \
-#--external-downloader axel --external-downloader-args "-n 8 -k" \

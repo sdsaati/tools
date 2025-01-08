@@ -5,7 +5,7 @@ end
 set fish_key_bindings fish_user_key_bindings
 fish_add_path -p ~/bin
 set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"
-set -x colorls_theme "--dark"
+# set -x colorls_theme "--dark"
 set -x RANGER_LOAD_DEFAULT_RC FALSE
 set -x BAT_THEME "Dracula"
 set -x ANDROID_EMULATOR_USE_SYSTEM_LIBS 1
@@ -17,9 +17,9 @@ set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!
 set -x SUDO_ASKPASS (which ssh-askpass)
 alias vim="nvim.appimage"
 alias winpy="wine64 /home/$(whoami)/.wine/drive_c/Python310/python.exe"
-alias ls="colorls $colorls_theme"
-alias ll="colorls $colorls_theme -lh"
-alias la="colorls $colorls_theme -lah"
+alias ls="colorls $colorls_theme --hyperlink"
+alias ll="colorls $colorls_theme -lh --hyperlink"
+alias la="colorls $colorls_theme -lah --hyperlink"
 alias m="systemctl restart minidlna"
 alias tree="tree -a -I .git"
 alias fzf="fzf $fzf_theme"

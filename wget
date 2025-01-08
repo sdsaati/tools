@@ -8,9 +8,25 @@ folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
+echo -en "\n===========\nTo split chapters you can use --split-chapters\n=========\n"
+split=""
+ARG_VALUE=""
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --split-chapters)
+            split="--split-chapters"
+            ;;
+        *)
+            ARG_VALUE+=("$arg")
+            ;;
+    esac
+done
+
+
 aria2c --check-certificate=false -j 16 -x 16 --file-allocation=none -c \
   --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
-  "$@" || echo -en \
+  $split ${ARG_VALUE[@]} || echo -en \
   "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f $folder_of_script/proxychain.conf\n"
 
 # aria2c -c --download-result=default -j 28 -x 16 -s 28 -k 1M -U "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" "$@"
