@@ -8,7 +8,7 @@ yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-pack
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
-echo -en "\n===========\nTo split chapters you can use --split-chapters\n=========\n"
+echo -en "\n===========\nTo split chapters you can use --split-chapters\n===========\n"
 split=""
 ARG_VALUE=""
 # Parse arguments

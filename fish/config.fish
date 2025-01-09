@@ -46,6 +46,5 @@ alias gpushOriginMaster="git push origin master"
 alias gtagList="git tag -l"
 alias gtagCreate="git tag -a"
 alias gshow="git show"
-alias pip='pip --proxy "socks5://127.0.0.1:8086"'
 alias p="proxychains4 -q -f ~/bin/proxychain.conf"
 alias ag="ag --search-binary -f --hidden --no-group --ignore='*.m4a' --ignore='*.webm' --ignore='*.flatpak' --ignore='*.deb' --ignore='*.appimage' --ignore='*.mp4' --ignore='*.mkv' --ignore='*.mp3' --ignore='*.iso'"

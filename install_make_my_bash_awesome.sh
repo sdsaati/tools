@@ -36,6 +36,7 @@ sudo apt install -y fuse-zip
 sudo apt install -y fusefat
 sudo apt install -y fuseiso
 sudo apt install -y python3
+sudo apt install -y python3-yaml
 sudo apt install -y tldr
 sudo apt install -y python3-dev
 sudo apt install -y python3-pip

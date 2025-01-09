@@ -8,14 +8,14 @@ yt-dlp -U || python3 -m pip install --force-reinstall yt-dlp --break-system-pack
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
-echo -en "\n===========\nTo split chapters you can use --split-chapters\n=========\n"
-split=""
+echo -en "\n===========\nTo do not split chapters you can use --no-split-chapters\n===========\n"
+split="--split-chapters"
 ARG_VALUE=""
 # Parse arguments
 for arg in "$@"; do
     case $arg in
-        --split-chapters)
-            split="--split-chapters"
+        --no-split-chapters)
+            split=""
             ;;
         *)
             ARG_VALUE+=("$arg")
@@ -25,6 +25,7 @@ done
 
 yt-dlp \
  --no-check-certificates \
+ -f bestaudio \
  --paths temp:/tmp -N 8 \
  --cookies-from-browser firefox \
  --no-part \
@@ -34,6 +35,6 @@ yt-dlp \
  -ciw \
  --youtube-include-dash-manifest \
  --min-filesize 50k --ignore-errors --yes-playlist \
- --continue --extract-audio --audio-format mp3 $split ${ARG_VALUE[@]} || echo -en \
+ --continue --extract-audio --audio-format mp3 --audio-quality 0 $split ${ARG_VALUE[@]} || echo -en \
  "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f ~/bin/proxychain.conf\n"
 #--proxy $proxy_socks5 \
