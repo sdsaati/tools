@@ -7,6 +7,8 @@ function! startup#before() abort
   source ~/.SpaceVim.d/autoload/autoOnBuffers.vim
   nnoremap U <C-r>
   nnoremap # #N
+  set ignorecase
+  set smartcase
 
 " makes scroll of documentation of lsp be ctrl+j and ctrl+k
 nmap <C-j> <C-f>

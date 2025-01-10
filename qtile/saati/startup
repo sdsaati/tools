@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-picom --config ~/bin/picom/picom.conf &
-xgamma -gamma 1.5 &
-setxkbmap -option ctrl:nocaps
+picom --config ~/bin/picom/picom.conf & disown
+xgamma -gamma 1.5 & disown
+setxkbmap -option ctrl:nocaps & disown

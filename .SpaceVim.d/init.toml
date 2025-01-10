@@ -11,7 +11,8 @@
   bootstrap_after = 'startup#after'
   bootstrap_before = 'startup#before'
 # the value can be `leaderguide` or `whichkey`
-  leader_guide_theme = 'whichkey'
+  leader_guide_theme = 'leaderguide'
+  search_tools = ["rg", "ag", "grep"]
   filemanager = "nerdtree"
   enable_filetree_gitstatus = true
   enable_vimfiler_welcome = true

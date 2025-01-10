@@ -63,10 +63,10 @@ nemo = "nemo"
 opacity = "FF"
 fonts = {
     # "general": "Comic Helvetic Heavy",
-    "general": "MonaSpiceNe Nerd Font",
+    "general": "MonaSpiceNe Nerd Font Bold",
     "generalSize": 15,  # was 16
-    "delimiter": "ComicShannsMono Nerd Font Bold",
-    "delimiterSize": 24,
+    "delimiter": "MonaSpiceNe Nerd Font Bold",
+    "delimiterSize": 18,
     "group": "ComicShannsMono Nerd Font Regular",
     "groupSize": 16,
 }
@@ -260,7 +260,7 @@ keys = [
 
 
 groups = [
-    Group("1", matches=[Match(wm_class="firefox")], layout="max"),
+    Group("1", matches=[Match(wm_class="firefox")], layout="columns"),
     Group("2", layout="columns"),
     Group("3", matches=[Match(wm_class="logseq")], layout="columns"),
     Group("4"),
@@ -338,11 +338,14 @@ def separator():
     )
 
 
-def delimiter():
+def delimiter(c=None):
+    # ༆,𓄻,,,,,🥀,,
+    if c is None:
+        c = "༆"
     return widget.TextBox(
-        text=" : ",
+        text=f"{c}",
         font=fonts["delimiter"],
-        foreground=qcolor["delimiterFg"],
+        foreground=colors["Green"],
         background=qcolor["barBg"],
         padding=0,
         fontsize=fonts["delimiterSize"],
@@ -361,9 +364,10 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                delimiter(),
-                widget.CurrentLayout(fmt="{:^13}"),
-                delimiter(),
+                # delimiter(),
+                # widget.CurrentLayout(fmt="{:^13}"),
+                widget.CurrentLayoutIcon(),
+                # delimiter(),
                 widget.GroupBox(
                     Rounded=True,
                     font=fonts["group"],
@@ -378,7 +382,7 @@ screens = [
                     foreground=qcolor["groupFg"],
                     background=qcolor["groupBg"],
                 ),
-                delimiter(),
+                delimiter("🪶"),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -387,7 +391,7 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                delimiter(),
+                delimiter(""),
                 widget.Net(
                     format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}",
                     foreground=colors["Yellow"],
@@ -404,25 +408,25 @@ screens = [
                     foreground=qcolor["widgetFg"].replace("#", ""),
                     foreground_alert="ff6000",
                 ),
-                delimiter(),
+                delimiter("💻"),
                 widget.CPU(foreground=colors["Mauve"]),
-                delimiter(),
+                delimiter("⌨"),
                 widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
-                delimiter(),
+                delimiter(""),
                 widget.Systray(background=colors["Black"], icon_size=24),
-                delimiter(),
+                delimiter(" 🔊"),
                 widget.Volume(foreground=colors["Blue"]),
-                delimiter(),
+                delimiter(" ⏳"),
                 widget.Clock(
-                    format="%I:%M %p   %a   %Y-%m-%d", foreground=colors["Pink"]
+                    format="%I:%M%p ⫷ %a ⫸ %Y-%m-%d", foreground=colors["Pink"]
                 ),
-                delimiter(),
+                delimiter(" 📅"),
                 widget.TextBox(
                     jdatetime.date.today().strftime("%Y/%m/%d"),
                     foreground=colors["Green"],
                 ),
-                delimiter(),
-                widget.QuickExit(),
+                delimiter(""),
+                widget.QuickExit(default_text="🔐"),
             ],
             fonts["generalSize"] + 14,
             background=qcolor["barBg"],
@@ -510,6 +514,7 @@ async def autostart_once():
 @hook.subscribe.startup
 async def run_every_startup():
     home = os.path.expanduser("~/.config/qtile/saati/startup")
+    subprocess.Popen(["xsetroot", "-cursor_name", "left_ptr"])
     subprocess.Popen([home])
     send_notification("qtile", "Startup")
 

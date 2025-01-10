@@ -8,6 +8,7 @@ clear
 sudo apt install -y zsh\*
 sudo apt install -y ruby
 sudo apt install -y ruby-dev
+sudo apt install -y dunst # notify system
 sudo apt install -y bat
 sudo apt install -y fzf
 sudo apt install -y fish
