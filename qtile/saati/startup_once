@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
+# =========== Variables ===============
 folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-xfsettingsd --daemon -D & disown
-eval "$(which lxqt-policykit-agent)" & disown
-dunst -conf "${folder_of_script}"/dunstrc & disown
-# xfce4-panel -d & disown
-nm-applet & disown
-# eval "$folder_of_script/qtile/saati/keyring.sh" & disown
-oblivion & disown
-nm-tray & disown
-nitrogen --restore & disown
-dropbox start & disown
-# proxychains4-daemon & disown
-firefox & disown
-# gtk-launch discord & disown
-/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox & disown
-# gtk-launch Obsidian.desktop & disown
-blueman-applet & disown
+main_folder="$folder_of_script/../.."
+. "$folder_of_script/helper.sh"
+# ========== Applications =============
+clearLog
+# ============ Startup ================
+msg "Start Loading..."
+run dunst -conf "${main_folder}/dunstrc"
+run xfsettingsd --daemon -D
+ # start polkit agent from lxde (sudo apt install lxpolkit)
+sleep 3 && run dbus-launch lxpolkit
+sleep 3 && runAsRoot dnscrypt-proxy -config "${main_folder}/dnscrypt.toml" 
+# run xfce4-panel -d
+run nm-applet
+# run "$folder_of_script/qtile/saati/keyring.sh"
+run oblivion
+run nm-tray
+run nitrogen --restore
+run dropbox start
+# run proxychains4-daemon
+run firefox
+# run gtk-launch discord
+run "/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage" --no-sandbox
+# run gtk-launch Obsidian.desktop
+run blueman-applet

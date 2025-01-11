@@ -14,11 +14,12 @@ sudo apt install -y fzf
 sudo apt install -y fish
 sudo apt install -y ffmpeg
 sudo apt install -y gnome-keyring
-sudo apt install -y silversearcher-ag
-sudo apt install -y proxychains4
+sudo apt install -y silversearcher-ag # ag (search in contents of files)
+sudo apt install -y proxychains4 # proxify app through your proxy
+sudo apt install -y dnscrypt-proxy # dns over https to hide your dns from isp
 sudo apt install -y aria2
 sudo apt install -y aria2c
-sudo apt install -y lxqt-policykit
+sudo apt install -y lxpolkit
 sudo apt install -y ffmpegthumbnailer
 sudo apt install -y flameshot
 sudo apt install -y chafa
@@ -68,6 +69,16 @@ sudo apt install -y plocate
 sudo apt install -y locate
 sudo apt install -y mlocate
 # sudo gem install colorls vifm
+
+# =======================
+# DNS settings
+# =======================
+sudo systemctl disable --now systemd-resolved
+sudo rm -f /etc/resolv.conf
+sudo touch /etc/resolv.conf
+sudo echo "nameserver 127.0.0.1" > /etc/resolv.conf
+sudo chattr +i /etc/resolv.conf
+# NOTE: in your dwm you must run `pkexec dnscrypt-proxy -config ~/bin/dnscrypt.toml & disown`
 # =======================
 # Check for fd and batcat
 # =======================

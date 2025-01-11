@@ -1,0 +1,106 @@
+
+===========
+       running command "/usr/bin/dunst -conf /home/sdsaati/.config/qtile/saati/../../dunstrc 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/xfsettingsd --daemon -D 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+WARNING: Setting geometry in section global doesn't exist
+WARNING: Setting notification_height in section global doesn't exist
+WARNING: Setting startup_notification in section global doesn't exist
+WARNING: Setting verbosity in section global doesn't exist
+CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1540'.
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:40.808: Failed to grab keycode 33
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:40.809: Failed to grab keycode 107
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:40.810: Failed to grab keycode 218
+Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
+
+===========
+       running command "/usr/bin/dbus-launch lxpolkit 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/pkexec --keep-cwd /usr/sbin/dnscrypt-proxy "-config /home/sdsaati/.config/qtile/saati/../../dnscrypt.toml" 2>>/home/sdsaati/.config/qtile/saati/startup_once.log"       
+===========
+(ERROR) Command 'nm-applet' not found.
+
+===========
+       running command "/home/sdsaati/bin/oblivion  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/nm-tray  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/nitrogen --restore 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/dropbox start 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/sbin/firefox  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox 2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+===========
+       running command "/usr/bin/blueman-applet  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+===========
+
+(nitrogen:1823): GLib-GObject-CRITICAL **: 02:00:47.113: Attempting to freeze the notification queue for object GtkSettings[0x56c4bc442580]; Property notification does not work during instance finalization.
+
+(nitrogen:1823): GLib-GObject-CRITICAL **: 02:00:47.113: Attempting to thaw the notification queue for object GtkSettings[0x56c4bc442580]; Property notification does not work during instance finalization.
+blueman-applet 02.00.47 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+blueman-applet 02.00.47 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/cryptography.hazmat.bindings._openssl.abi3.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/cryptography.hazmat.bindings._padding.abi3.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/apex._apex.abi3.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/psutil._psutil_linux.cpython-38-x86_64-linux-gnu.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/psutil._psutil_posix.cpython-38-x86_64-linux-gnu.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/google._upb._message.cpython-38-x86_64-linux-gnu.so'
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:48.375: Failed to grab keycode 33
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:48.383: Failed to grab keycode 107
+
+(xfsettingsd:1567): libxfce4kbd-private-WARNING **: 02:00:48.384: Failed to grab keycode 218
+[2025-01-12 02:00:49] [NOTICE] dnscrypt-proxy 2.0.45
+[2025-01-12 02:00:49] [NOTICE] Network connectivity detected
+[2025-01-12 02:00:49] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
+[2025-01-12 02:00:49] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
+[2025-01-12 02:00:49] [NOTICE] Source [public-resolvers] loaded
+[2025-01-12 02:00:49] [NOTICE] Firefox workaround initialized
+[2025-01-12 02:00:50] [NOTICE] [google] OK (DoH) - rtt: 54ms
+(rsapi) init loggers
+[2025-01-12 02:00:50] [NOTICE] [cloudflare] OK (DoH) - rtt: 94ms
+[2025-01-12 02:00:50] [NOTICE] Sorted latencies:
+[2025-01-12 02:00:50] [NOTICE] -    54ms google
+[2025-01-12 02:00:50] [NOTICE] -    94ms cloudflare
+[2025-01-12 02:00:50] [NOTICE] Server with the lowest initial latency: google (rtt: 54ms)
+[2025-01-12 02:00:50] [NOTICE] dnscrypt-proxy is ready - live servers: 2
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/tornado.speedups.cpython-38-x86_64-linux-gnu.so'
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/wrapt._wrappers.cpython-38-x86_64-linux-gnu.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/PyQt5.QtCore.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/PyQt5.sip.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/PyQt5.QtGui.so'
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/PyQt5.QtWidgets.so'
+WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-11T22:31:00.279Z"}
+
+dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-214.4.5217/PyQt5.QtDBus.so'
+Warning: terminator_CreateInstance: Failed to CreateInstance in ICD 1.  Skipping ICD.
+[2025-01-12 02:03:08] [NOTICE] Stopped.
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+libva info: VA-API version 1.20.0
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Found init function __vaDriverInit_1_20
+libva info: va_openDriver() returns 0

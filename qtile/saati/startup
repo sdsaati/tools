@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
-picom --config ~/bin/picom/picom.conf & disown
-xgamma -gamma 1.5 & disown
-setxkbmap -option ctrl:nocaps & disown
+# =========== Variables ===============
+folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+main_folder="$folder_of_script/../.."
+. "$folder_of_script/helper.sh"
+clearLog
+# ============ Startup ================
+run picom --config "$main_folder/picom/picom.conf"
+run xgamma -gamma 1.5
+run setxkbmap -option ctrl:nocaps
+msg "Welcome! Everything Loaded."
