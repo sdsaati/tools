@@ -2,6 +2,7 @@
 folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 xfsettingsd --daemon -D & disown
 eval "$(which lxqt-policykit-agent)" & disown
+dunst & disown
 # xfce4-panel -d & disown
 nm-applet & disown
 # eval "$folder_of_script/qtile/saati/keyring.sh" & disown

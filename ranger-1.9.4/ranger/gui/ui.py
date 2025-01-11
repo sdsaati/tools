@@ -1,7 +1,7 @@
 # This file is part of ranger, the console file manager.
 # License: GNU GPL version 3, see the file "AUTHORS" for details.
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
 
 import os
 import sys
@@ -24,17 +24,17 @@ MOUSEMASK = curses.ALL_MOUSE_EVENTS | curses.REPORT_MOUSE_POSITION
 # tsl (to_status_line), so it's hardcoded here. It's used just like tsl,
 # but it sets the icon title (WM_ICON_NAME) instead of the window title
 # (WM_NAME).
-ESCAPE_ICON_TITLE = '\033]1;'
+ESCAPE_ICON_TITLE = "\033]1;"
 
-_ASCII = ''.join(chr(c) for c in range(32, 127))
+_ASCII = "".join(chr(c) for c in range(32, 127))
 
 
 def ascii_only(string):
-    return ''.join(c if c in _ASCII else '?' for c in string)
+    return "".join(c if c in _ASCII else "?" for c in string)
 
 
 def _setup_mouse(signal):
-    if signal['value']:
+    if signal["value"]:
         curses.mousemask(MOUSEMASK)
         curses.mouseinterval(0)
 
@@ -50,8 +50,9 @@ def _setup_mouse(signal):
 
 
 class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-methods
-        DisplayableContainer):
-    ALLOWED_VIEWMODES = 'miller', 'multipane'
+    DisplayableContainer
+):
+    ALLOWED_VIEWMODES = "miller", "multipane"
 
     is_set_up = False
     load_mode = False
@@ -81,14 +82,14 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
             self.fm = fm
 
     def setup_curses(self):
-        os.environ['ESCDELAY'] = '25'   # don't know a cleaner way
+        os.environ["ESCDELAY"] = "25"  # don't know a cleaner way
         try:
             self.win = curses.initscr()
         except curses.error as ex:
             if ex.args[0] == "setupterm: could not find terminal":
-                os.environ['TERM'] = 'linux'
+                os.environ["TERM"] = "linux"
                 self.win = curses.initscr()
-        self.keymaps.use_keymap('browser')
+        self.keymaps.use_keymap("browser")
         DisplayableContainer.__init__(self, None)
 
     def initialize(self):
@@ -110,28 +111,29 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         except curses.error:
             pass
 
-        self.settings.signal_bind('setopt.mouse_enabled', _setup_mouse)
-        self.settings.signal_bind('setopt.freeze_files', self.redraw_statusbar)
+        self.settings.signal_bind("setopt.mouse_enabled", _setup_mouse)
+        self.settings.signal_bind("setopt.freeze_files", self.redraw_statusbar)
         _setup_mouse(dict(value=self.settings.mouse_enabled))
 
         if not self.is_set_up:
             self.is_set_up = True
             self.setup()
             self.win.addstr("loading...")
-            self.win.refresh()
-            self._draw_title = curses.tigetflag('hs')  # has_status_line
+            # self.win.refresh()
+            self._draw_title = curses.tigetflag("hs")  # has_status_line
 
+        self.win.refresh()
         self.update_size()
         self.is_on = True
 
         self.handle_multiplexer()
 
-        if 'vcsthread' in self.__dict__:
+        if "vcsthread" in self.__dict__:
             self.vcsthread.unpause()
 
     def suspend(self):
         """Turn off curses"""
-        if 'vcsthread' in self.__dict__:
+        if "vcsthread" in self.__dict__:
             self.vcsthread.pause()
             self.vcsthread.paused.wait()
 
@@ -141,13 +143,16 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         self.win.keypad(0)
         curses.nocbreak()
         curses.echo()
-        try:
-            curses.curs_set(1)
-        except curses.error:
-            pass
+        # try:
+        #     curses.curs_set(1)
+        # except curses.error:
+        #     pass
         if self.settings.mouse_enabled:
             _setup_mouse(dict(value=False))
-        curses.endwin()
+        try:
+            curses.endwin()
+        except curses.error:
+            pass
         self.is_on = False
 
     def set_load_mode(self, boolean):
@@ -167,10 +172,10 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
 
     def destroy(self):
         """Destroy all widgets and turn off curses"""
-        if 'vcsthread' in self.__dict__:
+        if "vcsthread" in self.__dict__:
             if not self.vcsthread.stop():
-                self.fm.notify('Failed to stop `UI.vcsthread`', bad=True)
-            del self.__dict__['vcsthread']
+                self.fm.notify("Failed to stop `UI.vcsthread`", bad=True)
+            del self.__dict__["vcsthread"]
         DisplayableContainer.destroy(self)
 
         self.restore_multiplexer_name()
@@ -194,7 +199,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
             self.keybuffer.clear()
 
         elif not DisplayableContainer.press(self, key):
-            self.keymaps.use_keymap('browser')
+            self.keymaps.use_keymap("browser")
             self.press(key)
 
     def press(self, key):
@@ -203,8 +208,9 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
 
         keybuffer.add(key)
         self.fm.hide_bookmarks()
-        self.browser.draw_hints = not keybuffer.finished_parsing \
-            and keybuffer.finished_parsing_quantifier
+        self.browser.draw_hints = (
+            not keybuffer.finished_parsing and keybuffer.finished_parsing_quantifier
+        )
 
         if keybuffer.result is not None:
             try:
@@ -228,7 +234,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
     def handle_input(self):  # pylint: disable=too-many-branches
         key = self.win.getch()
         if key == curses.KEY_ENTER:
-            key = ord('\n')
+            key = ord("\n")
         if key == 27 or (key >= 128 and key < 256):
             # Handle special keys like ALT+X or unicode here:
             keys = [key]
@@ -281,7 +287,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         self.add_child(self.titlebar)
 
         # Create the browser view
-        self.settings.signal_bind('setopt.viewmode', self._set_viewmode)
+        self.settings.signal_bind("setopt.viewmode", self._set_viewmode)
         self._viewmode = None
         # The following line sets self.browser implicitly through the signal
         self.viewmode = self.settings.viewmode
@@ -310,6 +316,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
     def vcsthread(self):
         """VCS thread"""
         from ranger.ext.vcs import VcsThread
+
         thread = VcsThread(self)
         thread.start()
         return thread
@@ -360,22 +367,20 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         DisplayableContainer.draw(self)
         if self._draw_title and self.settings.update_title:
             cwd = self.fm.thisdir.path
-            if self.settings.tilde_in_titlebar \
-               and (cwd == self.fm.home_path
-                    or cwd.startswith(self.fm.home_path + "/")):
-                cwd = '~' + cwd[len(self.fm.home_path):]
+            if self.settings.tilde_in_titlebar and (
+                cwd == self.fm.home_path or cwd.startswith(self.fm.home_path + "/")
+            ):
+                cwd = "~" + cwd[len(self.fm.home_path) :]
             if self.settings.shorten_title:
                 split = cwd.rsplit(os.sep, self.settings.shorten_title)
                 if os.sep in split[0]:
                     cwd = os.sep.join(split[1:])
             try:
-                fixed_cwd = cwd.encode('utf-8', 'surrogateescape'). \
-                    decode('utf-8', 'replace')
-                escapes = [
-                    curses.tigetstr('tsl').decode('latin-1'),
-                    ESCAPE_ICON_TITLE
-                ]
-                bel = curses.tigetstr('fsl').decode('latin-1')
+                fixed_cwd = cwd.encode("utf-8", "surrogateescape").decode(
+                    "utf-8", "replace"
+                )
+                escapes = [curses.tigetstr("tsl").decode("latin-1"), ESCAPE_ICON_TITLE]
+                bel = curses.tigetstr("fsl").decode("latin-1")
                 fmt_tups = [(e, fixed_cwd, bel) for e in escapes]
             except UnicodeError:
                 pass
@@ -431,7 +436,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         for column in self.browser.columns:
             column.level_restore()
 
-    def open_console(self, string='', prompt=None, position=None):
+    def open_console(self, string="", prompt=None, position=None):
         if self.console.open(string, prompt=prompt, position=position):
             self.status.msg = None
 
@@ -460,7 +465,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
         self.browser.visible = True
         self.taskview.focused = False
 
-    def throbber(self, string='.', remove=False):
+    def throbber(self, string=".", remove=False):
         if remove:
             self.titlebar.throbber = type(self.titlebar).throbber
         else:
@@ -470,34 +475,34 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
     # GNU Screen and Tmux
     def handle_multiplexer(self):
         if self.settings.update_tmux_title:
-            if 'TMUX' in os.environ:
+            if "TMUX" in os.environ:
                 # Stores the automatic-rename setting
                 # prints out a warning if the allow-rename in tmux is not set
                 tmux_allow_rename = check_output(
-                    ['tmux', 'show-window-options', '-v',
-                     'allow-rename']).strip()
-                if tmux_allow_rename == 'off':
-                    self.fm.notify('Warning: allow-rename not set in Tmux!',
-                                   bad=True)
+                    ["tmux", "show-window-options", "-v", "allow-rename"]
+                ).strip()
+                if tmux_allow_rename == "off":
+                    self.fm.notify("Warning: allow-rename not set in Tmux!", bad=True)
                 elif self._tmux_title is None:
                     self._tmux_title = check_output(
-                        ['tmux', 'display-message', '-p', '#W']).strip()
+                        ["tmux", "display-message", "-p", "#W"]
+                    ).strip()
                 else:
                     try:
                         self._tmux_automatic_rename = check_output(
-                            ['tmux', 'show-window-options', '-v',
-                             'automatic-rename']).strip()
-                        if self._tmux_automatic_rename == 'on':
-                            check_output(['tmux', 'set-window-option',
-                                          'automatic-rename', 'off'])
+                            ["tmux", "show-window-options", "-v", "automatic-rename"]
+                        ).strip()
+                        if self._tmux_automatic_rename == "on":
+                            check_output(
+                                ["tmux", "set-window-option", "automatic-rename", "off"]
+                            )
                     except CalledProcessError:
                         pass
-            elif 'screen' in os.environ['TERM'] and self._screen_title is None:
+            elif "screen" in os.environ["TERM"] and self._screen_title is None:
                 # Stores the screen window name before renaming it
                 # gives out a warning if $TERM is not "screen"
                 try:
-                    self._screen_title = check_output(
-                        ['screen', '-Q', 'title']).strip()
+                    self._screen_title = check_output(["screen", "-Q", "title"]).strip()
                 except CalledProcessError:
                     self._screen_title = None
 
@@ -507,18 +512,24 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
     # Restore window name
     def restore_multiplexer_name(self):
         try:
-            if 'TMUX' in os.environ:
+            if "TMUX" in os.environ:
                 if self._tmux_automatic_rename:
-                    check_output(['tmux', 'set-window-option',
-                                  'automatic-rename',
-                                  self._tmux_automatic_rename])
+                    check_output(
+                        [
+                            "tmux",
+                            "set-window-option",
+                            "automatic-rename",
+                            self._tmux_automatic_rename,
+                        ]
+                    )
                 else:
-                    check_output(['tmux', 'set-window-option', '-u',
-                                  'automatic-rename'])
+                    check_output(
+                        ["tmux", "set-window-option", "-u", "automatic-rename"]
+                    )
                 if self._tmux_title:
-                    check_output(['tmux', 'rename-window', self._tmux_title])
-            elif 'screen' in os.environ['TERM'] and self._screen_title:
-                check_output(['screen', '-X', 'title', self._screen_title])
+                    check_output(["tmux", "rename-window", self._tmux_title])
+            elif "screen" in os.environ["TERM"] and self._screen_title:
+                check_output(["screen", "-X", "title", self._screen_title])
         except CalledProcessError:
             self.fm.notify("Could not restore window-name!", bad=True)
 
@@ -536,7 +547,7 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
     def _set_viewmode(self, value):
         if isinstance(value, Signal):
             value = value.value
-        if value == '':
+        if value == "":
             value = self.ALLOWED_VIEWMODES[0]
         if value in self.ALLOWED_VIEWMODES:
             if self._viewmode != value:
@@ -546,7 +557,12 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
                 if self.browser is None:
                     self.add_child(new_browser)
                 else:
-                    old_size = self.browser.y, self.browser.x, self.browser.hei, self.browser.wid
+                    old_size = (
+                        self.browser.y,
+                        self.browser.x,
+                        self.browser.hei,
+                        self.browser.wid,
+                    )
                     self.replace_child(self.browser, new_browser)
                     self.browser.destroy()
                     new_browser.resize(*old_size)
@@ -554,17 +570,21 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
                 self.browser = new_browser
                 self.redraw_window()
         else:
-            raise ValueError("Attempting to set invalid viewmode `%s`, should "
-                             "be one of `%s`." % (value, "`, `".join(self.ALLOWED_VIEWMODES)))
+            raise ValueError(
+                "Attempting to set invalid viewmode `%s`, should "
+                "be one of `%s`." % (value, "`, `".join(self.ALLOWED_VIEWMODES))
+            )
 
     viewmode = property(_get_viewmode, _set_viewmode)
 
     @staticmethod
     def _viewmode_to_class(viewmode):
-        if viewmode == 'miller':
+        if viewmode == "miller":
             from ranger.gui.widgets.view_miller import ViewMiller
+
             return ViewMiller
-        elif viewmode == 'multipane':
+        elif viewmode == "multipane":
             from ranger.gui.widgets.view_multipane import ViewMultipane
+
             return ViewMultipane
         return None

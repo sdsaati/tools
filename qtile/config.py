@@ -63,12 +63,13 @@ nemo = "nemo"
 opacity = "FF"
 fonts = {
     # "general": "Comic Helvetic Heavy",
-    "general": "MonaSpiceNe Nerd Font Bold",
+    # "general": "MonaSpiceNe Nerd Font Bold",
+    "general": "CaskaydiaCove Nerd Font",
     "generalSize": 15,  # was 16
     "delimiter": "MonaSpiceNe Nerd Font Bold",
     "delimiterSize": 18,
-    "group": "ComicShannsMono Nerd Font Regular",
-    "groupSize": 16,
+    "group": "MonaSpiceNe Nerd Font",
+    "groupSize": 14,
 }
 
 colors = {
