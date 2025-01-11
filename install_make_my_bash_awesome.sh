@@ -314,7 +314,8 @@ tldr --update
 # git clone https://github.com/LazyVim/starter ~/.config/nvim
 # rm -rf ~/.config/nvim/.git
 
-mkdir "${home_folder}"/.config/zellij
+mkdir -p "${home_folder}"/.config/zellij
+mkdir -p "${home_folder}"/.config/dunst
 # ================================================
 # Create symlinks for config files of applications
 # ================================================
@@ -327,6 +328,7 @@ ln -sf "${folder_of_script}"/.SpaceVim "${home_folder}"/.SpaceVim
 ln -sf "${folder_of_script}"/.SpaceVim.d "${home_folder}"/.SpaceVim.d
 ln -sf "${folder_of_script}"/.SpaceVim "${home_folder}"/.config/nvim
 ln -sf "${folder_of_script}"/.alacritty.toml "${home_folder}"/.alacritty.toml
+ln -sf "${folder_of_script}"/dunstrc "${home_folder}"/.config/dunst/dunstrc
 ln -sf "${folder_of_script}"/zellij_config/config.kdl "${home_folder}"/.config/zellij/config.kdl
 sudo ln -sf "${folder_of_script}"/20-tearfree-xorg.conf "/etc/X11/xorg.conf.d/20-tearfree-xorg.conf"
 # ===========================================
