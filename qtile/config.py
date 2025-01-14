@@ -54,6 +54,7 @@ h = "/home/sdsaati/.config/qtile"
 terminal = "xfce4-terminal"  # guess_terminal()
 home_folder = os.path.expanduser("~")
 ranger = os.path.join(home_folder, "bin", "ranger")
+qtile_script_folder = os.path.join(home_folder, "bin", "qtile", "saati")
 fileManager = f"xfce4-terminal -e {ranger}"
 rofi = h + "/saati/rofi.sh combi"
 rofi_web_search = h + "/../rofi/web-search.sh"
@@ -195,6 +196,12 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "d", lazy.spawn(rofi), desc="Runs rofi"),
+    Key(
+        [mod],
+        "c",
+        lazy.spawn(qtile_script_folder + "/calc.sh"),
+        desc="Run Rofi Calculator",
+    ),
     Key([mod], "s", lazy.spawn(rofi_web_search), desc="Runs rofi web searcher"),
     Key(
         [mod],

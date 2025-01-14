@@ -1,3 +1,4 @@
 appimages/
 .env
 Godot_v*
+*.log

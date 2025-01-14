@@ -29,11 +29,11 @@
   # colorscheme = "palenight"
   # colorscheme = "hybrid"
   # colorscheme = "jellybeans"
-  # colorscheme = "ondark"
+  colorscheme = "onedark"
   # colorscheme = "molokai"
   # colorscheme = "material"
   # colorscheme = "dracula"
-  colorscheme = "one"
+  # colorscheme = "one"
   colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
