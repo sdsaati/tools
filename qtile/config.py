@@ -67,10 +67,10 @@ fonts = {
     # "general": "MonaSpiceNe Nerd Font Bold",
     "general": "CaskaydiaCove Nerd Font",
     "generalSize": 15,  # was 16
-    "delimiter": "MonaSpiceNe Nerd Font Bold",
+    "delimiter": "CaskaydiaCove Nerd Font",
     "delimiterSize": 18,
-    "group": "MonaSpiceNe Nerd Font",
-    "groupSize": 14,
+    "group": "CaskaydiaCove Nerd Font",  # MonaSpiceNe Nerd Font
+    "groupSize": 15,
 }
 
 colors = {
@@ -123,7 +123,7 @@ qcolor = {
     "delimiterFg": colors["Lavender"],
     "widgetFg": colors["Base"],
     "groupFg": colors["Base"],
-    "groupBg": [colors["transparent"], colors["Base"], colors["transparent"]],
+    "groupBg": [colors["Black"], colors["Black"], colors["transparent"]],
     "groupInactive": colors["Subtext0"],
     "groupActive": colors["Red"],
     "groupHighLight": colors["Base"],
@@ -441,8 +441,13 @@ screens = [
             margin=[0, 0, 0, 0],
             opacity=0.6,
             name="qitle",
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            border_width=[6, 1, 3, 1],  # Draw top and bottom borders
+            border_color=[
+                colors["transparent"],
+                colors["transparent"],
+                colors["transparent"],
+                colors["transparent"],
+            ],  # Borders are magenta
         ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
@@ -486,7 +491,6 @@ floating_layout = layout.Floating(
         Match(wm_class="steam"),  # steam
         Match(wm_class="dota2"),  # Dota2 game
         Match(wm_class="cs2"),  # Counter Strike 2 game
-        Match(wm_class="mpv"),  # Counter Strike 2 game
         # Match(wm_class="mpv"),  # mpv media player
     ]
 )
