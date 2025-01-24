@@ -119,14 +119,15 @@ class UI(  # pylint: disable=too-many-instance-attributes,too-many-public-method
             self.is_set_up = True
             self.setup()
             self.win.addstr("loading...")
-            # self.win.refresh()
             self._draw_title = curses.tigetflag("hs")  # has_status_line
+            # self.win.refresh()
 
-        self.win.refresh()
         self.update_size()
         self.is_on = True
 
         self.handle_multiplexer()
+
+        self.win.refresh()
 
         if "vcsthread" in self.__dict__:
             self.vcsthread.unpause()
