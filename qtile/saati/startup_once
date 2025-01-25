@@ -22,6 +22,6 @@ run dropbox start
 # run proxychains4-daemon
 run firefox
 # run gtk-launch discord
-run "/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage" --no-sandbox
+# run "/home/sdsaati/Downloads/Logseq-linux-x64-0.10.9.AppImage" --no-sandbox
 # run gtk-launch Obsidian.desktop
 run blueman-applet

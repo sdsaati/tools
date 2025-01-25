@@ -27,7 +27,9 @@
 from decimal import Rounded
 import os
 import subprocess
-from libqtile import bar, layout, qtile, widget, hook
+from libqtile import layout, qtile, widget, hook
+
+# from libqtile import bar
 from libqtile.config import (
     Click,
     Drag,
@@ -41,6 +43,8 @@ from libqtile.config import (
 )
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal, send_notification
+from colors import nord_fox
+from bar1 import bar
 import jdatetime
 
 mod = "mod4"
@@ -55,10 +59,11 @@ terminal = "xfce4-terminal"  # guess_terminal()
 home_folder = os.path.expanduser("~")
 ranger = os.path.join(home_folder, "bin", "ranger")
 qtile_script_folder = os.path.join(home_folder, "bin", "qtile", "saati")
-fileManager = f"xfce4-terminal -e {ranger}"
+fileManager = f"{terminal} -e {ranger}"
 rofi = h + "/saati/rofi.sh combi"
 rofi_web_search = h + "/../rofi/web-search.sh"
 rofi_monitor_layout = h + "/../rofi/monitor_layout.sh"
+logseq = f"{home_folder}/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox"
 nemo = "nemo"
 
 opacity = "FF"
@@ -279,6 +284,7 @@ groups = [
     Group("9", matches=[Match(wm_class="discord")], layout="columns"),
 ]
 
+
 for i in groups:
 
     keys.extend(
@@ -304,9 +310,62 @@ for i in groups:
         ]
     )
 
+#  ____   ____ ____      _  _____ ____ _   _ ____   _    ____  ____
+# / ___| / ___|  _ \    / \|_   _/ ___| | | |  _ \ / \  |  _ \/ ___|
+# \___ \| |   | |_) |  / _ \ | || |   | |_| | |_) / _ \ | | | \___ \
+#  ___) | |___|  _ <  / ___ \| || |___|  _  |  __/ ___ \| |_| |___) |
+# |____/ \____|_| \_\/_/   \_\_| \____|_| |_|_| /_/   \_\____/|____/
+
+
+groups.append(
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "term",
+                f"{fileManager}",
+                width=0.95,
+                height=0.95,
+                x=0.025,
+                y=0.025,
+                opacity=1,
+            ),
+            DropDown(
+                "mixer", "pavucontrol", width=0.4, height=0.6, x=0.3, y=0.1, opacity=1
+            ),
+            DropDown(
+                "logseq",
+                logseq,
+                width=0.9,
+                height=0.9,
+                x=0.05,
+                y=0.05,
+                opacity=1,
+            ),
+            DropDown(
+                "blueman",
+                "blueman-manager",
+                width=0.05,
+                height=0.6,
+                x=0.35,
+                y=0.1,
+                opacity=1,
+            ),
+        ],
+    )
+)
+
+keys.extend(
+    [
+        Key([mod], "F1", lazy.group["scratchpad"].dropdown_toggle("term")),
+        Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("mixer")),
+        Key([mod], "F3", lazy.group["scratchpad"].dropdown_toggle("logseq")),
+        Key([mod], "F4", lazy.group["scratchpad"].dropdown_toggle("blueman")),
+    ]
+)
 layout_theme = {
     "margin": [0, -3, 0, 0],
-    "border_width": 3,
+    "border_width": 2,
     "border_focus_stack": [
         colors["Green"],
         colors["transparent"],
@@ -370,85 +429,86 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                # delimiter(),
-                # widget.CurrentLayout(fmt="{:^13}"),
-                widget.CurrentLayoutIcon(),
-                # delimiter(),
-                widget.GroupBox(
-                    Rounded=True,
-                    font=fonts["group"],
-                    fontsize=fonts["groupSize"],
-                    disable_drag=True,
-                    padding=2,
-                    highlight_method="block",
-                    block_highlight_text_color=qcolor["groupHighLight"],
-                    this_current_screen_border=qcolor["groupHightlightBg"],
-                    active=qcolor["groupActive"],
-                    inactive=qcolor["groupInactive"],
-                    foreground=qcolor["groupFg"],
-                    background=qcolor["groupBg"],
-                ),
-                delimiter("🪶"),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                delimiter(""),
-                widget.Net(
-                    format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}",
-                    foreground=colors["Yellow"],
-                ),
-                # widget.TextBox("default config", name="default"),
-                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                # widget.NetGraph(),
-                delimiter(),
-                widget.NvidiaSensors(
-                    fmt="GPU:{}",
-                    threshold=80,
-                    foreground=qcolor["widgetFg"].replace("#", ""),
-                    foreground_alert="ff6000",
-                ),
-                delimiter("💻"),
-                widget.CPU(foreground=colors["Mauve"]),
-                delimiter("⌨"),
-                widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
-                delimiter(""),
-                widget.Systray(background=colors["Black"], icon_size=24),
-                delimiter(" 🔊"),
-                widget.Volume(foreground=colors["Blue"]),
-                delimiter(" ⏳"),
-                widget.Clock(
-                    format="%I:%M%p ⫷ %a ⫸ %Y-%m-%d", foreground=colors["Pink"]
-                ),
-                delimiter(" 📅"),
-                widget.TextBox(
-                    jdatetime.date.today().strftime("%Y/%m/%d"),
-                    foreground=colors["Green"],
-                ),
-                delimiter(""),
-                widget.QuickExit(default_text="🔐"),
-            ],
-            fonts["generalSize"] + 14,
-            background=qcolor["barBg"],
-            margin=[0, 0, 0, 0],
-            opacity=0.6,
-            name="qitle",
-            border_width=[6, 1, 3, 1],  # Draw top and bottom borders
-            border_color=[
-                colors["transparent"],
-                colors["transparent"],
-                colors["transparent"],
-                colors["transparent"],
-            ],  # Borders are magenta
-        ),
+        top=bar,
+        # top=bar.Bar(
+        #     [
+        #         # delimiter(),
+        #         # widget.CurrentLayout(fmt="{:^13}"),
+        #         widget.CurrentLayoutIcon(),
+        #         # delimiter(),
+        #         widget.GroupBox(
+        #             Rounded=True,
+        #             font=fonts["group"],
+        #             fontsize=fonts["groupSize"],
+        #             disable_drag=True,
+        #             padding=2,
+        #             highlight_method="block",
+        #             block_highlight_text_color=qcolor["groupHighLight"],
+        #             this_current_screen_border=qcolor["groupHightlightBg"],
+        #             active=qcolor["groupActive"],
+        #             inactive=qcolor["groupInactive"],
+        #             foreground=qcolor["groupFg"],
+        #             background=qcolor["groupBg"],
+        #         ),
+        #         delimiter("🪶"),
+        #         widget.Prompt(),
+        #         widget.WindowName(),
+        #         widget.Chord(
+        #             chords_colors={
+        #                 "launch": ("#ff0000", "#ffffff"),
+        #             },
+        #             name_transform=lambda name: name.upper(),
+        #         ),
+        #         delimiter(""),
+        #         widget.Net(
+        #             format="{down:.0f}{down_suffix} ↓↑ {up:.0f}{up_suffix}",
+        #             foreground=colors["Yellow"],
+        #         ),
+        #         # widget.TextBox("default config", name="default"),
+        #         # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+        #         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        #         # widget.StatusNotifier(),
+        #         # widget.NetGraph(),
+        #         delimiter(),
+        #         widget.NvidiaSensors(
+        #             fmt="GPU:{}",
+        #             threshold=80,
+        #             foreground=qcolor["widgetFg"].replace("#", ""),
+        #             foreground_alert="ff6000",
+        #         ),
+        #         delimiter("💻"),
+        #         widget.CPU(foreground=colors["Mauve"]),
+        #         delimiter("⌨"),
+        #         widget.KeyboardLayout(configured_keyboards=["us", "ir"]),
+        #         delimiter(""),
+        #         widget.Systray(background=colors["Black"], icon_size=24),
+        #         delimiter(" 🔊"),
+        #         widget.Volume(foreground=colors["Blue"]),
+        #         delimiter(" ⏳"),
+        #         widget.Clock(
+        #             format="%I:%M%p ⫷ %a ⫸ %Y-%m-%d", foreground=colors["Pink"]
+        #         ),
+        #         delimiter(" 📅"),
+        #         widget.TextBox(
+        #             jdatetime.date.today().strftime("%Y/%m/%d"),
+        #             foreground=colors["Green"],
+        #         ),
+        #         delimiter(""),
+        #         widget.QuickExit(default_text="🔐"),
+        #     ],
+        #     fonts["generalSize"] + 14,
+        #     background=qcolor["barBg"],
+        #     margin=[0, 0, 0, 0],
+        #     opacity=0.6,
+        #     name="qitle",
+        #     border_width=[6, 1, 3, 1],  # Draw top and bottom borders
+        #     border_color=[
+        #         colors["transparent"],
+        #         colors["transparent"],
+        #         colors["transparent"],
+        #         colors["transparent"],
+        #     ],  # Borders are magenta
+        # ),
         # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
         # By default we handle these events delayed to already improve performance, however your system might still be struggling
         # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
@@ -479,6 +539,9 @@ cursor_warp = (
     False  # this makes each time a dialog is opened, your cursor goes to center of it
 )
 floating_layout = layout.Floating(
+    border_normal=nord_fox["bg"],
+    border_focus=nord_fox["blue"],
+    border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -492,7 +555,7 @@ floating_layout = layout.Floating(
         Match(wm_class="dota2"),  # Dota2 game
         Match(wm_class="cs2"),  # Counter Strike 2 game
         # Match(wm_class="mpv"),  # mpv media player
-    ]
+    ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"

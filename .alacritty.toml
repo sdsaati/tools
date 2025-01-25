@@ -1,25 +1,39 @@
+[env]
+testenv="you can use this env key values here"
+
 [window]
-opacity = 0.9
-
-padding.x = 15
-padding.y = 15
-
+opacity = 0.7
+blur = true
+padding.x = 0
+padding.y = 0
 dimensions = { columns = 100, lines = 30 }
+# decorations = "Full" # or "Full"
+#decorations_theme_variant = "None"
 
-# decorations = "Full"
-# decorations_theme_variant = "None"
+[colors]
+transparent_background_colors = true
+primary.foreground = "#888888"
+primary.background = "#222222"
 
 [font]
+normal.style = "Light"
+bold.style = "Medium"
+size = 12.0
+
 # normal.family =      "0xProto Nerd Font Mono"
 # bold.family =        "0xProto Nerd Font Mono"
 # italic.family =      "0xProto Nerd Font Mono"
 # bold_italic.family = "0xProto Nerd Font Mono"
 
-normal.family =      "SeriousShanns Nerd Font Mono"
-bold.family =        "SeriousShanns Nerd Font Mono"
-italic.family =      "SeriousShanns Nerd Font Mono"
-bold_italic.family = "SeriousShanns Nerd Font Mono"
+normal.family =      "CaskaydiaCove Nerd Font"
+bold.family =        "CaskaydiaCove Nerd Font"
+italic.family =      "CaskaydiaCove Nerd Font"
+bold_italic.family = "CaskaydiaCove Nerd Font"
 
+# normal.family =      "SeriousShanns Nerd Font Mono"
+# bold.family =        "SeriousShanns Nerd Font Mono"
+# italic.family =      "SeriousShanns Nerd Font Mono"
+# bold_italic.family = "SeriousShanns Nerd Font Mono"
 
 # normal.family =      "Mononoki Nerd Font Mono"
 # bold.family =        "Mononoki Nerd Font Mono"
@@ -46,8 +60,7 @@ bold_italic.family = "SeriousShanns Nerd Font Mono"
 # italic.family =      "SpaceMono Nerd Font Mono"
 # bold_italic.family = "SpaceMono Nerd Font Mono"
 
-size = 15.0
 
-[shell]
-program = "/usr/bin/fish"
-args = ["-l", "-c", "~/bin/zellij"]
+# [shell]
+# program = "/usr/bin/fish"
+# args = ["-l", "-c", "~/bin/zellij"]
