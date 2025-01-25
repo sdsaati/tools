@@ -285,15 +285,25 @@ groups.append(
         [
             DropDown(
                 "term",
-                f"{fileManager}",
+                [f"{fileManager}"],
                 width=0.95,
                 height=0.95,
                 x=0.025,
                 y=0.025,
                 opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=True,
             ),
             DropDown(
-                "mixer", "pavucontrol", width=0.4, height=0.6, x=0.3, y=0.1, opacity=1
+                "mixer",
+                ["pavucontrol"],
+                width=0.4,
+                height=0.6,
+                x=0.3,
+                y=0.1,
+                opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=True,
             ),
             DropDown(
                 "logseq",
@@ -303,15 +313,19 @@ groups.append(
                 x=0.05,
                 y=0.05,
                 opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=True,
             ),
             DropDown(
                 "blueman",
-                "blueman-manager",
+                ["blueman-manager"],
                 width=0.05,
                 height=0.6,
                 x=0.35,
                 y=0.1,
                 opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=True,
             ),
         ],
     )
@@ -325,6 +339,12 @@ keys.extend(
         Key([mod], "F4", lazy.group["scratchpad"].dropdown_toggle("blueman")),
     ]
 )
+
+#  _        _ __   _____  _   _ _____ ____
+# | |      / \\ \ / / _ \| | | |_   _/ ___|
+# | |     / _ \\ V / | | | | | | | | \___ \
+# | |___ / ___ \| || |_| | |_| | | |  ___) |
+# |_____/_/   \_\_| \___/ \___/  |_| |____/
 # layout_theme = {
 #     "margin": [0, -3, 0, 0],
 #     "border_width": 2,
@@ -336,12 +356,6 @@ keys.extend(
 #     "border_normal": colors["transparent"],
 # }
 
-
-#  _        _ __   _____  _   _ _____ ____
-# | |      / \\ \ / / _ \| | | |_   _/ ___|
-# | |     / _ \\ V / | | | | | | | | \___ \
-# | |___ / ___ \| || |_| | |_| | | |  ___) |
-# |_____/_/   \_\_| \___/ \___/  |_| |____/
 
 layouts = [
     Stack(
