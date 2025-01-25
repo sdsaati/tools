@@ -9,6 +9,11 @@ function! startup#before() abort
   nnoremap # #N
   set ignorecase
   set smartcase
+  " =====[[ transparent bg========
+  autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+  " For Vim<8, replace EndOfBuffer by NonText
+  autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+  " =====transparent bg ]]========
 
 " makes scroll of documentation of lsp be ctrl+j and ctrl+k
 nmap <C-j> <C-f>
