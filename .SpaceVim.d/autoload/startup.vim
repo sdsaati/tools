@@ -10,9 +10,12 @@ function! startup#before() abort
   set ignorecase
   set smartcase
   " =====[[ transparent bg========
-  autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+  autocmd vimenter * highlight Normal guibg=none
+  autocmd vimenter * highlight NonText guibg=none
+  autocmd vimenter * highlight Normal ctermbg=none
+  autocmd vimenter * highlight NonText ctermbg=none
   " For Vim<8, replace EndOfBuffer by NonText
-  autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+  autocmd vimenter * highlight EndOfBuffer guibg=NONE ctermbg=none
   " =====transparent bg ]]========
 
 " makes scroll of documentation of lsp be ctrl+j and ctrl+k
@@ -29,7 +32,7 @@ call feedkeys("\<space>wl")
 " makes selected line be always at the center of screen
 :set scrolloff=3 
 
-call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
+" call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
 endfunction
 function! startup#after() abort
   " here we can run our vim stuff (sdsaati):

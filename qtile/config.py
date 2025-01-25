@@ -69,6 +69,7 @@ rofi = h + "/saati/rofi.sh combi"
 rofi_web_search = h + "/../rofi/web-search.sh"
 rofi_monitor_layout = h + "/../rofi/monitor_layout.sh"
 logseq = f"{home_folder}/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox"
+thunderbird = f"{home_folder}/Downloads/thunderbird/thunderbird"
 nemo = "nemo"
 
 fonts = {
@@ -235,7 +236,7 @@ keys = [
 
 
 groups = [
-    Group("1", matches=[Match(wm_class="firefox")], layout="columns"),
+    Group("1", layout="columns"),
     Group("2", layout="columns"),
     Group("3", matches=[Match(wm_class="logseq")], layout="columns"),
     Group("4"),
@@ -327,6 +328,28 @@ groups.append(
                 on_focus_lost_hide=True,
                 warp_pointer=True,
             ),
+            DropDown(
+                "mail",
+                thunderbird,
+                width=0.9,
+                height=0.9,
+                x=0.05,
+                y=0.05,
+                opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=True,
+            ),
+            DropDown(
+                "chatgpt",
+                "firefox --new-window https://chatgpt.com",
+                width=0.8,
+                height=0.8,
+                x=0.05,
+                y=0.05,
+                opacity=1,
+                on_focus_lost_hide=True,
+                warp_pointer=False,
+            ),
         ],
     )
 )
@@ -337,6 +360,8 @@ keys.extend(
         Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("mixer")),
         Key([mod], "F3", lazy.group["scratchpad"].dropdown_toggle("logseq")),
         Key([mod], "F4", lazy.group["scratchpad"].dropdown_toggle("blueman")),
+        Key([mod], "F11", lazy.group["scratchpad"].dropdown_toggle("chatgpt")),
+        Key([mod], "F12", lazy.group["scratchpad"].dropdown_toggle("mail")),
     ]
 )
 

@@ -74,11 +74,11 @@
 [[layers]]
   name = "tools#cpicker"
 
-[[layers]]
-  name = 'autocomplete'
-  auto-completion-delay = 10
-  auto_completion_return_key_behavior = "smart"
-  auto_completion_tab_key_behavior = "smart"
+# [[layers]]
+#   name = 'autocomplete'
+#   auto-completion-delay = 10
+#   auto_completion_return_key_behavior = "smart"
+#   auto_completion_tab_key_behavior = "smart"
 
 [[layers]]
   name = 'shell'
@@ -149,6 +149,10 @@
 
 [[custom_plugins]] 
   repo = "lilydjwg/colorizer"
+
+[[layers]]
+name = "ctrlspace"
+
 
 #[[custom_plugins]]
 # this plugin bring tgpt ai into nvim

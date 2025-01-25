@@ -17,7 +17,8 @@ run nm-applet
 # run "$folder_of_script/qtile/saati/keyring.sh"
 run oblivion
 run nm-tray
-run volumeicon
+# run volumeicon # this uses alsa
+run pasystray
 run nitrogen --restore
 run dropbox start
 # run proxychains4-daemon

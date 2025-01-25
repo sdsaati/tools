@@ -10,13 +10,13 @@ WARNING: Setting geometry in section global doesn't exist
 WARNING: Setting notification_height in section global doesn't exist
 WARNING: Setting startup_notification in section global doesn't exist
 WARNING: Setting verbosity in section global doesn't exist
-CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '16277'.
+CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1533'.
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:10.692: Failed to grab keycode 33
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:29.268: Failed to grab keycode 33
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:10.694: Failed to grab keycode 107
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:29.270: Failed to grab keycode 107
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:10.694: Failed to grab keycode 218
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:29.271: Failed to grab keycode 218
 Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
 
 ===========
@@ -37,7 +37,7 @@ Failed to connect to session manager: Failed to connect to the session manager: 
 ===========
 
 ===========
-       running command "/usr/bin/volumeicon  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
+       running command "/usr/bin/pasystray  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
 ===========
 
 ===========
@@ -56,36 +56,38 @@ Failed to connect to session manager: Failed to connect to the session manager: 
        running command "/usr/bin/blueman-applet  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
 ===========
 
-(nitrogen:16346): GLib-GObject-CRITICAL **: 10:38:16.734: Attempting to freeze the notification queue for object GtkSettings[0x5cc63de21c30]; Property notification does not work during instance finalization.
+(nitrogen:1755): GLib-GObject-CRITICAL **: 13:53:34.892: Attempting to freeze the notification queue for object GtkSettings[0x5b5af5c1ffd0]; Property notification does not work during instance finalization.
 
-(nitrogen:16346): GLib-GObject-CRITICAL **: 10:38:16.734: Attempting to thaw the notification queue for object GtkSettings[0x5cc63de21c30]; Property notification does not work during instance finalization.
-blueman-applet 10.38.17 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+(nitrogen:1755): GLib-GObject-CRITICAL **: 13:53:34.892: Attempting to thaw the notification queue for object GtkSettings[0x5b5af5c1ffd0]; Property notification does not work during instance finalization.
+
+(pasystray:1752): Gdk-CRITICAL **: 13:53:35.319: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
+blueman-applet 13.53.35 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+blueman-applet 13.53.35 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._openssl.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._padding.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/apex._apex.abi3.so'
-blueman-applet 10.38.17 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_linux.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_posix.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/google._upb._message.cpython-38-x86_64-linux-gnu.so'
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:17.915: Failed to grab keycode 33
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:36.233: Failed to grab keycode 33
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:17.919: Failed to grab keycode 107
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:36.236: Failed to grab keycode 107
 
-(xfsettingsd:16304): libxfce4kbd-private-WARNING **: 10:38:17.925: Failed to grab keycode 218
-[2025-01-25 10:38:18] [NOTICE] dnscrypt-proxy 2.0.45
-[2025-01-25 10:38:18] [NOTICE] Network connectivity detected
-[2025-01-25 10:38:18] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
-[2025-01-25 10:38:18] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
-[2025-01-25 10:38:18] [NOTICE] Source [public-resolvers] loaded
-[2025-01-25 10:38:18] [NOTICE] Firefox workaround initialized
-[2025-01-25 10:38:18] [NOTICE] [google] OK (DoH) - rtt: 48ms
-[2025-01-25 10:38:19] [NOTICE] [cloudflare] OK (DoH) - rtt: 111ms
-[2025-01-25 10:38:19] [NOTICE] Sorted latencies:
-[2025-01-25 10:38:19] [NOTICE] -    48ms google
-[2025-01-25 10:38:19] [NOTICE] -   111ms cloudflare
-[2025-01-25 10:38:19] [NOTICE] Server with the lowest initial latency: google (rtt: 48ms)
-[2025-01-25 10:38:19] [NOTICE] dnscrypt-proxy is ready - live servers: 2
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 13:53:36.241: Failed to grab keycode 218
+[2025-01-25 13:53:36] [NOTICE] dnscrypt-proxy 2.0.45
+[2025-01-25 13:53:36] [NOTICE] Network connectivity detected
+[2025-01-25 13:53:36] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
+[2025-01-25 13:53:36] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
+[2025-01-25 13:53:36] [NOTICE] Source [public-resolvers] loaded
+[2025-01-25 13:53:36] [NOTICE] Firefox workaround initialized
+[2025-01-25 13:53:37] [NOTICE] [google] OK (DoH) - rtt: 56ms
+[2025-01-25 13:53:37] [NOTICE] [cloudflare] OK (DoH) - rtt: 99ms
+[2025-01-25 13:53:37] [NOTICE] Sorted latencies:
+[2025-01-25 13:53:37] [NOTICE] -    56ms google
+[2025-01-25 13:53:37] [NOTICE] -    99ms cloudflare
+[2025-01-25 13:53:37] [NOTICE] Server with the lowest initial latency: google (rtt: 56ms)
+[2025-01-25 13:53:37] [NOTICE] dnscrypt-proxy is ready - live servers: 2
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/tornado.speedups.cpython-38-x86_64-linux-gnu.so'
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/wrapt._wrappers.cpython-38-x86_64-linux-gnu.so'
@@ -94,18 +96,107 @@ dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtGui.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtWidgets.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtDBus.so'
-WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-25T07:08:29.293Z"}
+WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-25T10:24:10.139Z"}
 
 libva info: VA-API version 1.20.0
 libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
 libva info: Found init function __vaDriverInit_1_20
 libva info: va_openDriver() returns 0
 [ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
 
-(xfsettingsd:16304): xfconf-WARNING **: 10:45:47.155: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.118: Failed to grab keycode 107
 
-(xfsettingsd:16304): xfconf-WARNING **: 10:46:27.693: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.119: Failed to grab keycode 218
 
-(xfsettingsd:16304): xfconf-WARNING **: 10:46:51.222: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.121: Failed to grab keycode 107
 
-(xfsettingsd:16304): xfconf-WARNING **: 10:52:18.099: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.124: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.125: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.126: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.128: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.130: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.132: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.132: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.133: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.133: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.133: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.133: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.134: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.134: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.134: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.135: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.135: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:00:41.135: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.793: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.794: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.795: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.795: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.796: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.796: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.797: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.797: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.801: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.801: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.802: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.802: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.803: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.805: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.809: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.809: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.810: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.810: Failed to grab keycode 218
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.810: Failed to grab keycode 107
+
+(xfsettingsd:1561): libxfce4kbd-private-WARNING **: 17:01:22.810: Failed to grab keycode 218
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[2025-01-25 17:53:38] [NOTICE] Sorted latencies:
+[2025-01-25 17:53:38] [NOTICE] -    50ms google
+[2025-01-25 17:53:38] [NOTICE] -   203ms cloudflare
+[2025-01-25 17:53:38] [NOTICE] Server with the lowest initial latency: google (rtt: 50ms)
+
+(xfsettingsd:1561): xfconf-WARNING **: 17:57:08.771: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+
+(xfsettingsd:1561): xfconf-WARNING **: 17:57:32.430: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+
+(xfsettingsd:1561): xfconf-WARNING **: 17:58:12.818: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+
+(xfsettingsd:1561): xfconf-WARNING **: 17:59:14.301: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
