@@ -28,6 +28,11 @@ from decimal import Rounded
 import os
 import subprocess
 from libqtile import layout, qtile, widget, hook
+from libqtile.layout.columns import Columns
+from libqtile.layout.verticaltile import VerticalTile
+from libqtile.layout.xmonad import MonadTall
+from libqtile.layout.stack import Stack
+from libqtile.layout.floating import Floating
 
 # from libqtile import bar
 from libqtile.config import (
@@ -43,7 +48,7 @@ from libqtile.config import (
 )
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal, send_notification
-from colors import nord_fox
+from colors import *
 from bar1 import bar
 import jdatetime
 
@@ -66,7 +71,6 @@ rofi_monitor_layout = h + "/../rofi/monitor_layout.sh"
 logseq = f"{home_folder}/Downloads/Logseq-linux-x64-0.10.9.AppImage --no-sandbox"
 nemo = "nemo"
 
-opacity = "FF"
 fonts = {
     # "general": "Comic Helvetic Heavy",
     # "general": "MonaSpiceNe Nerd Font Bold",
@@ -78,36 +82,6 @@ fonts = {
     "groupSize": 15,
 }
 
-colors = {
-    "transparent": "#00000000",
-    "Rosewater": "#dc8a78" + opacity,
-    "Flamingo": "#dd7878" + opacity,
-    "Pink": "#ea76cb" + opacity,
-    "Mauve": "#8839ef" + opacity,
-    "Red": "#d20f39" + opacity,
-    "Maroon": "#e64553" + opacity,
-    "Peach": "#fe640b" + opacity,
-    "Yellow": "#df8e1d" + opacity,
-    "Green": "#40a02b" + opacity,
-    "Teal": "#179299" + opacity,
-    "Sky": "#04a5e5",
-    "Sapphire": "#209fb5",
-    "Blue": "#1e66f5",
-    "Lavender": "#7287fd",
-    "Text": "#4c4f69",
-    "Subtext1": "#5c5f77",
-    "Subtext0": "#6c6f85",
-    "Overlay2": "#7c7f93",
-    "Overlay1": "#8c8fa1",
-    "Overlay0": "#9ca0b0",
-    "Surface2": "#acb0be",
-    "Surface1": "#bcc0cc",
-    "Surface0": "#ccd0da",
-    "Base": "#eff1f5",
-    "Mantle": "#e6e9ef",
-    "Crust": "#dce0e8",
-    "Black": "#000000",
-}
 # qcolor = {
 #    "windowBorderActive": colors["Mauve"],
 #    "windowBorderInactive": colors["Crust"],
@@ -121,19 +95,7 @@ colors = {
 #    "groupHighLight": colors["Base"],
 #    "groupHightlightBg": colors["Blue"],
 # }
-qcolor = {
-    "windowBorderActive": colors["Peach"],
-    "windowBorderInactive": colors["transparent"],
-    "barBg": [colors["Black"], colors["Black"], colors["Black"]],
-    "delimiterFg": colors["Lavender"],
-    "widgetFg": colors["Base"],
-    "groupFg": colors["Base"],
-    "groupBg": [colors["Black"], colors["Black"], colors["transparent"]],
-    "groupInactive": colors["Subtext0"],
-    "groupActive": colors["Red"],
-    "groupHighLight": colors["Base"],
-    "groupHightlightBg": colors["Blue"],
-}
+
 
 # #######################
 # ALL the key shortcuts:
@@ -363,36 +325,58 @@ keys.extend(
         Key([mod], "F4", lazy.group["scratchpad"].dropdown_toggle("blueman")),
     ]
 )
-layout_theme = {
-    "margin": [0, -3, 0, 0],
-    "border_width": 2,
-    "border_focus_stack": [
-        colors["Green"],
-        colors["transparent"],
-    ],
-    "border_focus": colors["Green"],
-    "border_normal": colors["transparent"],
-}
+# layout_theme = {
+#     "margin": [0, -3, 0, 0],
+#     "border_width": 2,
+#     "border_focus_stack": [
+#         colors["Green"],
+#         colors["transparent"],
+#     ],
+#     "border_focus": colors["Green"],
+#     "border_normal": colors["transparent"],
+# }
+
+
+#  _        _ __   _____  _   _ _____ ____
+# | |      / \\ \ / / _ \| | | |_   _/ ___|
+# | |     / _ \\ V / | | | | | | | | \___ \
+# | |___ / ___ \| || |_| | |_| | | |  ___) |
+# |_____/_/   \_\_| \___/ \___/  |_| |____/
 
 layouts = [
-    # layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
-    layout.Columns(**layout_theme),
-    # layout.MonadTall(
-    #     border_width=3,
-    #     border_focus=colors["Green"],
-    #     border_normal=colors["transparent"],
-    # ),
-    layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
-    # layout.Bsp(**layout_theme),
-    # layout.Matrix(**layout_theme),
-    # layout.MonadWide(**layout_theme),
-    # layout.RatioTile(),
-    # layout.Tile(**layout_theme),
-    # layout.TreeTab(**layout_theme),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+    Stack(
+        border_normal=nord_fox["black"],
+        border_focus=nord_fox["cyan"],
+        border_width=2,
+        num_stacks=1,
+        margin=10,
+    ),
+    MonadTall(
+        border_normal=nord_fox["black"],
+        border_focus=nord_fox["cyan"],
+        margin=10,
+        border_width=2,
+        single_border_width=2,
+        single_margin=10,
+    ),
+    Columns(
+        border_normal=nord_fox["black"],
+        border_focus=nord_fox["cyan"],
+        border_width=2,
+        border_normal_stack=nord_fox["black"],
+        border_focus_stack=nord_fox["cyan"],
+        border_on_single=2,
+        margin=8,
+        margin_on_single=10,
+    ),
+    VerticalTile(
+        border_normal=nord_fox["black"],
+        border_focus=nord_fox["cyan"],
+        border_width=2,
+        border_on_single=2,
+        margin=8,
+        margin_on_single=10,
+    ),
 ]
 
 

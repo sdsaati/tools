@@ -10,9 +10,11 @@ from libqtile.widget.spacer import Spacer
 from libqtile.widget.systray import Systray
 from libqtile.widget.window_count import WindowCount
 from libqtile.widget.windowname import WindowName
+from libqtile.widget.textbox import TextBox
 
 from unicodes import left_half_circle, right_arrow, left_arrow, right_half_circle
-from colors import nord_fox
+from colors import *
+import jdatetime
 
 BAR_HEIGHT = 28
 BAR_MARGIN = 0
@@ -66,10 +68,15 @@ bar = Bar(
         left_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),
         Systray(background=nord_fox["fg_gutter"]),
         right_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),
+        TextBox(
+            " " + jdatetime.date.today().strftime("%Y/%m/%d"),
+            background=nord_fox["black"],
+            foreground=nord_fox["yellow"],
+        ),
         Clock(
             background=nord_fox["black"],
             foreground=nord_fox["white"],
-            format=" %Y-%m-%d %a %I:%M %p",
+            format="%Y-%m-%d %a %I:%M %p",
         ),
     ],
     # background=nord_fox['bg'],

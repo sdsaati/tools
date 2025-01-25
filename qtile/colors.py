@@ -1,3 +1,5 @@
+opacity = "FF"
+
 nord_fox = {
     "bg": "#2e3440",
     "fg": "#b9bfca",
@@ -58,3 +60,48 @@ gruvbox = {
 #     'dark-gray':    '#3d3d3d',
 #     'gray':         '#666666',
 # }
+
+colors = {
+    "transparent": "#00000000",
+    "Rosewater": "#dc8a78" + opacity,
+    "Flamingo": "#dd7878" + opacity,
+    "Pink": "#ea76cb" + opacity,
+    "Mauve": "#8839ef" + opacity,
+    "Red": "#d20f39" + opacity,
+    "Maroon": "#e64553" + opacity,
+    "Peach": "#fe640b" + opacity,
+    "Yellow": "#df8e1d" + opacity,
+    "Green": "#40a02b" + opacity,
+    "Teal": "#179299" + opacity,
+    "Sky": "#04a5e5",
+    "Sapphire": "#209fb5",
+    "Blue": "#1e66f5",
+    "Lavender": "#7287fd",
+    "Text": "#4c4f69",
+    "Subtext1": "#5c5f77",
+    "Subtext0": "#6c6f85",
+    "Overlay2": "#7c7f93",
+    "Overlay1": "#8c8fa1",
+    "Overlay0": "#9ca0b0",
+    "Surface2": "#acb0be",
+    "Surface1": "#bcc0cc",
+    "Surface0": "#ccd0da",
+    "Base": "#eff1f5",
+    "Mantle": "#e6e9ef",
+    "Crust": "#dce0e8",
+    "Black": "#000000",
+}
+
+qcolor = {
+    "windowBorderActive": colors["Peach"],
+    "windowBorderInactive": colors["transparent"],
+    "barBg": [colors["Black"], colors["Black"], colors["Black"]],
+    "delimiterFg": colors["Lavender"],
+    "widgetFg": colors["Base"],
+    "groupFg": colors["Base"],
+    "groupBg": [colors["Black"], colors["Black"], colors["transparent"]],
+    "groupInactive": colors["Subtext0"],
+    "groupActive": colors["Red"],
+    "groupHighLight": colors["Base"],
+    "groupHightlightBg": colors["Blue"],
+}
