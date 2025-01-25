@@ -13,6 +13,7 @@ sudo apt install -y bat
 sudo apt install -y fzf
 sudo apt install -y fish
 sudo apt install -y ffmpeg
+sudo apt install -y volumeicon-alsa # systray icon for sound
 sudo apt install -y gnome-keyring
 sudo apt install -y silversearcher-ag # ag (search in contents of files)
 sudo apt install -y proxychains4 # proxify app through your proxy

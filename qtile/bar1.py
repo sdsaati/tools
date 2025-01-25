@@ -11,6 +11,7 @@ from libqtile.widget.systray import Systray
 from libqtile.widget.window_count import WindowCount
 from libqtile.widget.windowname import WindowName
 from libqtile.widget.textbox import TextBox
+from libqtile.widget.keyboardlayout import KeyboardLayout
 
 from unicodes import left_half_circle, right_arrow, left_arrow, right_half_circle
 from colors import *
@@ -65,6 +66,12 @@ bar = Bar(
         # #     background=gruvbox['fg3'],
         # #     format='{char} {percent:2.0%} {hour:d}:{min:02d}'
         # # ),
+        KeyboardLayout(
+            configured_keyboards=["us", "ir"],
+            background=nord_fox["black"],
+            foreground=nord_fox["white"],
+            display_map={"us": "US ", "ir": "IR "},
+        ),
         left_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),
         Systray(background=nord_fox["fg_gutter"]),
         right_half_circle(nord_fox["fg_gutter"], nord_fox["black"]),

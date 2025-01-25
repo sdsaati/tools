@@ -285,7 +285,7 @@ groups.append(
         [
             DropDown(
                 "term",
-                [f"{fileManager}"],
+                f"{fileManager}",
                 width=0.95,
                 height=0.95,
                 x=0.025,
@@ -296,7 +296,7 @@ groups.append(
             ),
             DropDown(
                 "mixer",
-                ["pavucontrol"],
+                "pavucontrol",
                 width=0.4,
                 height=0.6,
                 x=0.3,
@@ -318,7 +318,7 @@ groups.append(
             ),
             DropDown(
                 "blueman",
-                ["blueman-manager"],
+                "blueman-manager",
                 width=0.05,
                 height=0.6,
                 x=0.35,
