@@ -112,3 +112,27 @@ WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
 
 (xfsettingsd:1542): xfconf-WARNING **: 15:46:26.050: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+pasystray-Message: 16:53:37.665: Failed to get source information: No such entity
+[2025-01-26 17:03:13] [NOTICE] Sorted latencies:
+[2025-01-26 17:03:13] [NOTICE] -    49ms google
+[2025-01-26 17:03:13] [NOTICE] -   100ms cloudflare
+[2025-01-26 17:03:13] [NOTICE] Server with the lowest initial latency: google (rtt: 49ms)
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+pasystray-Message: 18:53:06.195: Failed to get source information: No such entity
+libva info: VA-API version 1.20.0
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Found init function __vaDriverInit_1_20
+libva info: va_openDriver() returns 0
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+pasystray-Message: 19:06:13.296: Failed to get source information: No such entity
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[2025-01-26 21:03:14] [NOTICE] Sorted latencies:
+[2025-01-26 21:03:14] [NOTICE] -    51ms google
+[2025-01-26 21:03:14] [NOTICE] -   102ms cloudflare
+[2025-01-26 21:03:14] [NOTICE] Server with the lowest initial latency: google (rtt: 51ms)
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting

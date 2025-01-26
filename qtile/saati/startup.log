@@ -12,4 +12,4 @@
 ===========
 -> Red  1.500, Green  1.500, Blue  1.500
 <- Red  1.500, Green  1.500, Blue  1.500
-[ 01/26/2025 15:46:28.220 session_init FATAL ERROR ] Another composite manager is already running
+[ 01/27/2025 00:17:51.613 session_init FATAL ERROR ] Another composite manager is already running

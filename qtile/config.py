@@ -341,7 +341,7 @@ groups.append(
             ),
             DropDown(
                 "chatgpt",
-                'microsoft-edge --proxy-server="socks5://127.0.0.1:8086" --app=https://chatgpt.com',
+                'microsoft-edge --proxy-server="socks5://127.0.0.1:8086" --app=https://chat.deepseek.com/',
                 width=0.9,
                 height=0.9,
                 x=0.05,
