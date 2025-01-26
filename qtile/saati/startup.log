@@ -6,10 +6,10 @@
 ===========
        running command "/usr/bin/xgamma -gamma 1.5 2>>/home/sdsaati/.config/qtile/saati/startup.log & "      
 ===========
--> Red  1.500, Green  1.500, Blue  1.500
 
 ===========
        running command "/usr/bin/setxkbmap -option ctrl:nocaps 2>>/home/sdsaati/.config/qtile/saati/startup.log & "      
 ===========
+-> Red  1.500, Green  1.500, Blue  1.500
 <- Red  1.500, Green  1.500, Blue  1.500
-[ 01/25/2025 18:01:55.295 session_init FATAL ERROR ] Another composite manager is already running
+[ 01/26/2025 15:46:28.220 session_init FATAL ERROR ] Another composite manager is already running

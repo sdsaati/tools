@@ -18,6 +18,7 @@
   enable_vimfiler_welcome = true
   filetree_direction = "left"
   search_highlight_persist=true
+  enable_persist_flygrep = true
 # set spacevim theme. by default colorscheme layer is not loaded,
 # if you want to use more colorscheme, please load the colorscheme
 # layer

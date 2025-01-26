@@ -10,10 +10,10 @@ function! startup#before() abort
   set ignorecase
   set smartcase
   " =====[[ transparent bg========
-  autocmd vimenter * highlight Normal guibg=none
-  autocmd vimenter * highlight NonText guibg=none
-  autocmd vimenter * highlight Normal ctermbg=none
-  autocmd vimenter * highlight NonText ctermbg=none
+  autocmd vimenter * highlight Normal guibg=NONE
+  autocmd vimenter * highlight NonText guibg=NONE
+  autocmd vimenter * highlight Normal ctermbg=NONE
+  autocmd vimenter * highlight NonText ctermbg=NONE
   " For Vim<8, replace EndOfBuffer by NonText
   autocmd vimenter * highlight EndOfBuffer guibg=NONE ctermbg=none
   " =====transparent bg ]]========
