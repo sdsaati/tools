@@ -329,6 +329,9 @@ tldr --update
 # git clone https://github.com/LazyVim/starter ~/.config/nvim
 # rm -rf ~/.config/nvim/.git
 
+# hide firefox tab bar
+"${folder_of_script}"/hide_tabs_in_firefox.sh
+
 mkdir -p "${home_folder}"/.config/zellij
 mkdir -p "${home_folder}"/.config/dunst
 # ================================================

@@ -10,13 +10,13 @@ WARNING: Setting geometry in section global doesn't exist
 WARNING: Setting notification_height in section global doesn't exist
 WARNING: Setting startup_notification in section global doesn't exist
 WARNING: Setting verbosity in section global doesn't exist
-CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1511'.
+CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1525'.
 
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:03.619: Failed to grab keycode 33
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:25:17.815: Failed to grab keycode 33
 
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:03.621: Failed to grab keycode 107
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:25:17.817: Failed to grab keycode 107
 
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:03.621: Failed to grab keycode 218
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:25:17.817: Failed to grab keycode 218
 Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
 
 ===========
@@ -56,38 +56,19 @@ Failed to connect to session manager: Failed to connect to the session manager: 
        running command "/usr/bin/blueman-applet  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
 ===========
 
-(nitrogen:1754): GLib-GObject-CRITICAL **: 13:03:09.278: Attempting to freeze the notification queue for object GtkSettings[0x61255c69d9c0]; Property notification does not work during instance finalization.
+(nitrogen:1759): GLib-GObject-CRITICAL **: 11:25:23.587: Attempting to freeze the notification queue for object GtkSettings[0x59cdb4cdaec0]; Property notification does not work during instance finalization.
 
-(nitrogen:1754): GLib-GObject-CRITICAL **: 13:03:09.278: Attempting to thaw the notification queue for object GtkSettings[0x61255c69d9c0]; Property notification does not work during instance finalization.
+(nitrogen:1759): GLib-GObject-CRITICAL **: 11:25:23.587: Attempting to thaw the notification queue for object GtkSettings[0x59cdb4cdaec0]; Property notification does not work during instance finalization.
 
-(pasystray:1751): Gdk-CRITICAL **: 13:03:09.583: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
-blueman-applet 13.03.09 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
-blueman-applet 13.03.09 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
+(pasystray:1756): Gdk-CRITICAL **: 11:25:23.826: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
+blueman-applet 11.25.23 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+blueman-applet 11.25.23 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._openssl.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._padding.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/apex._apex.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_linux.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_posix.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/google._upb._message.cpython-38-x86_64-linux-gnu.so'
-
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:10.768: Failed to grab keycode 33
-
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:10.768: Failed to grab keycode 107
-
-(xfsettingsd:1542): libxfce4kbd-private-WARNING **: 13:03:10.771: Failed to grab keycode 218
-[2025-01-26 13:03:11] [NOTICE] dnscrypt-proxy 2.0.45
-[2025-01-26 13:03:11] [NOTICE] Network connectivity detected
-[2025-01-26 13:03:11] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
-[2025-01-26 13:03:11] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
-[2025-01-26 13:03:11] [NOTICE] Source [public-resolvers] loaded
-[2025-01-26 13:03:11] [NOTICE] Firefox workaround initialized
-[2025-01-26 13:03:11] [NOTICE] [google] OK (DoH) - rtt: 49ms
-[2025-01-26 13:03:12] [NOTICE] [cloudflare] OK (DoH) - rtt: 98ms
-[2025-01-26 13:03:12] [NOTICE] Sorted latencies:
-[2025-01-26 13:03:12] [NOTICE] -    49ms google
-[2025-01-26 13:03:12] [NOTICE] -    98ms cloudflare
-[2025-01-26 13:03:12] [NOTICE] Server with the lowest initial latency: google (rtt: 49ms)
-[2025-01-26 13:03:12] [NOTICE] dnscrypt-proxy is ready - live servers: 2
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/tornado.speedups.cpython-38-x86_64-linux-gnu.so'
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/wrapt._wrappers.cpython-38-x86_64-linux-gnu.so'
@@ -96,43 +77,521 @@ dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtGui.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtWidgets.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtDBus.so'
-WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-26T09:33:42.161Z"}
 
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[1940:0126/144912.436359:ERROR:ssl_client_socket_impl.cc(878)] handshake failed; returned -1, SSL error code 1, net_error -100
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-26T11:31:11.975Z"}
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:32:09.870: Failed to grab keycode 33
 
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:32:09.871: Failed to grab keycode 107
 
-(xfsettingsd:1542): xfconf-WARNING **: 15:46:26.050: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 11:32:09.871: Failed to grab keycode 218
+[2025-01-27 11:32:17] [NOTICE] dnscrypt-proxy 2.0.45
+[2025-01-27 11:32:17] [NOTICE] Network connectivity detected
+[2025-01-27 11:32:17] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
+[2025-01-27 11:32:17] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
+[2025-01-27 11:32:17] [NOTICE] Source [public-resolvers] loaded
+[2025-01-27 11:32:17] [NOTICE] Firefox workaround initialized
+[2025-01-27 11:32:18] [NOTICE] [google] OK (DoH) - rtt: 50ms
+[2025-01-27 11:32:18] [NOTICE] [cloudflare] OK (DoH) - rtt: 91ms
+[2025-01-27 11:32:18] [NOTICE] Sorted latencies:
+[2025-01-27 11:32:18] [NOTICE] -    50ms google
+[2025-01-27 11:32:18] [NOTICE] -    91ms cloudflare
+[2025-01-27 11:32:18] [NOTICE] Server with the lowest initial latency: google (rtt: 50ms)
+[2025-01-27 11:32:18] [NOTICE] dnscrypt-proxy is ready - live servers: 2
+WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-27T08:31:57.451Z"}
+
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.085: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.086: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.087: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.087: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.088: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.089: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.090: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.091: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.092: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.092: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.093: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.094: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.095: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.095: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.096: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.102: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.102: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.103: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.104: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:02:34.105: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.228: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.228: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.229: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.230: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.230: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.231: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.232: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.232: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.233: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.233: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.234: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.234: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.238: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.240: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.245: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.245: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.246: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.246: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.247: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:41.247: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.355: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.355: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.356: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.357: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.358: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.359: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.360: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.360: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.361: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.361: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.362: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.362: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.363: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.363: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.366: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.366: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.366: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.366: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.367: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:05:42.367: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.181: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.181: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.182: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.182: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.183: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.184: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.185: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.186: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.186: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.187: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.187: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.187: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.188: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.188: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.196: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.199: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.201: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.201: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.201: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:47.202: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.356: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.357: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.358: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.358: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.359: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.360: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.361: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.365: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.368: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.369: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.370: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.370: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.371: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.372: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.372: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.373: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.376: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.376: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.376: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:06:53.376: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.779: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.780: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.781: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.781: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.785: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.789: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.790: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.790: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.791: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.791: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.792: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.792: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.793: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.793: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.796: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.796: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.797: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.798: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.799: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:14:59.802: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.608: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.609: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.610: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.610: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.611: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.611: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.613: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.614: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.616: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.617: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.619: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.620: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.622: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.623: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.623: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.623: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.624: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.624: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.624: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:15:17.624: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.244: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.245: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.246: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.250: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.253: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.255: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.257: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.258: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.258: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.262: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.263: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.263: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.263: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.263: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.264: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.264: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.264: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.265: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.265: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:11.265: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.384: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.385: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.390: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.393: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.397: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.397: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.398: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.399: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.399: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.400: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.400: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.401: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.401: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.403: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.404: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.404: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.405: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.405: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.406: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:12.406: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.240: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.241: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.242: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.245: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.246: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.246: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.248: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.248: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.249: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.250: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.257: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.258: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.259: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.260: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.260: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.261: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.261: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.262: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.263: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:16:38.263: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.719: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.719: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.720: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.721: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.722: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.722: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.723: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.724: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.724: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.725: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.728: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.728: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.729: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.732: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.733: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.735: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.737: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.738: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.738: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:20:58.739: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.638: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.638: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.639: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.640: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.640: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.641: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.642: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.642: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.643: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.643: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.644: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.644: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.645: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.645: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.646: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.646: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.650: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.653: Failed to grab keycode 218
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.654: Failed to grab keycode 107
+
+(xfsettingsd:1547): libxfce4kbd-private-WARNING **: 12:22:25.654: Failed to grab keycode 218
 [ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-pasystray-Message: 16:53:37.665: Failed to get source information: No such entity
-[2025-01-26 17:03:13] [NOTICE] Sorted latencies:
-[2025-01-26 17:03:13] [NOTICE] -    49ms google
-[2025-01-26 17:03:13] [NOTICE] -   100ms cloudflare
-[2025-01-26 17:03:13] [NOTICE] Server with the lowest initial latency: google (rtt: 49ms)
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-pasystray-Message: 18:53:06.195: Failed to get source information: No such entity
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+
+** (nemo:11099): WARNING **: 12:46:02.462: Current gtk theme is not known to have nemo support (Greybird-dark) - checking...
+
+** (nemo:11099): WARNING **: 12:46:02.522: The theme appears to have no nemo support.  Adding some...
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+
+(xfce4-terminal:11250): xfce4-terminal-WARNING **: 12:47:00.919: Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
 libva info: VA-API version 1.20.0
 libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
 libva info: Found init function __vaDriverInit_1_20
 libva info: va_openDriver() returns 0
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-pasystray-Message: 19:06:13.296: Failed to get source information: No such entity
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[2025-01-26 21:03:14] [NOTICE] Sorted latencies:
-[2025-01-26 21:03:14] [NOTICE] -    51ms google
-[2025-01-26 21:03:14] [NOTICE] -   102ms cloudflare
-[2025-01-26 21:03:14] [NOTICE] Server with the lowest initial latency: google (rtt: 51ms)
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+
+(nemo:11099): Gtk-CRITICAL **: 12:51:46.754: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
