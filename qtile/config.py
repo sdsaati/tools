@@ -25,9 +25,15 @@
 # SOFTWARE.
 
 from decimal import Rounded
-import os
+import asyncio
 import subprocess
-from libqtile import layout, qtile, widget, hook
+import shutil
+import os
+import time
+from libqtile import layout
+from libqtile import qtile
+from libqtile import widget
+from libqtile import hook
 from libqtile.layout.columns import Columns
 from libqtile.layout.verticaltile import VerticalTile
 from libqtile.layout.xmonad import MonadTall
@@ -52,6 +58,7 @@ from colors import *
 from bar1 import bar
 import jdatetime
 
+
 mod = "mod4"
 modifier_keys = {
     "M": "mod4",
@@ -75,11 +82,12 @@ nemo = "nemo"
 fonts = {
     # "general": "Comic Helvetic Heavy",
     # "general": "MonaSpiceNe Nerd Font Bold",
-    "general": "CaskaydiaCove Nerd Font",
+    # "general": "CaskaydiaCove Nerd Font",
+    "general": "Lilex Nerd Font",
     "generalSize": 15,  # was 16
-    "delimiter": "CaskaydiaCove Nerd Font",
+    "delimiter": "Lilex Nerd Font",
     "delimiterSize": 18,
-    "group": "CaskaydiaCove Nerd Font",  # MonaSpiceNe Nerd Font
+    "group": "Lilex Nerd Font",  # MonaSpiceNe Nerd Font
     "groupSize": 15,
 }
 
@@ -282,7 +290,7 @@ for i in groups:
 
 groups.append(
     ScratchPad(
-        "scratchpad",
+        "0",
         [
             DropDown(
                 "term",
@@ -356,12 +364,12 @@ groups.append(
 
 keys.extend(
     [
-        Key([mod], "F1", lazy.group["scratchpad"].dropdown_toggle("term")),
-        Key([mod], "F2", lazy.group["scratchpad"].dropdown_toggle("mixer")),
-        Key([mod], "F3", lazy.group["scratchpad"].dropdown_toggle("logseq")),
-        Key([mod], "F4", lazy.group["scratchpad"].dropdown_toggle("blueman")),
-        Key([mod], "F11", lazy.group["scratchpad"].dropdown_toggle("chatgpt")),
-        Key([mod], "F12", lazy.group["scratchpad"].dropdown_toggle("mail")),
+        Key([mod], "F1", lazy.group["0"].dropdown_toggle("term")),
+        Key([mod], "F2", lazy.group["0"].dropdown_toggle("mixer")),
+        Key([mod], "F3", lazy.group["0"].dropdown_toggle("logseq")),
+        Key([mod], "F4", lazy.group["0"].dropdown_toggle("blueman")),
+        Key([mod], "F11", lazy.group["0"].dropdown_toggle("chatgpt")),
+        Key([mod], "F12", lazy.group["0"].dropdown_toggle("mail")),
     ]
 )
 
@@ -602,6 +610,54 @@ wl_input_rules = None
 wmname = "LG3D"
 
 
+def msg(
+    message,
+    urgency="normal",
+    icon=None,
+    timeout=5,  # Default timeout in seconds (adjust as needed)
+):
+    """
+    Send desktop notifications from Qtile using dunstify.
+
+    Args:
+        message (str): Notification text
+        urgency (str): 'low', 'normal', or 'critical'
+        icon (str): Path to icon (supports ~/ expansion)
+        timeout (int): Notification timeout in seconds
+    """
+    # Find dunstify in $PATH
+    dunstify_path = shutil.which("dunstify")
+    if not dunstify_path:
+        return
+
+    # Resolve home directory paths (~/)
+    dunstify_path = os.path.expanduser(dunstify_path)
+    if icon:
+        icon = os.path.expanduser(icon)
+
+    # Build command
+    cmd = [
+        dunstify_path,
+        "-u",
+        urgency,
+        "-t",
+        str(timeout * 1000),  # dunstify uses milliseconds
+    ]
+
+    if icon:
+        cmd.extend(["-i", icon])
+
+    cmd.append(str(message))
+
+    # Run with current environment
+    try:
+        subprocess.run(
+            cmd, env=os.environ.copy(), stderr=subprocess.DEVNULL, check=True
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+
+
 # Hook Section:
 @hook.subscribe.startup_once
 async def autostart_once():
@@ -614,10 +670,9 @@ async def run_every_startup():
     home = os.path.expanduser("~/.config/qtile/saati/startup")
     subprocess.Popen(["xsetroot", "-cursor_name", "left_ptr"])
     subprocess.Popen([home])
-    send_notification("qtile", "Startup")
 
 
-def float_to_front(qtile):
+def float_to_front():
     for group in qtile.groups:
         for window in group.windows:
             if window.floating:
@@ -627,4 +682,27 @@ def float_to_front(qtile):
 @hook.subscribe.client_focus
 def client_focus(client):
     # send_notification("qtile", f"{client.name} has been focused")
-    float_to_front(qtile)
+    float_to_front()
+
+
+@hook.subscribe.startup_complete
+async def spawn_scratchpads():
+    """
+    This hook will run all the scratchpads at startup (not reloading script)
+    """
+    # qtile.cmd_simulate_keypress([numlock], 'F10')
+    scratchpad: ScratchPad = qtile.groups_map["0"]
+    for dropdown_name, dropdown_config in scratchpad._dropdownconfig.items():
+        scratchpad._spawn(dropdown_config)
+
+        def wrapper(name):
+            def hide_dropdown(_):
+                dropdown = scratchpad.dropdowns.get(name)
+                if dropdown:
+                    dropdown.hide()
+                    hook.unsubscribe.client_managed(hide_dropdown)
+
+            return hide_dropdown
+
+        hook.subscribe.client_managed(wrapper(dropdown_name))
+    msg("All Scratchpads are loaded.")

@@ -17,6 +17,9 @@ function! startup#before() abort
   " For Vim<8, replace EndOfBuffer by NonText
   autocmd vimenter * highlight EndOfBuffer guibg=NONE ctermbg=none
   " =====transparent bg ]]========
+  " Set cursor shape for terminal Vim
+  let &t_SI = "\e[6 q"  " I-beam cursor in Insert mode
+  let &t_EI = "\e[2 q"  " Block cursor in Normal mode
 
 " makes scroll of documentation of lsp be ctrl+j and ctrl+k
 nmap <C-j> <C-f>
