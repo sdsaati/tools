@@ -83,11 +83,11 @@ fonts = {
     # "general": "Comic Helvetic Heavy",
     # "general": "MonaSpiceNe Nerd Font Bold",
     # "general": "CaskaydiaCove Nerd Font",
-    "general": "Lilex Nerd Font",
+    "general": "ZedMono Nerd Font",
     "generalSize": 15,  # was 16
-    "delimiter": "Lilex Nerd Font",
+    "delimiter": "ZedMono Nerd Font",
     "delimiterSize": 18,
-    "group": "Lilex Nerd Font",  # MonaSpiceNe Nerd Font
+    "group": "ZedMono Nerd Font",  # MonaSpiceNe Nerd Font
     "groupSize": 15,
 }
 
