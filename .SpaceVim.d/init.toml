@@ -23,7 +23,7 @@
 # if you want to use more colorscheme, please load the colorscheme
 # layer
   # colorscheme = "desert"
-  colorscheme = "space_vim_theme"
+  # colorscheme = "space_vim_theme"
   # colorscheme = "OceanicNext"
   # colorscheme = "gruvbox"
   # colorscheme = "SpaceVim"
@@ -32,7 +32,7 @@
   # colorscheme = "blue"
   # colorscheme = "hybrid"
   # colorscheme = "jellybeans"
-  # colorscheme = "onedark"
+  colorscheme = "onedark"
   # colorscheme = "molokai"
   # colorscheme = "material"
   # colorscheme = "NeoSolarized"

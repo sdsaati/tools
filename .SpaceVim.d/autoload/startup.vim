@@ -35,7 +35,7 @@ call feedkeys("\<space>wl")
 " makes selected line be always at the center of screen
 :set scrolloff=3 
 
-" call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
+call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
 endfunction
 function! startup#after() abort
   " here we can run our vim stuff (sdsaati):

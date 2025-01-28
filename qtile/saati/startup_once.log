@@ -110,3 +110,21 @@ pasystray-Message: 16:16:50.813: Failed to get sink information: No such entity
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
 [ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
 [ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+pasystray-Message: 18:41:13.223: Failed to get source information: No such entity
+pasystray-Message: 18:49:57.863: Failed to get source information: No such entity
+pasystray-Message: 19:01:59.576: Failed to get source information: No such entity
+[2025-01-28 19:53:35] [NOTICE] Sorted latencies:
+[2025-01-28 19:53:35] [NOTICE] -    51ms google
+[2025-01-28 19:53:35] [NOTICE] -   102ms cloudflare
+[2025-01-28 19:53:35] [NOTICE] Server with the lowest initial latency: google (rtt: 51ms)
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[2025-01-28 23:53:36] [NOTICE] Sorted latencies:
+[2025-01-28 23:53:36] [NOTICE] -    52ms google
+[2025-01-28 23:53:36] [NOTICE] -    92ms cloudflare
+[2025-01-28 23:53:36] [NOTICE] Server with the lowest initial latency: google (rtt: 52ms)
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
+[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
