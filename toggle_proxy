@@ -18,10 +18,10 @@ function notify {
 }
 
 if [[ ${status} -eq 0 ]]; then
-	export http_proxy="socks5://127.0.0.1:20170"
-	export https_proxy="socks5://127.0.0.1:20170"
-	export all_proxy="socks5://127.0.0.1:20170"
-	export ALL_PROXY="socks5://127.0.0.1:20170"
+	export http_proxy="socks5://127.0.0.1:8086"
+	export https_proxy="socks5://127.0.0.1:8086"
+	export all_proxy="socks5://127.0.0.1:8086"
+	export ALL_PROXY="socks5://127.0.0.1:8086"
 	notify "${messages[0]}"
 	echo 1 >"${tmpFile}"
 else

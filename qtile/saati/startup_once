@@ -15,7 +15,7 @@ sleep 3 && runAsRoot dnscrypt-proxy -config "${main_folder}/dnscrypt.toml"
 # run xfce4-panel -d
 run nm-applet
 # run "$folder_of_script/qtile/saati/keyring.sh"
-run oblivion
+# run oblivion
 run nm-tray
 # run volumeicon # this uses alsa
 run pasystray

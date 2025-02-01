@@ -80,11 +80,12 @@
 [[layers]]
   name = "tools#cpicker"
 
-# [[layers]]
-#   name = 'autocomplete'
-#   auto-completion-delay = 10
-#   auto_completion_return_key_behavior = "smart"
-#   auto_completion_tab_key_behavior = "smart"
+[[layers]]
+  name = 'autocomplete'
+  auto-completion-delay = 10
+  auto_completion_return_key_behavior = "smart"
+  auto_completion_tab_key_behavior = "smart"
+  autocomplete_method = "completor"
 
 [[layers]]
   name = 'shell'
@@ -139,16 +140,17 @@
   name = "lang#php"
 [[layers]]
   name = "lang#plantuml"
-
-
 [[layers]]
-  name = "treesitter"
+  name = 'lsp'
+  enabled_clients = ['pylsp']
+[[layers]]
+name = "ctrlspace"
 [[layers]]
   name = 'framework#django'
 
 [[layers]]
-  name = 'lsp'
-  enabled_clients = ['pylsp']
+  name = "treesitter"
+
 
 [[custom_plugins]]
   repo = "liuchengxu/vista.vim"
@@ -156,8 +158,6 @@
 [[custom_plugins]] 
   repo = "lilydjwg/colorizer"
 
-[[layers]]
-name = "ctrlspace"
 
 [[custom_plugins]]
   repo = 'liuchengxu/space-vim-theme'

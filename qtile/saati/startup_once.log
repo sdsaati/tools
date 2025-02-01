@@ -10,13 +10,13 @@ WARNING: Setting geometry in section global doesn't exist
 WARNING: Setting notification_height in section global doesn't exist
 WARNING: Setting startup_notification in section global doesn't exist
 WARNING: Setting verbosity in section global doesn't exist
-CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1549'.
+CRITICAL: [dbus_cb_name_lost:1152] Cannot acquire 'org.freedesktop.Notifications': Name is acquired by 'dunst' with PID '1563'.
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:25.840: Failed to grab keycode 33
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:16.356: Failed to grab keycode 33
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:25.842: Failed to grab keycode 107
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:16.359: Failed to grab keycode 107
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:25.843: Failed to grab keycode 218
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:16.359: Failed to grab keycode 218
 Failed to connect to session manager: Failed to connect to the session manager: SESSION_MANAGER environment variable not defined
 
 ===========
@@ -56,75 +56,48 @@ Failed to connect to session manager: Failed to connect to the session manager: 
        running command "/usr/bin/blueman-applet  2>>/home/sdsaati/.config/qtile/saati/startup_once.log & "      
 ===========
 
-(nitrogen:2171): GLib-GObject-CRITICAL **: 15:53:31.164: Attempting to freeze the notification queue for object GtkSettings[0x5d00972bcfd0]; Property notification does not work during instance finalization.
+(nitrogen:2210): GLib-GObject-CRITICAL **: 21:07:22.069: Attempting to freeze the notification queue for object GtkSettings[0x6003464fb280]; Property notification does not work during instance finalization.
 
-(nitrogen:2171): GLib-GObject-CRITICAL **: 15:53:31.164: Attempting to thaw the notification queue for object GtkSettings[0x5d00972bcfd0]; Property notification does not work during instance finalization.
+(nitrogen:2210): GLib-GObject-CRITICAL **: 21:07:22.069: Attempting to thaw the notification queue for object GtkSettings[0x6003464fb280]; Property notification does not work during instance finalization.
+blueman-applet 21.07.22 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
 
-(pasystray:2166): Gdk-CRITICAL **: 15:53:31.743: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
-blueman-applet 15.53.31 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
-blueman-applet 15.53.31 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
+(pasystray:2206): Gdk-CRITICAL **: 21:07:22.314: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
+blueman-applet 21.07.22 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._openssl.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/cryptography.hazmat.bindings._padding.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/apex._apex.abi3.so'
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:33.166: Failed to grab keycode 33
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:23.610: Failed to grab keycode 33
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:33.167: Failed to grab keycode 107
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:23.612: Failed to grab keycode 107
 
-(xfsettingsd:1587): libxfce4kbd-private-WARNING **: 15:53:33.167: Failed to grab keycode 218
+(xfsettingsd:1611): libxfce4kbd-private-WARNING **: 21:07:23.613: Failed to grab keycode 218
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_linux.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/psutil._psutil_posix.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/google._upb._message.cpython-38-x86_64-linux-gnu.so'
-[2025-01-28 15:53:33] [NOTICE] dnscrypt-proxy 2.0.45
-[2025-01-28 15:53:33] [NOTICE] Network connectivity detected
-[2025-01-28 15:53:33] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
-[2025-01-28 15:53:33] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
-[2025-01-28 15:53:33] [NOTICE] Source [public-resolvers] loaded
-[2025-01-28 15:53:33] [NOTICE] Firefox workaround initialized
-[2025-01-28 15:53:34] [NOTICE] [cloudflare] OK (DoH) - rtt: 83ms
-[2025-01-28 15:53:34] [NOTICE] [google] OK (DoH) - rtt: 53ms
-[2025-01-28 15:53:34] [NOTICE] Sorted latencies:
-[2025-01-28 15:53:34] [NOTICE] -    53ms google
-[2025-01-28 15:53:34] [NOTICE] -    83ms cloudflare
-[2025-01-28 15:53:34] [NOTICE] Server with the lowest initial latency: google (rtt: 53ms)
-[2025-01-28 15:53:34] [NOTICE] dnscrypt-proxy is ready - live servers: 2
+[2025-02-01 21:07:24] [NOTICE] dnscrypt-proxy 2.0.45
+[2025-02-01 21:07:24] [NOTICE] Network connectivity detected
+[2025-02-01 21:07:24] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
+[2025-02-01 21:07:24] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/tornado.speedups.cpython-38-x86_64-linux-gnu.so'
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
+[2025-02-01 21:07:34] [NOTICE] System DNS configuration not usable yet, exceptionally resolving [download.dnscrypt.info] using fallback resolvers over udp
+[2025-02-01 21:07:35] [NOTICE] Source [public-resolvers] loaded
+[2025-02-01 21:07:35] [NOTICE] Firefox workaround initialized
+[2025-02-01 21:07:36] [NOTICE] [google] OK (DoH) - rtt: 53ms
+[2025-02-01 21:07:36] [NOTICE] [cloudflare] OK (DoH) - rtt: 109ms
+[2025-02-01 21:07:36] [NOTICE] Sorted latencies:
+[2025-02-01 21:07:36] [NOTICE] -    53ms google
+[2025-02-01 21:07:36] [NOTICE] -   109ms cloudflare
+[2025-02-01 21:07:36] [NOTICE] Server with the lowest initial latency: google (rtt: 53ms)
+[2025-02-01 21:07:36] [NOTICE] dnscrypt-proxy is ready - live servers: 2
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/wrapt._wrappers.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtCore.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.sip.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtGui.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtWidgets.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-216.4.4420/PyQt5.QtDBus.so'
-WarpPlus error: {"data":{"parameters":{}},"noticeType":"ApplicationParameters","timestamp":"2025-01-28T12:25:55.453Z"}
-
-
-(xfsettingsd:1587): xfconf-WARNING **: 16:03:38.816: Failed to set property "xfwm4::/general/workspace_count": Operation was cancelled
 libva info: VA-API version 1.20.0
 libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
 libva info: Found init function __vaDriverInit_1_20
 libva info: va_openDriver() returns 0
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-pasystray-Message: 16:16:50.813: Failed to get sink information: No such entity
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-pasystray-Message: 18:41:13.223: Failed to get source information: No such entity
-pasystray-Message: 18:49:57.863: Failed to get source information: No such entity
-pasystray-Message: 19:01:59.576: Failed to get source information: No such entity
-[2025-01-28 19:53:35] [NOTICE] Sorted latencies:
-[2025-01-28 19:53:35] [NOTICE] -    51ms google
-[2025-01-28 19:53:35] [NOTICE] -   102ms cloudflare
-[2025-01-28 19:53:35] [NOTICE] Server with the lowest initial latency: google (rtt: 51ms)
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[2025-01-28 23:53:36] [NOTICE] Sorted latencies:
-[2025-01-28 23:53:36] [NOTICE] -    52ms google
-[2025-01-28 23:53:36] [NOTICE] -    92ms cloudflare
-[2025-01-28 23:53:36] [NOTICE] Server with the lowest initial latency: google (rtt: 52ms)
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code inactive for ping usage-reporting
-[ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
