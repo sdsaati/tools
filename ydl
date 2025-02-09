@@ -25,7 +25,7 @@ done
 
  yt-dlp \
  --no-check-certificates \
- --paths temp:/tmp -N 8 \
+ --paths temp:. -N 8 \
  --cookies-from-browser firefox \
  --no-part \
  --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
