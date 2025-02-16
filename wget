@@ -6,8 +6,47 @@ folder_of_script=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 # sudo apt install aria2c aria2
 # sudo apt install proxychains4
 
-aria2c --check-certificate=false -j 16 -x 16 --file-allocation=none -c \
-  --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" "$@" || echo -en \
+INPUT_FILE=$(mktemp)
+
+for URL in "$@"; do
+  # Extract original filename from the URL (strip query parameters)
+  ORIGINAL_FILENAME=$(basename "$URL" | sed 's/?.*//')
+
+  # Split into basename and extension
+  ORIGINAL_BASENAME="${ORIGINAL_FILENAME%.*}"  # "file" from "file.zip"
+  EXT="${ORIGINAL_FILENAME##*.}"               # "zip" from "file.zip"
+
+  # Handle filenames without extensions (e.g., "README")
+  if [[ "$ORIGINAL_BASENAME" == "$ORIGINAL_FILENAME" ]]; then
+    EXT=""  # No extension found
+  fi
+
+  # Generate a unique hash for the URL (truncated SHA256)
+  URL_HASH=$(echo -n "$URL" | sha256sum | cut -c1-12)
+
+  # Construct dynamic filename: [basename]_[hash]_[ext]
+  if [[ -n "$EXT" ]]; then
+    DYNAMIC_FILENAME="${ORIGINAL_BASENAME}_${URL_HASH}_.${EXT}"
+  else
+    DYNAMIC_FILENAME="${ORIGINAL_BASENAME}_${URL_HASH}"
+  fi
+  # Write to input file for aria2c
+  echo "$URL" >> "$INPUT_FILE"
+  echo " out=$DYNAMIC_FILENAME" >> "$INPUT_FILE"
+done
+
+aria2c \
+  --file-allocation=prealloc \
+  --check-certificate=false \
+  --split=8 \
+  --max-connection-per-server=8 \
+  --min-split-size=1M \
+  --continue \
+  --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36" \
+  --input-file="$INPUT_FILE" \
+  --save-session="$INPUT_FILE" || echo -en \
   "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f $folder_of_script/proxychain.conf\n"
 
-# aria2c -c --download-result=default -j 28 -x 16 -s 28 -k 1M -U "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36" "$@"
+
+# Cleanup
+rm -f "$INPUT_FILE"
