@@ -10,7 +10,6 @@
 ===========
          running command "/usr/bin/pkexec --keep-cwd /usr/sbin/dnscrypt-proxy "-config /home/sdsaati/bin/awesome/saati_sh/../../dnscrypt.toml" 2>>/home/sdsaati/bin/awesome/saati_sh/startup_once.log"         
 ===========
-(ERROR) Command 'nm-applet' not found.
 
 ===========
          running command "/usr/bin/nm-tray  2>>/home/sdsaati/bin/awesome/saati_sh/startup_once.log & "        
@@ -36,34 +35,34 @@
          running command "/usr/bin/blueman-applet  2>>/home/sdsaati/bin/awesome/saati_sh/startup_once.log & "        
 ===========
 
-(nitrogen:2322): GLib-GObject-CRITICAL **: 05:12:17.886: Attempting to freeze the notification queue for object GtkSettings[0x5d417d975ef0]; Property notification does not work during instance finalization.
+(nitrogen:4161): GLib-GObject-CRITICAL **: 05:28:28.652: Attempting to freeze the notification queue for object GtkSettings[0x59751763a7f0]; Property notification does not work during instance finalization.
 
-(nitrogen:2322): GLib-GObject-CRITICAL **: 05:12:17.886: Attempting to thaw the notification queue for object GtkSettings[0x5d417d975ef0]; Property notification does not work during instance finalization.
+(nitrogen:4161): GLib-GObject-CRITICAL **: 05:28:28.652: Attempting to thaw the notification queue for object GtkSettings[0x59751763a7f0]; Property notification does not work during instance finalization.
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/cryptography.hazmat.bindings._openssl.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/cryptography.hazmat.bindings._padding.abi3.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/apex._apex.abi3.so'
-
-(pasystray:2319): Gdk-CRITICAL **: 05:12:19.529: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
-blueman-applet 05.12.19 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
-blueman-applet 05.12.19 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/psutil._psutil_linux.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/psutil._psutil_posix.cpython-38-x86_64-linux-gnu.so'
+
+(pasystray:4158): Gdk-CRITICAL **: 05:28:29.565: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/google._upb._message.cpython-38-x86_64-linux-gnu.so'
-[2025-02-23 05:12:20] [NOTICE] dnscrypt-proxy 2.0.45
-[2025-02-23 05:12:20] [NOTICE] Network connectivity detected
-[2025-02-23 05:12:20] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
-[2025-02-23 05:12:20] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
-[2025-02-23 05:12:20] [NOTICE] Source [public-resolvers] loaded
-[2025-02-23 05:12:20] [NOTICE] Firefox workaround initialized
-[2025-02-23 05:12:21] [NOTICE] [google] OK (DoH) - rtt: 48ms
+blueman-applet 05.28.29 WARNING  PluginManager:151 __load_plugin: Not loading DhcpClient because its conflict has higher priority
+blueman-applet 05.28.30 WARNING  PluginManager:151 __load_plugin: Not loading PPPSupport because its conflict has higher priority
 <frozen zipimport>:259: UserWarning: google.protobuf.service module is deprecated. RPC implementations should provide code generator plugins which generate code specific to the RPC implementation. service.py will be removed in Jan 2025
-[2025-02-23 05:12:21] [NOTICE] [cloudflare] OK (DoH) - rtt: 103ms
-[2025-02-23 05:12:21] [NOTICE] Sorted latencies:
-[2025-02-23 05:12:21] [NOTICE] -    48ms google
-[2025-02-23 05:12:21] [NOTICE] -   103ms cloudflare
-[2025-02-23 05:12:21] [NOTICE] Server with the lowest initial latency: google (rtt: 48ms)
-[2025-02-23 05:12:21] [NOTICE] dnscrypt-proxy is ready - live servers: 2
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/tornado.speedups.cpython-38-x86_64-linux-gnu.so'
+[2025-02-23 05:28:31] [NOTICE] dnscrypt-proxy 2.0.45
+[2025-02-23 05:28:31] [NOTICE] Network connectivity detected
+[2025-02-23 05:28:31] [NOTICE] Now listening to 127.0.0.1:53 [UDP]
+[2025-02-23 05:28:31] [NOTICE] Now listening to 127.0.0.1:53 [TCP]
+[2025-02-23 05:28:31] [NOTICE] Source [public-resolvers] loaded
+[2025-02-23 05:28:31] [NOTICE] Firefox workaround initialized
+[2025-02-23 05:28:31] [NOTICE] [google] OK (DoH) - rtt: 47ms
+[2025-02-23 05:28:31] [NOTICE] [cloudflare] OK (DoH) - rtt: 91ms
+[2025-02-23 05:28:31] [NOTICE] Sorted latencies:
+[2025-02-23 05:28:31] [NOTICE] -    47ms google
+[2025-02-23 05:28:31] [NOTICE] -    91ms cloudflare
+[2025-02-23 05:28:31] [NOTICE] Server with the lowest initial latency: google (rtt: 47ms)
+[2025-02-23 05:28:31] [NOTICE] dnscrypt-proxy is ready - live servers: 2
 [ERROR glean_core::metrics::ping] Invalid reason code active for ping usage-reporting
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/wrapt._wrappers.cpython-38-x86_64-linux-gnu.so'
 dropbox: load fq extension '/home/sdsaati/.dropbox-dist/dropbox-lnx.x86_64-218.4.4348/PyQt5.QtCore.so'

@@ -14,7 +14,7 @@ else
 fi
 # ============ Startup ================
 function msg {
-  $(which dunstify) "$*" 2>/dev/null
+  $(which notify-send) "$*" 2>/dev/null
 }
 function clearLog
 {
