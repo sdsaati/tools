@@ -22,36 +22,40 @@ function clearLog
 }
 function runAsRoot
 { 
-  # Get the path of the first argument using 'which'
-  command_path=$(which "$1") 
-  # If the command exists, reorder the arguments
-  if [[ -n "$command_path" ]]; then
-    # Shift the arguments so the second argument becomes the first
-    shift
-    # Reconstruct the command with the full path of the first argument
-    echo -en "\n===========\n \
-      running command \"$(which pkexec) --keep-cwd $command_path \"$@\" 2>>$log_path\" \
-      \n===========\n" >> "$log_path"
-    eval "$(which pkexec) --keep-cwd $command_path \"\"$@\"\"" 2>>$log_path & # disown
-  else
-    echo "(ERROR) Command '$1' not found." >> $log_path
+  if ! pgrep -f "$1" ; then
+    # Get the path of the first argument using 'which'
+    command_path=$(which "$1") 
+    # If the command exists, reorder the arguments
+    if [[ -n "$command_path" ]]; then
+      # Shift the arguments so the second argument becomes the first
+      shift
+      # Reconstruct the command with the full path of the first argument
+      echo -en "\n===========\n \
+        running command \"$(which pkexec) --keep-cwd $command_path \"$@\" 2>>$log_path\" \
+        \n===========\n" >> "$log_path"
+      eval "$(which pkexec) --keep-cwd $command_path \"\"$@\"\"" 2>>$log_path & # disown
+    else
+      echo "(ERROR) Command '$1' not found." >> $log_path
+    fi
   fi
 }
 function run
 {
-  # Get the path of the first argument using 'which'
-  command_path=$(which "$1")
-  
-  # If the command exists, reorder the arguments
-  if [[ -n "$command_path" ]]; then
-    # Shift the arguments so the second argument becomes the first
-    shift
-    # Reconstruct the command with the full path of the first argument
-    echo -en "\n===========\n \
-      running command \"$command_path $* 2>>$log_path & \"\
-      \n===========\n" >> "$log_path"
-    eval "$command_path $* 2>>$log_path & " #disown
-  else
-    echo "(ERROR) Command '$1' not found." >> $log_path
+  if ! pgrep -f "$1" ; then
+    # Get the path of the first argument using 'which'
+    command_path=$(which "$1")
+    
+    # If the command exists, reorder the arguments
+    if [[ -n "$command_path" ]]; then
+      # Shift the arguments so the second argument becomes the first
+      shift
+      # Reconstruct the command with the full path of the first argument
+      echo -en "\n===========\n \
+        running command \"$command_path $* 2>>$log_path & \"\
+        \n===========\n" >> "$log_path"
+      eval "$command_path $* 2>>$log_path & " #disown
+    else
+      echo "(ERROR) Command '$1' not found." >> $log_path
+    fi
   fi
 }

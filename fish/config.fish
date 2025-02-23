@@ -3,6 +3,8 @@ if status is-interactive
     set fish_greeting
 end
 set fish_key_bindings fish_user_key_bindings
+# set -gx LD_LIBRARY_PATH "~/bin/luajit/lib:$LD_LIBRARY_PATH"
+#fish_add_path -p ~/bin/luajit/bin
 fish_add_path -p ~/bin
 set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"
 # set -x colorls_theme "--dark"

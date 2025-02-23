@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Awesome
 Comment=Awesome Window Manager
-Exec=qtile start
+Exec=awesome
+TryExec=awesome
 Type=Application
 Keywords=wm;tiling

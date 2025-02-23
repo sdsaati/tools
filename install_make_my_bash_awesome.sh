@@ -23,6 +23,7 @@ sudo apt install -y proxychains4 # proxify app through your proxy
 sudo apt install -y dnscrypt-proxy # dns over https to hide your dns from isp
 sudo apt install -y aria2
 sudo apt install -y aria2c
+sudo apt install -y luajit
 sudo apt install -y lxpolkit
 sudo apt install -y ffmpegthumbnailer
 sudo apt install -y flameshot

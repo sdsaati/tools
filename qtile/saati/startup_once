@@ -7,13 +7,14 @@ main_folder="$folder_of_script/../.."
 clearLog
 # ============ Startup ================
 msg "Start Loading..."
-run dunst -conf "${main_folder}/dunstrc"
-run xfsettingsd --daemon -D
+# run dunst -conf "${main_folder}/dunstrc"
+# run xfsettingsd --daemon -D # we will use xrdb -merge ~/.Xresources instead of this
+run xrdb -merge ~/.Xresources
  # start polkit agent from lxde (sudo apt install lxpolkit)
 sleep 3 && run dbus-launch lxpolkit
 sleep 3 && runAsRoot dnscrypt-proxy -config "${main_folder}/dnscrypt.toml" 
 # run xfce4-panel -d
-run nm-applet
+# run nm-applet
 # run "$folder_of_script/qtile/saati/keyring.sh"
 # run oblivion
 run nm-tray
