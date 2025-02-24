@@ -16,7 +16,7 @@ rofi -config ~/bin/rofi/config.rasi -show "$a" \
 -window-title " " \
 -mesg " " \
 -markup \
--dpi 0 \
+-dpi 100 \
 -fixed-num-lines \
 -parse-known-hosts \
 -parse-hosts \
