@@ -10,6 +10,6 @@ run xgamma -gamma 1.5
 run setxkbmap -option ctrl:nocaps
 xset r rate 220 &                         # keyboard repeat delay and rate in miliseconds
 # xinput --set-prop $("${path_of_here}"/getMouseID.sh) 'libinput Accel Speed' -0.9 & # set mouse acceleration, you should run xinput list to get the id of your mouse device
-run setxkbmap -layout us,ir -option grp:rctrl_toggle &
+run setxkbmap -layout us,ir -option grp:rctrl_toggle
 run xrandr --output eDP-1 --auto --dpi 120
 msg "Welcome! Everything Loaded."

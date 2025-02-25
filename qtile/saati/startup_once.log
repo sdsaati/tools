@@ -11,6 +11,6 @@
          running command "/usr/bin/nitrogen --restore 2>>/home/sdsaati/bin/awesome/saati_sh/startup_once.log & "        
 ===========
 
-(nitrogen:3731): GLib-GObject-CRITICAL **: 13:03:10.853: Attempting to freeze the notification queue for object GtkSettings[0x620ded5b73f0]; Property notification does not work during instance finalization.
+(nitrogen:4441): GLib-GObject-CRITICAL **: 13:32:51.457: Attempting to freeze the notification queue for object GtkSettings[0x5d2025baf600]; Property notification does not work during instance finalization.
 
-(nitrogen:3731): GLib-GObject-CRITICAL **: 13:03:10.853: Attempting to thaw the notification queue for object GtkSettings[0x620ded5b73f0]; Property notification does not work during instance finalization.
+(nitrogen:4441): GLib-GObject-CRITICAL **: 13:32:51.457: Attempting to thaw the notification queue for object GtkSettings[0x5d2025baf600]; Property notification does not work during instance finalization.
