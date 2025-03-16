@@ -7,6 +7,7 @@ from libqtile.widget.groupbox import GroupBox
 from libqtile.widget.memory import Memory
 from libqtile.widget.net import Net
 from libqtile.widget.spacer import Spacer
+
 from libqtile.widget.systray import Systray
 from libqtile.widget.window_count import WindowCount
 from libqtile.widget.windowname import WindowName

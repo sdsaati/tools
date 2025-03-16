@@ -7,7 +7,7 @@ main_folder="$folder_of_script/../.."
 clearLog
 # ============ Startup ================
 msg "Start Loading..."
-# run dunst -conf "${main_folder}/dunstrc"
+run dunst -conf "${main_folder}/dunstrc"
 # run xfsettingsd --daemon -D # we will use xrdb -merge ~/.Xresources instead of this
 run xrdb -merge ~/.Xresources
  # start polkit agent from lxde (sudo apt install lxpolkit)

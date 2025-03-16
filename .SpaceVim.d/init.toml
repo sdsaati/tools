@@ -23,7 +23,7 @@
 # if you want to use more colorscheme, please load the colorscheme
 # layer
   # colorscheme = "desert"
-  # colorscheme = "space_vim_theme"
+  colorscheme = "space_vim_theme"
   # colorscheme = "OceanicNext"
   # colorscheme = "gruvbox"
   # colorscheme = "SpaceVim"
@@ -32,28 +32,28 @@
   # colorscheme = "blue"
   # colorscheme = "hybrid"
   # colorscheme = "jellybeans"
-  colorscheme = "onedark"
+  # colorscheme = "onedark"
   # colorscheme = "molokai"
   # colorscheme = "material"
   # colorscheme = "NeoSolarized"
   # colorscheme = "dracula"
   # colorscheme = "one"
-  # colorscheme_bg = "dark"
+  # colorscheme_bg = "light"
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
-  enable_guicolors = true
+  # enable_guicolors = true
 # Disable statusline separator, if you want to use other value, please
 # install nerd fonts
 # possible values for seperators: curve, nil, arrow, fire, slant
-  statusline_separator = "nil"
-  statusline_iseparator = "nil"
+  statusline_separator = "curve"
+  statusline_iseparator = "curve"
   relativenumber = false
   buffer_index_type = 4
   enable_tabline_filetype_icon = true
   enable_statusline_mode = true
 # this will makes 's' does what it does in normal vim
   windows_leader = ''
-  guifont = "ZedMono Nerd Font:h11"
+  guifont = "ComicMono Nerd Font:h11"
   escape_key_binding = 'jk'
 
 [[layers]]

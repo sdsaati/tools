@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=AwesomeWM (Wayland + Sway Compositor)
+Comment=You can run (loginctl session-type) to check it
+Exec=/home/sdsaati/bin/awesome-sway.sh
+Type=Application
+Terminal=false
+DesktopNames=Wayland;
