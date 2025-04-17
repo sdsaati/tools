@@ -49,7 +49,7 @@ set -x RANGER_LOAD_DEFAULT_RC FALSE
 set -x BAT_THEME Dracula
 set -x ANDROID_EMULATOR_USE_SYSTEM_LIBS 1
 set -x JAVA_HOME ""
-set -x EDITOR "(which vim)"
+set -x EDITOR "$HOME/bin/nvim.appimage"
 set -x fzf_theme "--color=16"
 set -x FZF_DEFAULT_OPTS "--preview 'bat --color=always {}'"
 set -x FZF_DEFAULT_COMMAND "rg --files --hidden --smart-case --follow --glob \"!.*__pycache__/*\" --glob \"!venv/*\" --glob \"!.venv/*\" --glob \"!.git/*\""
