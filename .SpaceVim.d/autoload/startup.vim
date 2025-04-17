@@ -36,8 +36,22 @@ call feedkeys("\<space>wl")
 :set scrolloff=3 
 
 call SpaceVim#custom#SPC('nnoremap', ['/'], 'Vista!!', 'show outlines using ctags (Vista!!)', 1)
+
+
+
+lua << EOF
+    local opt = requires('spacevim.opt')
+    opt.enable_projects_cache = false
+    opt.enable_statusline_mode = true
+EOF
+
 endfunction
 function! startup#after() abort
   " here we can run our vim stuff (sdsaati):
+lua << EOF
+    local opt = requires('spacevim.opt')
+    opt.enable_projects_cache = false
+    opt.enable_statusline_mode = true
+EOF
 endfunction
 

@@ -144,7 +144,10 @@
   name = 'lsp'
   enabled_clients = ['pylsp']
 [[layers]]
-name = "ctrlspace"
+  name = "lang#lua"
+  repl_command = "~/.luarocks/lib/luarocks/rocks-5.3/luarepl/0.8-1/bin/rep.lua"
+[[layers]]
+  name = "ctrlspace"
 [[layers]]
   name = 'framework#django'
 
