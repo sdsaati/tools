@@ -14,6 +14,7 @@ alias clock="tty-clock -B -C 7"
 alias fzf="fzf $fzf_theme"
 alias fcd="cd (dirname (fzf))"
 alias ping="ping -nc4"
+alias ranger="ranger.py"
 alias cat="bat"
 alias rm="rm -rf"
 alias gl="git log --oneline --decorate"
@@ -43,7 +44,7 @@ set fish_key_bindings fish_user_key_bindings
 fish_add_path -p ~/bin
 fish_add_path -p ~/.local/bin
 fish_add_path -p ~/Downloads/ollama/bin
-set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH"
+set -x PATH "/home/$(whoami)/bin:/home/$(whoami)/.fzf/bin:$PATH:/home/$(whoami)/bin/ranger-1.9.4"
 # set -x colorls_theme "--dark"
 set -x RANGER_LOAD_DEFAULT_RC FALSE
 set -x BAT_THEME Dracula

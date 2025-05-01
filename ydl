@@ -13,32 +13,34 @@ split=""
 ARG_VALUE=""
 # Parse arguments
 for arg in "$@"; do
-    case $arg in
-        --split-chapters)
-            split="--split-chapters"
-            ;;
-        *)
-            ARG_VALUE+=("$arg")
-            ;;
-    esac
+  case $arg in
+  --split-chapters)
+    split="--split-chapters"
+    ;;
+  *)
+    ARG_VALUE+=("$arg")
+    ;;
+  esac
 done
 
- yt-dlp \
- --no-check-certificates \
- --paths temp:. -N 8 \
- --cookies-from-browser firefox \
- --no-part \
- --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
- --external-downloader aria2c --external-downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
- --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
- --extractor-args youtubetab:skip=authcheck \
--ciwf \
-"bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/\
+yt-dlp \
+  --no-check-certificates \
+  --paths temp:. -N 8 \
+  --cookies-from-browser firefox \
+  --no-part \
+  --sub-format "best" \
+  --sub-langs "all" \
+  --embed-chapters --embed-thumbnail --add-metadata --embed-subs \
+  --external-downloader aria2c --external-downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
+  --user-agent "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.366" \
+  --extractor-args youtubetab:skip=authcheck \
+  -ciwf \
+  "bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/\
 bestvideo+bestaudio/best" \
---youtube-include-dash-manifest \
---merge-output-format mp4 --continue --min-filesize 50k --ignore-errors --yes-playlist -- $split ${ARG_VALUE[@]} || echo -en \
- "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f $folder_of_script/proxychain.conf\n"
+  --youtube-include-dash-manifest \
+  --merge-output-format mp4 --continue --min-filesize 50k --ignore-errors --yes-playlist -- $split ${ARG_VALUE[@]} || echo -en \
+  "\n======================\nIf you need to use a proxy\nTry to use p ydl 'URL'\np is an alias for proxychains4 -q -f $folder_of_script/proxychain.conf\n"
 
- # --proxy $proxy_socks5 \
- # --external-downloader axel --external-downloader-args "-n 8 -k" \
- # --downloader aria2c --downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
+# --proxy $proxy_socks5 \
+# --external-downloader axel --external-downloader-args "-n 8 -k" \
+# --downloader aria2c --downloader-args "--check-certificate=false -j 16 -x 16 --file-allocation=none -c" \
