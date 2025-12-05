@@ -1,6 +1,6 @@
 # Empty listen_addresses to use systemd socket activation
 listen_addresses = ['127.0.0.1:53']
-server_names = ['cloudflare', 'google']
+server_names = [ 'google', 'cloudflare']
 
 [query_log]
   file = '/var/log/dnscrypt-proxy/query.log'

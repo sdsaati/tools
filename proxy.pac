@@ -23,6 +23,6 @@ function FindProxyForURL(url, host)
 	}
 
 	/* DEFAULT RULE  in fail-over order. */
-	return "SOCKS5 127.0.0.1:8086; SOCKS5 127.0.0.1:20170; SOCKS5 127.0.0.1:9150";
+	return "SOCKS5 127.0.0.1:10808; SOCKS5 127.0.0.1:20170; SOCKS5 127.0.0.1:9150";
 }
 
